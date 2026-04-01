@@ -1,0 +1,3555 @@
+<!-- © 2026 10 16 Pty Ltd. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GWB Family Footy Tipping 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --dark: #1a1a2e;
+            --dark2: #16213e;
+            --gold: #DAA520;
+            --gold-light: #f0d47a;
+            --light-bg: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border: #e0e0e0;
+            --green: #28a745;
+            --red: #dc3545;
+            --blue: #007bff;
+        }
+
+        /* DARK MODE */
+        body.dark-mode {
+            --light-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-dark: #e0e0e0;
+            --text-light: #aaa;
+            --border: #333;
+        }
+
+        body.dark-mode nav { background: linear-gradient(135deg, #000 0%, #111 100%); }
+        body.dark-mode .fixtures-header, body.dark-mode .table-header { background: linear-gradient(135deg, #000 0%, #111 100%); }
+        body.dark-mode .update-banner { background: linear-gradient(135deg, #000 0%, #111 100%); border-color: var(--gold); }
+        body.dark-mode footer { background: linear-gradient(135deg, #000 0%, #111 100%); }
+        body.dark-mode thead { background-color: #2a2a2a; }
+        body.dark-mode tbody tr:hover { background-color: #2a2a2a; }
+        body.dark-mode .competition-type { background: #2a2a2a; }
+        body.dark-mode .prize-card { background: linear-gradient(135deg, #000 0%, #111 100%); }
+        body.dark-mode .bank-details { background: linear-gradient(135deg, #000 0%, #111 100%); }
+        body.dark-mode .search-box { background: rgba(255,255,255,0.05); }
+        body.dark-mode .medal-1 { background: linear-gradient(90deg, rgba(255,215,0,0.1) 0%, transparent 100%); }
+        body.dark-mode .medal-2 { background: linear-gradient(90deg, rgba(192,192,192,0.08) 0%, transparent 100%); }
+        body.dark-mode .medal-3 { background: linear-gradient(90deg, rgba(205,127,50,0.08) 0%, transparent 100%); }
+        body.dark-mode .fixture-item:hover { background: #2a2a2a; }
+        body.dark-mode .info-tab { background: #2a2a2a; color: #ccc; }
+        body.dark-mode a.link-card { color: var(--text-dark); }
+        body.dark-mode .hero { background: linear-gradient(135deg, #050510 0%, #0a0a20 40%, #150a20 70%, #0a0515 100%); }
+        body.dark-mode .competition-type { background: rgba(218,165,32,0.05); border-color: rgba(218,165,32,0.1); }
+        body.dark-mode .auth-card { background: #1e1e1e; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+        body.dark-mode .form-group input, body.dark-mode .form-group select { background: #2a2a2a; border-color: #444; color: #e0e0e0; }
+        body.dark-mode .comp-checkbox { border-color: #444; }
+        body.dark-mode .comp-checkbox.selected { border-color: var(--gold); background: rgba(218,165,32,0.12); }
+        body.dark-mode .dependant-card { background: #1e1e1e; border-color: #333; }
+        body.dark-mode .rank-card { background: #1e1e1e; }
+        body.dark-mode .btn-primary { background: linear-gradient(135deg, #000 0%, #111 100%); }
+        body.dark-mode .btn-danger { background: #c0392b; }
+
+        /* ADMIN PANEL DARK MODE */
+        body.dark-mode .admin-badge { background: rgba(218,165,32,0.2); color: var(--gold); }
+        body.dark-mode .admin-table { border-color: #333; }
+        body.dark-mode .admin-table thead { background: #2a2a2a; }
+        body.dark-mode .admin-table tbody tr { border-color: #333; }
+        body.dark-mode .admin-table tbody tr:hover { background: #2a2a2a; }
+        body.dark-mode .admin-card { background: #1e1e1e; border-color: #333; }
+        body.dark-mode .admin-input { background: #2a2a2a; border-color: #444; color: #e0e0e0; }
+        body.dark-mode .admin-btn-small { background: #2a2a2a; color: #e0e0e0; border-color: #444; }
+        body.dark-mode .admin-btn-small:hover { background: #3a3a3a; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* NAV */
+        nav {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 800;
+            padding: 1rem 0;
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-brand span { font-weight: 400; color: #ccc; font-size: 0.85rem; margin-left: 0.5rem; }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+
+        .nav-links li { border-right: 1px solid rgba(218,165,32,0.3); }
+        .nav-links li:last-child { border-right: none; }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.8);
+            padding: 1.1rem 1rem;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links button:hover { color: var(--gold); background: rgba(218,165,32,0.08); }
+
+        .nav-links button.active {
+            color: var(--gold);
+            background: rgba(218,165,32,0.1);
+        }
+
+        .nav-links button.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* CONTAINER */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+
+        section { display: none; animation: fadeIn 0.4s ease; }
+        section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 40%, #2a1a3e 70%, #1a0a2e 100%);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(218,165,32,0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 20%, rgba(218,165,32,0.1) 0%, transparent 40%);
+            animation: heroShimmer 8s ease-in-out infinite alternate;
+        }
+        @keyframes heroShimmer {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-5%, 3%) rotate(2deg); }
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.25rem;
+            background: linear-gradient(135deg, var(--gold) 0%, #f5e6a3 50%, var(--gold) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShift 4s ease-in-out infinite;
+        }
+        @keyframes goldShift {
+            0%,100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .hero-subtitle { font-size: 1rem; color: rgba(255,255,255,0.7); font-weight: 400; margin-bottom: 1.5rem; }
+        .hero-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .hero-stat {
+            text-align: center;
+            padding: 0.75rem 1.25rem;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            border: 1px solid rgba(218,165,32,0.2);
+            backdrop-filter: blur(10px);
+            min-width: 100px;
+            transition: all 0.3s;
+        }
+        .hero-stat:hover { background: rgba(218,165,32,0.12); border-color: rgba(218,165,32,0.5); transform: translateY(-2px); }
+        .hero-stat .hs-num { font-size: 1.6rem; font-weight: 800; color: var(--gold); }
+        .hero-stat .hs-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.6); font-weight: 600; }
+        .hero-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .hero-btn {
+            padding: 0.65rem 1.5rem;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            text-decoration: none;
+        }
+        .hero-btn-primary { background: var(--gold); color: #1a1a2e; }
+        .hero-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(218,165,32,0.4); }
+        .hero-btn-secondary { background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(218,165,32,0.3); }
+        .hero-btn-secondary:hover { background: rgba(218,165,32,0.15); }
+        .hero-round-pill {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(218,165,32,0.15); border: 1px solid rgba(218,165,32,0.3);
+            padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+            color: var(--gold); margin-bottom: 1rem;
+        }
+        .hero-round-pill .dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+
+        /* BANNER (below hero) */
+        .update-banner {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border: 1px solid rgba(218,165,32,0.3);
+        }
+
+        .banner-left { display: flex; align-items: center; gap: 0.75rem; }
+        .banner-left .round-label {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .banner-right { font-size: 0.9rem; opacity: 0.9; }
+        .countdown { color: var(--gold); font-weight: 600; }
+
+        /* STATS */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.25rem 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            text-align: center;
+            border-top: 3px solid var(--gold);
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover { transform: translateY(-3px); }
+        .stat-card h3 { font-size: 1.8rem; color: var(--gold); font-weight: 800; }
+        .stat-card p { font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-top: 0.25rem; }
+
+        /* LEADERS */
+        .section-title { font-size: 1.3rem; margin-bottom: 1rem; }
+        .leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .leader-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--gold);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        .leader-card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: linear-gradient(135deg, transparent 60%, rgba(218,165,32,0.04) 100%);
+            pointer-events: none;
+        }
+
+        .leader-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); border-color: rgba(218,165,32,0.3); }
+        .leader-card h3 { color: var(--gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; font-weight: 700; }
+        .leader-card .name { font-size: 1.2rem; font-weight: 700; }
+        .leader-card .score { font-size: 0.9rem; color: var(--text-light); margin-top: 0.25rem; }
+
+        /* FIXTURES */
+        .fixtures-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .fixtures-header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fixtures-header h2 { font-size: 1.2rem; }
+
+        .fixture-item {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .fixture-item:last-child { border-bottom: none; }
+        .fixture-item:hover { background: #fafafa; }
+
+        .fixture-home { text-align: right; font-weight: 600; }
+        .fixture-away { text-align: left; font-weight: 600; }
+
+        .fixture-vs {
+            text-align: center;
+            padding: 0 1.5rem;
+            min-width: 100px;
+        }
+
+        .fixture-vs .vs-text { font-weight: 800; color: var(--gold); font-size: 0.9rem; }
+        .fixture-vs .venue { font-size: 0.7rem; color: var(--text-light); margin-top: 0.15rem; }
+        .fixture-vs .time { font-size: 0.75rem; color: var(--text-dark); font-weight: 600; }
+
+        .fixture-score {
+            text-align: center;
+            padding: 0 1rem;
+            min-width: 100px;
+        }
+
+        .fixture-score .score-display { font-size: 1.1rem; font-weight: 800; color: var(--dark); }
+        .fixture-score .result-tag { font-size: 0.65rem; text-transform: uppercase; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; }
+        .result-final { background: #e8f5e9; color: var(--green); }
+        .result-live { background: #fff3e0; color: #e65100; animation: pulse 2s infinite; }
+        .result-upcoming { background: #e3f2fd; color: var(--blue); }
+
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+        /* CHAMPIONS */
+        .champions-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .champions-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), #f5e6a3, var(--gold));
+        }
+
+        .champions-section h2 { color: var(--text-dark); margin-bottom: 1.5rem; font-size: 1.3rem; padding-bottom: 0.5rem; }
+
+        .champions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .competition-type {
+            background: rgba(218,165,32,0.03);
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid rgba(218,165,32,0.15);
+            transition: all 0.2s;
+        }
+        .competition-type:hover { border-color: rgba(218,165,32,0.4); background: rgba(218,165,32,0.06); }
+
+        .competition-type h3 { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; font-weight: 700; }
+        .champion-item { padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .champion-item:last-child { border-bottom: none; }
+        .champion-item .medal { display: inline-block; width: 24px; margin-right: 0.25rem; }
+
+        /* TABLES */
+        .table-wrapper {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .table-header h2 { font-size: 1.2rem; }
+
+        .round-badge {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .search-box {
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            width: 200px;
+            transition: all 0.3s;
+        }
+
+        .search-box:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.15); width: 250px; }
+        .search-box::placeholder { color: rgba(255,255,255,0.5); }
+
+        .table-scroll { overflow-x: auto; }
+
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        thead { background-color: #f8f8f8; border-bottom: 2px solid var(--border); }
+        th { padding: 0.85rem 1rem; text-align: left; font-weight: 700; color: var(--text-dark); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; cursor: pointer; user-select: none; white-space: nowrap; }
+        th:hover { color: var(--gold); }
+        td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
+        tbody tr { transition: background 0.15s; }
+        tbody tr:hover { background-color: #f9f9f9; }
+
+        .rank { font-weight: 700; color: var(--dark); min-width: 40px; }
+        .medal-1 { background: linear-gradient(90deg, rgba(255,215,0,0.15) 0%, transparent 100%); }
+        .medal-2 { background: linear-gradient(90deg, rgba(192,192,192,0.15) 0%, transparent 100%); }
+        .medal-3 { background: linear-gradient(90deg, rgba(205,127,50,0.12) 0%, transparent 100%); }
+        .highlight-row { background: rgba(218,165,32,0.08) !important; border-left: 3px solid var(--gold); }
+
+        /* BADGES */
+        .badge { display: inline-block; padding: 0.3rem 0.65rem; border-radius: 12px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+        .badge-paid { background: #d4edda; color: #155724; }
+        .badge-unpaid { background: #f8d7da; color: #721c24; }
+        .badge-partial { background: #fff3cd; color: #856404; }
+
+        /* PRIZE POOLS */
+        .prize-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .prize-section h2 { color: var(--dark); margin-bottom: 1rem; font-size: 1.2rem; }
+
+        .prize-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .prize-card {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: white;
+            padding: 1.25rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .prize-card .comp-name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; }
+        .prize-card .prize-amount { font-size: 1.8rem; font-weight: 800; color: var(--gold-light); }
+        .prize-card .prize-detail { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 0.25rem; }
+
+        /* LINKS */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            border-top: 3px solid var(--gold);
+        }
+
+        .link-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+        .link-card h3 { color: var(--gold); margin-bottom: 0.5rem; font-size: 1rem; }
+        .link-card p { font-size: 0.85rem; color: var(--text-light); }
+
+        /* SETTINGS & GUIDE */
+        .settings-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem;
+        }
+
+        .settings-card h3 { color: var(--dark); margin-bottom: 1rem; font-size: 1.1rem; }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); font-size: 0.9rem; }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus { outline: none; border-color: var(--gold); }
+
+        .button-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        button {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover { background: #c9941a; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(218,165,32,0.4); }
+        .btn-secondary { background: var(--text-light); color: white; }
+        .btn-secondary:hover { background: var(--text-dark); }
+
+        .success-message { background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--green); }
+        .error-message { background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--red); }
+
+        /* SECTION TITLES — uses definition from LEADERS block above */
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+        }
+        footer p { margin-bottom: 0.4rem; }
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* SCROLL TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--gold);
+            color: var(--dark);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 50;
+            border: none;
+        }
+
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { background: #c9941a; transform: translateY(-3px); }
+
+        /* COMPETITIONS TABLE */
+        .competitions-table {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-top: 1.5rem;
+            overflow-x: auto;
+        }
+
+        /* GUIDE CHECKLIST */
+        .checklist { line-height: 2.2; }
+        .checklist label { cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; }
+        .checklist input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--gold); }
+        .checklist label.checked { text-decoration: line-through; color: var(--text-light); }
+
+        /* BANK DETAILS */
+        .bank-details {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 0.75rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 2;
+        }
+
+        .bank-details .label { color: var(--gold); font-weight: 700; font-family: 'Poppins', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* INFO TABS for payments */
+        .info-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .info-tab {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .info-tab.active { border-color: var(--gold); background: rgba(218,165,32,0.1); color: var(--dark); }
+
+        small { display: block; margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-light); }
+        ul { color: var(--text-light); }
+        ul li { margin-bottom: 0.5rem; }
+
+        /* ACCOUNT SYSTEM */
+        .auth-container { max-width: 480px; margin: 0 auto; }
+        .auth-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+        .auth-card h2 { color: var(--gold); margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .auth-card p { color: var(--text-light); margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem; color: var(--text-dark); }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.65rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            background: var(--card-bg);
+            color: var(--text-dark);
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--gold); }
+        .comp-checkboxes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.3rem; }
+        .comp-checkbox {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 0.8rem; border: 2px solid var(--border);
+            border-radius: 10px; cursor: pointer; transition: all 0.2s;
+            font-size: 0.85rem; font-weight: 500;
+        }
+        .comp-checkbox:hover { border-color: var(--gold); }
+        .comp-checkbox.selected { border-color: var(--gold); background: rgba(218,165,32,0.08); }
+        .comp-checkbox input[type="checkbox"] { display: none; }
+        .comp-checkbox .comp-price { margin-left: auto; color: var(--text-light); font-size: 0.8rem; }
+        .btn-primary {
+            display: inline-block; background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: var(--gold); border: none; padding: 0.75rem 1.5rem; border-radius: 10px;
+            font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 700;
+            cursor: pointer; width: 100%; text-align: center; transition: all 0.2s;
+        }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .btn-secondary {
+            display: inline-block; background: transparent; color: var(--gold); border: 2px solid var(--gold);
+            padding: 0.6rem 1.2rem; border-radius: 10px; font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s;
+        }
+        .btn-secondary:hover { background: rgba(218,165,32,0.1); }
+        .btn-danger { background: var(--red); color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; }
+        .auth-toggle { text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-light); }
+        .auth-toggle a { color: var(--gold); cursor: pointer; font-weight: 600; text-decoration: none; }
+        .fee-summary {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            border-radius: 12px; padding: 1.25rem; color: white; margin: 1rem 0;
+        }
+        .fee-summary .fee-total { font-size: 1.8rem; font-weight: 800; color: var(--gold); }
+        .fee-line { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.2rem 0; color: #ccc; }
+        .dependant-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+            padding: 1rem; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .dependant-card .dep-info { flex: 1; }
+        .dependant-card .dep-name { font-weight: 600; font-size: 0.95rem; }
+        .dependant-card .dep-comps { font-size: 0.8rem; color: var(--text-light); }
+        .my-rankings { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1rem 0; }
+        .rank-card {
+            background: var(--card-bg); border-radius: 12px; padding: 1.25rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid var(--gold);
+        }
+        .rank-card .comp-label { font-size: 0.8rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
+        .rank-card .rank-pos { font-size: 1.8rem; font-weight: 800; color: var(--gold); }
+        .rank-card .rank-detail { font-size: 0.8rem; color: var(--text-light); }
+        .status-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+        .status-badge.paid { background: rgba(40,167,69,0.1); color: #28a745; }
+        .status-badge.unpaid { background: rgba(220,53,69,0.1); color: #dc3545; }
+        .account-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
+
+        /* ADMIN PANEL */
+        .admin-badge {
+            display: inline-block;
+            background: rgba(218,165,32,0.15);
+            color: var(--gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            margin-left: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .admin-section-title {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .admin-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-search {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .admin-search input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--card-bg);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .admin-table thead {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: white;
+        }
+
+        .admin-table th {
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .admin-table th:last-child { border-right: none; }
+
+        .admin-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .admin-table tbody tr:hover {
+            background: rgba(218,165,32,0.05);
+        }
+
+        .admin-table tbody tr:last-child td { border-bottom: none; }
+
+        .admin-btn-small {
+            background: #f0f0f0;
+            color: var(--text-dark);
+            border: 1px solid #ddd;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .admin-btn-small:hover {
+            background: #e0e0e0;
+        }
+
+        .admin-inline-input {
+            padding: 0.4rem 0.6rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            width: 100px;
+        }
+
+        .admin-total {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .admin-total-item {
+            text-align: center;
+            padding: 0.75rem;
+            background: rgba(218,165,32,0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(218,165,32,0.1);
+        }
+
+        .admin-total-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .admin-total-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .admin-account-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .admin-account-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .admin-account-card:hover {
+            border-color: var(--gold);
+        }
+
+        .admin-account-card .name {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .admin-account-card .email {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            word-break: break-all;
+        }
+
+        .admin-account-card .info {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .admin-badge-comp {
+            display: inline-block;
+            background: rgba(218,165,32,0.1);
+            color: var(--gold);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            margin-right: 0.25rem;
+            font-weight: 600;
+        }
+
+        .admin-reminder-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .admin-reminder-item {
+            background: rgba(218,165,32,0.05);
+            border-left: 3px solid var(--gold);
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-reminder-item .person {
+            flex: 1;
+        }
+
+        .admin-reminder-item .person-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .admin-reminder-item .person-amount {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .admin-reminder-item .btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: var(--dark);
+                border-top: 1px solid rgba(218,165,32,0.3);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { border-right: none; border-bottom: 1px solid rgba(218,165,32,0.15); }
+            .nav-links li:last-child { border-bottom: none; }
+            .nav-links button { padding: 1rem; width: 100%; text-align: left; font-size: 0.9rem; }
+            .nav-links button.active::after { display: none; }
+            nav { position: relative; }
+            .nav-inner { flex-wrap: wrap; }
+
+            .container { padding: 1.25rem 0.75rem; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+            .leaders-grid { grid-template-columns: 1fr 1fr; }
+            .fixture-item { grid-template-columns: 1fr; text-align: center; gap: 0.5rem; padding: 0.75rem 1rem; }
+            .fixture-home, .fixture-away { text-align: center; }
+            .fixture-vs { padding: 0; }
+            .search-box { width: 100%; }
+            .search-box:focus { width: 100%; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 0.6rem 0.5rem; }
+            .table-header { flex-direction: column; align-items: flex-start; }
+            .prize-grid { grid-template-columns: repeat(2, 1fr); }
+            .update-banner { flex-direction: column; text-align: center; }
+            .hero { padding: 1.75rem 1.25rem; border-radius: 16px; }
+            .hero-title { font-size: 1.6rem; }
+            .hero-stats { gap: 0.75rem; }
+            .hero-stat { min-width: 80px; padding: 0.6rem 0.8rem; }
+            .hero-stat .hs-num { font-size: 1.3rem; }
+            .hero-actions { flex-direction: column; }
+            .hero-btn { text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-brand { font-size: 1rem; }
+            .nav-brand span { display: none; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+            .leaders-grid { grid-template-columns: 1fr; }
+            .champions-grid { grid-template-columns: 1fr; }
+            .links-grid { grid-template-columns: 1fr; }
+            .prize-grid { grid-template-columns: 1fr 1fr; }
+            th, td { padding: 0.5rem 0.3rem; font-size: 0.75rem; }
+        }
+
+        .loading { text-align: center; padding: 2rem; color: var(--text-light); }
+
+        /* TOAST */
+        .toast {
+            position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            color: white; padding: 1rem 2rem; border-radius: 12px; font-size: 0.9rem; font-weight: 600;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3); z-index: 200; opacity: 0;
+            transition: all 0.4s ease; border: 1px solid rgba(218,165,32,0.3);
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-brand">GWB Family Footy Tipping<span>2026</span></div>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <button onclick="findMe()" style="background:var(--gold);color:var(--dark);border:none;padding:0.4rem 0.8rem;border-radius:6px;font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;" title="Find your position in the current table">Find Me</button>
+                <button onclick="toggleDarkMode()" style="background:none;border:1px solid rgba(218,165,32,0.4);color:var(--gold);padding:0.35rem 0.6rem;border-radius:6px;cursor:pointer;font-size:1rem;" title="Toggle dark mode" id="darkModeBtn">&#9790;</button>
+                <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><button class="nav-btn active" data-section="home">Home</button></li>
+                <li><button class="nav-btn" data-section="weekly">Weekly</button></li>
+                <li><button class="nav-btn" data-section="streak">Streak</button></li>
+                <li><button class="nav-btn" data-section="longrange">Long Range</button></li>
+                <li><button class="nav-btn" data-section="supercoach">Supercoach</button></li>
+                <li><button class="nav-btn" data-section="payments" id="navPaymentsBtn" style="display:none">Payments</button></li>
+                <li><button class="nav-btn" data-section="links">Links</button></li>
+                <li><button class="nav-btn" data-section="ladder">AFL Ladder</button></li>
+                <li><button class="nav-btn" data-section="guide">Guide</button></li>
+                <li><button class="nav-btn" data-section="account" id="navAccountBtn">My Account</button></li>
+                <li><button class="nav-btn" data-section="admin" id="navAdminBtn" style="display:none">Admin</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- HOME -->
+        <section id="home" class="active">
+            <!-- HERO -->
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-round-pill">
+                        <span class="dot"></span>
+                        <span>Round 3 &mdash; <span id="countdownText" class="countdown"></span></span>
+                    </div>
+                    <div class="hero-title">GWB Family &amp; Friends</div>
+                    <div class="hero-subtitle">Footy Tipping 2026 &mdash; 60+ tippers, 4 comps, 1 family</div>
+                    <div class="hero-stats">
+                        <div class="hero-stat"><div class="hs-num">50</div><div class="hs-label">Weekly</div></div>
+                        <div class="hero-stat"><div class="hs-num" id="streakCount">50</div><div class="hs-label">Streak</div></div>
+                        <div class="hero-stat"><div class="hs-num" id="lrCount">23</div><div class="hs-label">Long Range</div></div>
+                        <div class="hero-stat"><div class="hs-num">18</div><div class="hs-label">Supercoach</div></div>
+                        <div class="hero-stat"><div class="hs-num" id="prizeTotal">$0</div><div class="hs-label">Prize Pool</div></div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="hero-btn hero-btn-primary" onclick="switchSection('account')">Register / Log In</button>
+                        <a class="hero-btn hero-btn-secondary" href="https://footytips.espn.com.au/" target="_blank">Enter Tips on ESPN</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEADERS -->
+            <h2 class="section-title">Competition Leaders</h2>
+            <div class="leaders-grid">
+                <a class="leader-card" href="javascript:void(0)" onclick="switchSection('weekly')">
+                    <h3>Weekly</h3>
+                    <div class="name">Johnno58</div>
+                    <div class="score">17 points after R2</div>
+                </a>
+                <a class="leader-card" href="javascript:void(0)" onclick="switchSection('streak')">
+                    <h3>Streak</h3>
+                    <div class="name">50 tipsters tracking</div>
+                    <div class="score">Streaks begin Round 3</div>
+                </a>
+                <a class="leader-card" href="javascript:void(0)" onclick="switchSection('longrange')">
+                    <h3>Long Range</h3>
+                    <div class="name" id="lrLeaderName">Phil Walsh</div>
+                    <div class="score" id="lrLeaderScore">18 points</div>
+                </a>
+                <a class="leader-card" href="javascript:void(0)" onclick="switchSection('supercoach')">
+                    <h3>Supercoach</h3>
+                    <div class="name">18 teams entered</div>
+                    <div class="score">Comp starting soon</div>
+                </a>
+            </div>
+
+            <!-- ROUND 3 FIXTURES -->
+            <div class="fixtures-section">
+                <div class="fixtures-header">
+                    <h2>Round 3 Fixtures</h2>
+                    <span class="round-badge" id="fixtureStatus">This Week</span>
+                </div>
+                <div id="fixturesBody"></div>
+            </div>
+
+            <!-- ROUND 2 RESULTS -->
+            <div class="fixtures-section" style="margin-top:1rem;">
+                <div class="fixtures-header" style="background: linear-gradient(135deg, #2d5016 0%, #1a3a0a 100%);">
+                    <h2>Round 2 Results</h2>
+                    <span class="round-badge">Complete</span>
+                </div>
+                <div id="r2ResultsBody"></div>
+            </div>
+
+            <!-- FAMILY RIVALRY -->
+            <div class="fixtures-section" style="margin-top:1.5rem;">
+                <div class="fixtures-header" style="background: linear-gradient(135deg, #B8860B 0%, #8B6914 100%);">
+                    <h2>Family Rivalry</h2>
+                    <span class="round-badge">Gallivans vs Walshes</span>
+                </div>
+                <div id="rivalryContent" style="padding:1rem;">
+                    <div style="display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:1rem">
+                        <div id="rivalryGallivan" style="text-align:center;flex:1;min-width:140px;padding:1rem;background:var(--card-bg);border-radius:12px;border-left:4px solid #0D7377">
+                            <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-light);margin-bottom:0.25rem">Team Gallivan</div>
+                            <div style="font-size:2rem;font-weight:800;color:#0D7377" id="rivalryGScore">0</div>
+                            <div style="font-size:0.8rem;color:var(--text-light)" id="rivalryGCount">0 tippers</div>
+                        </div>
+                        <div style="text-align:center;padding:0.5rem">
+                            <div style="font-size:1.5rem;font-weight:800;color:var(--gold)">VS</div>
+                        </div>
+                        <div id="rivalryWalsh" style="text-align:center;flex:1;min-width:140px;padding:1rem;background:var(--card-bg);border-radius:12px;border-left:4px solid #1A2744">
+                            <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-light);margin-bottom:0.25rem">Team Walsh</div>
+                            <div style="font-size:2rem;font-weight:800;color:#1A2744" id="rivalryWScore">0</div>
+                            <div style="font-size:0.8rem;color:var(--text-light)" id="rivalryWCount">0 tippers</div>
+                        </div>
+                        <div style="text-align:center;flex:1;min-width:140px;padding:1rem;background:var(--card-bg);border-radius:12px;border-left:4px solid var(--gold)">
+                            <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-light);margin-bottom:0.25rem">The Rest</div>
+                            <div style="font-size:2rem;font-weight:800;color:var(--gold)" id="rivalryOScore">0</div>
+                            <div style="font-size:0.8rem;color:var(--text-light)" id="rivalryOCount">0 tippers</div>
+                        </div>
+                    </div>
+                    <div id="rivalryVerdict" style="text-align:center;font-size:1rem;font-weight:600;color:var(--gold);padding:0.5rem;background:var(--card-bg);border-radius:8px"></div>
+                </div>
+            </div>
+
+            <!-- FUN AWARDS -->
+            <div class="fixtures-section" style="margin-top:1.5rem;">
+                <div class="fixtures-header" style="background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);">
+                    <h2>Fun Awards</h2>
+                    <span class="round-badge">After Round 2</span>
+                </div>
+                <div id="funAwards" style="padding:1rem;">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.75rem" id="awardsGrid"></div>
+                </div>
+            </div>
+
+            <!-- FORM GUIDE -->
+            <div class="fixtures-section" style="margin-top:1.5rem;">
+                <div class="fixtures-header" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                    <h2>Form Guide</h2>
+                    <span class="round-badge">Who's Hot, Who's Not</span>
+                </div>
+                <div style="padding:1rem;">
+                    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                        <div style="flex:1;min-width:250px">
+                            <h3 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;color:#059669;margin-bottom:0.5rem">On Fire</h3>
+                            <div id="formHot"></div>
+                        </div>
+                        <div style="flex:1;min-width:250px">
+                            <h3 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;color:#DC2626;margin-bottom:0.5rem">Ice Cold</h3>
+                            <div id="formCold"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="champions-section">
+                <h2>2025 Champions</h2>
+                <div class="champions-grid">
+                    <div class="competition-type">
+                        <h3>Weekly</h3>
+                        <div class="champion-item"><span class="medal">&#129351;</span><span>Gary Hynes</span></div>
+                        <div class="champion-item"><span class="medal">&#129351;</span><span>Pat Walsh</span></div>
+                        <div class="champion-item"><span class="medal">&#129351;</span><span>Harry Johnson</span></div>
+                        <small style="color:var(--text-light);margin-top:0.25rem">Three-way tie!</small>
+                    </div>
+                    <div class="competition-type">
+                        <h3>Streak</h3>
+                        <div class="champion-item"><span class="medal">&#127942;</span><span>James Walsh</span></div>
+                        <div class="champion-item"><span class="medal">&#129352;</span><span>Mary Gallivan</span></div>
+                        <div class="champion-item"><span class="medal">&#129353;</span><span>Ken Anstey</span></div>
+                    </div>
+                    <div class="competition-type">
+                        <h3>Long Range</h3>
+                        <div class="champion-item"><span class="medal">&#127942;</span><span>Mary Gallivan</span></div>
+                        <div class="champion-item"><span class="medal">&#129352;</span><span>Aeneas Gallivan</span></div>
+                        <div class="champion-item"><span class="medal">&#129353;</span><span>Michelle Chan</span></div>
+                    </div>
+                    <div class="competition-type">
+                        <h3>Supercoach</h3>
+                        <div class="champion-item"><span class="medal">&#127942;</span><span>John Gallivan</span></div>
+                        <div class="champion-item"><span class="medal">&#129352;</span><span>Aeneas Gallivan</span></div>
+                        <div class="champion-item"><span class="medal">&#129353;</span><span>Kevin Anstey</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEKLY -->
+        <section id="weekly">
+            <div class="table-wrapper">
+                <div class="table-header">
+                    <h2>Weekly Leaderboard</h2>
+                    <input type="text" class="search-box" placeholder="Search tipper..." oninput="filterTable('weeklyBody', this.value)">
+                    <span class="round-badge">After Round 2</span>
+                </div>
+                <div class="table-scroll">
+                <table>
+                    <thead id="weeklyHead">
+                        <tr>
+                            <th style="width:50px">Rank</th>
+                            <th>Tipper</th>
+                            <th style="text-align:center">R1</th>
+                            <th style="text-align:center">R2</th>
+                            <th style="text-align:center">Margin</th>
+                            <th style="text-align:center;width:70px">Total</th>
+                            <th style="text-align:center;width:60px">Avg</th>
+                        </tr>
+                    </thead>
+                    <tbody id="weeklyBody">
+                        <tr><td colspan="7" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- STREAK -->
+        <section id="streak">
+            <div class="table-wrapper">
+                <div class="table-header">
+                    <h2>Streak Leaderboard</h2>
+                    <input type="text" class="search-box" placeholder="Search tipper..." oninput="filterTable('streakBody', this.value)">
+                    <span class="round-badge">50 Tipsters</span>
+                </div>
+                <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:50px">#</th>
+                            <th>Tipper</th>
+                            <th style="text-align:center">Avg</th>
+                            <th style="text-align:center">Longest</th>
+                            <th style="text-align:center">Current</th>
+                        </tr>
+                    </thead>
+                    <tbody id="streakBody">
+                        <tr><td colspan="4" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- LONG RANGE -->
+        <section id="longrange">
+            <div class="table-wrapper">
+                <div class="table-header">
+                    <h2>Long Range Leaderboard</h2>
+                    <input type="text" class="search-box" placeholder="Search tipper..." oninput="filterTable('longrangeBody', this.value)">
+                    <span class="round-badge" id="lrBadge">Live from Google Sheet</span>
+                </div>
+                <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Rank</th>
+                            <th>Tipper</th>
+                            <th style="text-align:center">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="longrangeBody">
+                        <tr><td colspan="3" class="loading">Loading live data...</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:-1rem; margin-bottom:2rem;">
+                <button onclick="fetchLongRangeLive()" style="font-size:0.8rem; padding:0.5rem 1.25rem;">Refresh from Google Sheet</button>
+                <small style="margin-top:0.5rem;">Data pulled live from <a href="https://docs.google.com/spreadsheets/d/1QBjPxH30K6Fs8VxOpWj7I8KCl_JKOZK7i2ZviyFGEXw/edit" target="_blank">Long Range Google Sheet</a></small>
+            </div>
+        </section>
+
+        <!-- SUPERCOACH -->
+        <section id="supercoach">
+            <div class="table-wrapper">
+                <div class="table-header">
+                    <h2>Supercoach Premier League</h2>
+                    <input type="text" class="search-box" placeholder="Search team..." oninput="filterTable('supercoachBody', this.value)">
+                    <span class="round-badge">18 Teams</span>
+                </div>
+                <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Rank</th>
+                            <th>Team</th>
+                            <th>Coach</th>
+                            <th style="text-align:center">Points</th>
+                            <th style="text-align:center">Avg</th>
+                            <th style="text-align:center">Last Rd</th>
+                        </tr>
+                    </thead>
+                    <tbody id="supercoachBody">
+                        <tr><td colspan="6" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAYMENTS -->
+        <section id="payments">
+            <div class="prize-section">
+                <h2>Prize Pool Breakdown</h2>
+                <div class="prize-grid">
+                    <div class="prize-card">
+                        <div class="comp-name">Weekly</div>
+                        <div class="prize-amount">$1,250</div>
+                        <div class="prize-detail">50 x $25</div>
+                    </div>
+                    <div class="prize-card">
+                        <div class="comp-name">Long Range</div>
+                        <div class="prize-amount" id="lrPrize">$345</div>
+                        <div class="prize-detail" id="lrPrizeDetail">23 x $15</div>
+                    </div>
+                    <div class="prize-card">
+                        <div class="comp-name">Streak</div>
+                        <div class="prize-amount">$200</div>
+                        <div class="prize-detail">20 x $10</div>
+                    </div>
+                    <div class="prize-card">
+                        <div class="comp-name">Supercoach</div>
+                        <div class="prize-amount">$540</div>
+                        <div class="prize-detail">18 x $30</div>
+                    </div>
+                    <div class="prize-card" style="border-left:4px solid #17a2b8">
+                        <div class="comp-name">Slush Fund (10%)</div>
+                        <div class="prize-amount" style="color:#17a2b8" id="slushAmt">$0</div>
+                        <div class="prize-detail">End of season party</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <h3 style="color:var(--gold);">Payment Details</h3>
+                <p style="margin-bottom:0.75rem;">Send payments to:</p>
+                <div class="bank-details">
+                    <div class="label">BSB</div>
+                    193-879<br>
+                    <div class="label" style="margin-top:0.5rem">Account</div>
+                    472 563 434<br>
+                    <div class="label" style="margin-top:0.5rem">Name</div>
+                    Paddy Gallivan Footy Tipping
+                </div>
+                <small>Use your name as the payment reference so Paddy can track it!</small>
+            </div>
+
+            <div class="prize-section" style="margin-top:1.5rem">
+                <h2>Collection Status</h2>
+                <div class="prize-grid">
+                    <div class="prize-card" style="border-left:4px solid #28a745">
+                        <div class="comp-name">Collected</div>
+                        <div class="prize-amount" style="color:#28a745" id="collectedAmt">$1,970</div>
+                        <div class="prize-detail" id="collectedDetail">from bank statement</div>
+                    </div>
+                    <div class="prize-card" style="border-left:4px solid #dc3545">
+                        <div class="comp-name">Outstanding</div>
+                        <div class="prize-amount" style="color:#dc3545" id="outstandingAmt">$665</div>
+                        <div class="prize-detail" id="outstandingDetail">still to collect</div>
+                    </div>
+                    <div class="prize-card" style="border-left:4px solid var(--gold)">
+                        <div class="comp-name">Total Expected</div>
+                        <div class="prize-amount" id="expectedAmt">$0</div>
+                        <div class="prize-detail">prize pool (excl. 10% slush fund)</div>
+                    </div>
+                    <div class="prize-card" style="border-left:4px solid #17a2b8">
+                        <div class="comp-name">Paid Up</div>
+                        <div class="prize-amount" style="color:#17a2b8" id="paidPct">75%</div>
+                        <div class="prize-detail" id="paidPctDetail">of participants</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <div class="table-header">
+                    <h2>Payment Tracker</h2>
+                    <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap">
+                        <select id="paymentFilter" onchange="renderPayments()" style="padding:0.4rem 0.6rem;border-radius:8px;border:1px solid var(--border);font-size:0.85rem;background:var(--card-bg);color:var(--text-dark)">
+                            <option value="all">All</option>
+                            <option value="paid">Paid</option>
+                            <option value="unpaid">Unpaid</option>
+                            <option value="partial">Partial</option>
+                        </select>
+                        <input type="text" class="search-box" placeholder="Search name..." oninput="filterTable('paymentsBody', this.value)">
+                    </div>
+                </div>
+                <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th style="text-align:center">W</th>
+                            <th style="text-align:center">LR</th>
+                            <th style="text-align:center">S</th>
+                            <th style="text-align:center">SC</th>
+                            <th style="text-align:center">Owed</th>
+                            <th style="text-align:center">Paid</th>
+                            <th style="text-align:center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentsBody">
+                        <tr><td colspan="8" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                <div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-light);padding:0 0.5rem">
+                    Last updated: 26 Mar 2026. Balance: $2,375 ($1,970 + Paddy $405). Outstanding: $155 (5 unpaid)
+                </div>
+            </div>
+        </section>
+
+        <!-- LINKS -->
+        <section id="links">
+            <h2 class="section-title">Quick Links</h2>
+            <div class="links-grid">
+                <a href="https://footytips.espn.com.au/" target="_blank" class="link-card">
+                    <h3>ESPN Footy Tips</h3>
+                    <p>Weekly tipping and streak comp</p>
+                </a>
+                <a href="https://supercoach.heraldsun.com.au/" target="_blank" class="link-card">
+                    <h3>Supercoach</h3>
+                    <p>League code: 992718</p>
+                </a>
+                <a href="https://docs.google.com/spreadsheets/d/1QBjPxH30K6Fs8VxOpWj7I8KCl_JKOZK7i2ZviyFGEXw/edit" target="_blank" class="link-card">
+                    <h3>Long Range Sheet</h3>
+                    <p>Google Sheet with tips and results</p>
+                </a>
+                <a href="javascript:void(0)" onclick="switchSection('account')" class="link-card">
+                    <h3>Register / My Account</h3>
+                    <p>Sign up for comps, check your payment status</p>
+                </a>
+                <a href="https://footytips.espn.com.au/competitions/afl/ladder?competitionId=132527&userloc=27&ladderId=10021467" target="_blank" class="link-card">
+                    <h3>ESPN Ladder</h3>
+                    <p>Live competition ladder</p>
+                </a>
+                <a href="https://www.afl.com.au/fixture" target="_blank" class="link-card">
+                    <h3>AFL Fixture</h3>
+                    <p>Full 2026 AFL fixture and results</p>
+                </a>
+            </div>
+
+            <div class="competitions-table">
+                <h3 style="color:var(--dark); margin-bottom:1.25rem;">Competition Details</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Competition</th>
+                            <th style="text-align:center">Platform</th>
+                            <th style="text-align:center">Entry Fee</th>
+                            <th style="text-align:center">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Weekly Tips</strong></td>
+                            <td style="text-align:center">ESPN footytips</td>
+                            <td style="text-align:center">$25</td>
+                            <td style="text-align:center">Tip 9 games each round + margin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Long Range</strong></td>
+                            <td style="text-align:center">Google Sheets</td>
+                            <td style="text-align:center">$15</td>
+                            <td style="text-align:center">Season-long predictions, auto-scored</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Streak</strong></td>
+                            <td style="text-align:center">ESPN footytips</td>
+                            <td style="text-align:center">$10</td>
+                            <td style="text-align:center">Pick 1 winner each round, streak resets on loss</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Supercoach</strong></td>
+                            <td style="text-align:center">Herald Sun</td>
+                            <td style="text-align:center">$30</td>
+                            <td style="text-align:center">Fantasy league — code 992718</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- AFL LADDER -->
+        <section id="ladder">
+            <div class="table-wrapper">
+                <div class="table-header">
+                    <h2>AFL Ladder 2026</h2>
+                    <button onclick="fetchAFLLadder()" style="background:var(--gold);color:var(--dark);border:none;padding:0.4rem 1rem;border-radius:6px;font-family:'Poppins',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;">Refresh Live</button>
+                    <span class="round-badge" id="ladderBadge">After Round 2</span>
+                </div>
+                <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:40px">#</th>
+                            <th>Team</th>
+                            <th style="text-align:center">P</th>
+                            <th style="text-align:center">W</th>
+                            <th style="text-align:center">L</th>
+                            <th style="text-align:center">D</th>
+                            <th style="text-align:center">PF</th>
+                            <th style="text-align:center">PA</th>
+                            <th style="text-align:center">%</th>
+                            <th style="text-align:center">Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ladderBody">
+                        <tr><td colspan="10" class="loading">Loading AFL ladder...</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:0.5rem;">
+                <small>Data from <a href="https://squiggle.com.au" target="_blank">Squiggle AFL API</a> — updates after each round</small>
+            </div>
+        </section>
+
+        <!-- GUIDE -->
+        <section id="guide">
+            <h2 class="section-title">Weekly Update Guide</h2>
+
+            <div class="settings-card">
+                <h3 style="color:var(--gold);">Quick Checklist</h3>
+                <p style="color:var(--text-light); margin-bottom:1rem; font-size:0.9rem;">Tick off each task after each round (resets when you refresh):</p>
+                <div class="checklist" id="checklist">
+                    <label><input type="checkbox" onchange="toggleChecked(this)"> Check ESPN for Weekly round scores</label>
+                    <label><input type="checkbox" onchange="toggleChecked(this)"> Check ESPN for Streak results</label>
+                    <label><input type="checkbox" onchange="toggleChecked(this)"> Update dashboard Weekly + Streak data</label>
+                    <label><input type="checkbox" onchange="toggleChecked(this)"> Run Long Range auto-results (Footy Tipping menu in Google Sheet)</label>
+                    <label><input type="checkbox" onchange="toggleChecked(this)"> Check for new payments in bank account</label>
+                    <label><input type="checkbox" onchange="toggleChecked(this)"> Update Supercoach scores (monthly)</label>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <h3 style="color:var(--gold);">Step 1: After Each Round</h3>
+                <p><strong>Weekly Tips</strong> — Log into <a href="https://footytips.espn.com.au/" target="_blank">ESPN footytips</a>, go to your comp ladder, and note each person's round score.</p>
+                <p style="margin-top:0.5rem"><strong>Streak</strong> — On ESPN footytips, check the Streak comp for current streaks.</p>
+                <p style="margin-top:0.5rem"><strong>Long Range</strong> — Results auto-update! Open the Google Sheet, click <strong>Footy Tipping &gt; Update Results</strong>. The script runs automatically every Tuesday morning too.</p>
+                <p style="margin-top:0.5rem"><strong>Supercoach</strong> — Check <a href="https://supercoach.heraldsun.com.au/" target="_blank">Supercoach</a> (league code 992718) for rankings.</p>
+            </div>
+
+            <div class="settings-card">
+                <h3 style="color:var(--gold);">Payment Tracking</h3>
+                <div class="bank-details">
+                    <div class="label">BSB</div>193-879<br>
+                    <div class="label" style="margin-top:0.5rem">Account</div>472 563 434<br>
+                    <div class="label" style="margin-top:0.5rem">Name</div>Paddy Gallivan Footy Tipping
+                </div>
+                <p style="margin-top:0.75rem">When payments come in, update the Payments section on this dashboard.</p>
+            </div>
+        </section>
+
+        <!-- MY ACCOUNT -->
+        <section id="account">
+            <!-- LOGIN/REGISTER VIEW (shown when not logged in) -->
+            <div id="authView">
+                <div class="auth-container">
+                    <!-- LOGIN FORM -->
+                    <div id="loginForm">
+                        <div class="auth-card">
+                            <h2>Welcome Back</h2>
+                            <p>Log in with your email to see your dashboard, competitions, and payment status.</p>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="loginEmail" placeholder="your@email.com" onkeydown="if(event.key==='Enter')doLogin()">
+                            </div>
+                            <button class="btn-primary" onclick="doLogin()">Log In</button>
+                            <div class="auth-toggle">
+                                New here? <a onclick="showRegister()">Register for 2026</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REGISTER FORM -->
+                    <div id="registerForm" style="display:none">
+                        <div class="auth-card">
+                            <h2>Register for 2026</h2>
+                            <p>Sign up for the comps you want to enter. You can add family members (dependants) after registering.</p>
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" id="regFirst" placeholder="e.g. John">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" id="regLast" placeholder="e.g. Gallivan">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="regEmail" placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label>ESPN Tipping Name (if you have one)</label>
+                                <input type="text" id="regEspn" placeholder="e.g. Big Pat Walsh" onkeydown="if(event.key==='Enter')doRegister()">
+                            </div>
+                            <div class="form-group">
+                                <label>Competitions</label>
+                                <div class="comp-checkboxes">
+                                    <label class="comp-checkbox" onclick="toggleComp(this)">
+                                        <input type="checkbox" name="comp" value="W">
+                                        <span>Weekly</span>
+                                        <span class="comp-price">$25</span>
+                                    </label>
+                                    <label class="comp-checkbox" onclick="toggleComp(this)">
+                                        <input type="checkbox" name="comp" value="LR">
+                                        <span>Long Range</span>
+                                        <span class="comp-price">$15</span>
+                                    </label>
+                                    <label class="comp-checkbox" onclick="toggleComp(this)">
+                                        <input type="checkbox" name="comp" value="S">
+                                        <span>Streak</span>
+                                        <span class="comp-price">$10</span>
+                                    </label>
+                                    <label class="comp-checkbox" onclick="toggleComp(this)">
+                                        <input type="checkbox" name="comp" value="SC">
+                                        <span>Supercoach</span>
+                                        <span class="comp-price">$30</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="fee-summary" id="regFeeSummary" style="display:none">
+                                <div id="regFeeLines"></div>
+                                <div style="border-top:1px solid rgba(255,255,255,0.2);margin-top:0.5rem;padding-top:0.5rem;display:flex;justify-content:space-between;align-items:center;">
+                                    <span style="font-weight:600">Total</span>
+                                    <span class="fee-total" id="regFeeTotal">$0</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary" onclick="doRegister()" style="margin-top:0.5rem">Register</button>
+                            <div class="auth-toggle">
+                                Already registered? <a onclick="showLogin()">Log in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOGGED-IN DASHBOARD (shown when logged in) -->
+            <div id="dashView" style="display:none">
+                <div class="account-header">
+                    <div>
+                        <h2 class="section-title" style="margin-bottom:0" id="dashGreeting">Welcome!</h2>
+                        <p style="color:var(--text-light);font-size:0.85rem" id="dashEmail"></p>
+                    </div>
+                    <button class="btn-secondary" onclick="doLogout()">Log Out</button>
+                </div>
+
+                <!-- PAYMENT STATUS -->
+                <div class="auth-card" id="dashPayment">
+                    <h3 style="color:var(--gold);margin-bottom:0.75rem">Payment Status</h3>
+                    <div id="dashPayStatus"></div>
+                    <div class="fee-summary" id="dashFeeSummary">
+                        <div id="dashFeeLines"></div>
+                        <div style="border-top:1px solid rgba(255,255,255,0.2);margin-top:0.5rem;padding-top:0.5rem;display:flex;justify-content:space-between;align-items:center;">
+                            <span style="font-weight:600">Total Owed</span>
+                            <span class="fee-total" id="dashFeeTotal">$0</span>
+                        </div>
+                    </div>
+                    <div id="dashBankDetails" style="display:none;margin-top:1rem;">
+                        <p style="font-weight:600;margin-bottom:0.5rem">Pay via bank transfer:</p>
+                        <div class="bank-details">
+                            <div class="label">BSB</div>193-879<br>
+                            <div class="label" style="margin-top:0.5rem">Account</div>472 563 434<br>
+                            <div class="label" style="margin-top:0.5rem">Name</div>Paddy Gallivan Footy Tipping
+                        </div>
+                        <small>Use your full name as the payment reference so Paddy can track it.</small>
+                    </div>
+                </div>
+
+                <!-- MY RANKINGS -->
+                <div class="auth-card">
+                    <h3 style="color:var(--gold);margin-bottom:0.75rem">My Rankings</h3>
+                    <div class="my-rankings" id="dashRankings">
+                        <p style="color:var(--text-light);font-size:0.9rem">Loading your rankings...</p>
+                    </div>
+                </div>
+
+                <!-- DEPENDANTS -->
+                <div class="auth-card">
+                    <h3 style="color:var(--gold);margin-bottom:0.5rem">Family Members / Dependants</h3>
+                    <p style="color:var(--text-light);font-size:0.85rem;margin-bottom:1rem">Add family members who tip under your account (e.g. kids, partner). Their fees are added to your total.</p>
+                    <div id="dependantsList"></div>
+                    <div id="addDepForm" style="display:none;margin-top:1rem;padding:1rem;border:1px dashed var(--border);border-radius:12px;">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="depName" placeholder="e.g. Felix Johnson">
+                        </div>
+                        <div class="form-group">
+                            <label>ESPN Tipping Name (optional)</label>
+                            <input type="text" id="depEspn" placeholder="e.g. their ESPN name">
+                        </div>
+                        <div class="form-group">
+                            <label>Competitions</label>
+                            <div class="comp-checkboxes">
+                                <label class="comp-checkbox" onclick="toggleComp(this)">
+                                    <input type="checkbox" name="depComp" value="W">
+                                    <span>Weekly</span><span class="comp-price">$25</span>
+                                </label>
+                                <label class="comp-checkbox" onclick="toggleComp(this)">
+                                    <input type="checkbox" name="depComp" value="LR">
+                                    <span>Long Range</span><span class="comp-price">$15</span>
+                                </label>
+                                <label class="comp-checkbox" onclick="toggleComp(this)">
+                                    <input type="checkbox" name="depComp" value="S">
+                                    <span>Streak</span><span class="comp-price">$10</span>
+                                </label>
+                                <label class="comp-checkbox" onclick="toggleComp(this)">
+                                    <input type="checkbox" name="depComp" value="SC">
+                                    <span>Supercoach</span><span class="comp-price">$30</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:0.5rem">
+                            <button class="btn-primary" style="flex:1" onclick="saveDependant()">Save</button>
+                            <button class="btn-secondary" onclick="cancelDep()">Cancel</button>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" id="addDepBtn" onclick="showAddDep()" style="margin-top:0.75rem;width:100%">+ Add Family Member</button>
+                </div>
+
+                <!-- ACCOUNT SETTINGS -->
+                <div class="auth-card">
+                    <h3 style="color:var(--gold);margin-bottom:0.75rem">Account Settings</h3>
+                    <div class="form-group">
+                        <label>ESPN Tipping Name</label>
+                        <input type="text" id="settingsEspn" placeholder="Your ESPN name">
+                    </div>
+                    <button class="btn-secondary" onclick="saveSettings()">Update ESPN Name</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN PANEL -->
+        <section id="admin" style="display:none">
+            <h2 class="section-title" style="margin-bottom:1.5rem">Admin Panel</h2>
+
+            <!-- VIEW ALL ACCOUNTS -->
+            <div class="admin-card">
+                <div class="admin-section-title">All Registered Accounts</div>
+                <div class="admin-search">
+                    <input type="text" id="adminAccountSearch" placeholder="Search by name or email...">
+                </div>
+                <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:1rem">Total registered: <strong id="adminAccountCount">0</strong></p>
+                <div class="admin-account-grid" id="adminAccountsList"></div>
+            </div>
+
+            <!-- PAYMENT MANAGEMENT -->
+            <div class="admin-card">
+                <div class="admin-section-title">Payment Management</div>
+                <div class="admin-search">
+                    <input type="text" id="adminPaymentSearch" placeholder="Search by name...">
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Tipper Name</th>
+                            <th>Current Paid</th>
+                            <th>Update Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminPaymentTable">
+                    </tbody>
+                </table>
+                <div class="admin-total">
+                    <div class="admin-total-item">
+                        <div class="admin-total-label">Total Collected</div>
+                        <div class="admin-total-value" id="adminTotalCollected">$0</div>
+                    </div>
+                    <div class="admin-total-item">
+                        <div class="admin-total-label">Total Outstanding</div>
+                        <div class="admin-total-value" id="adminTotalOutstanding">$0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMP MANAGEMENT -->
+            <div class="admin-card">
+                <div class="admin-section-title">Competition Membership</div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem" id="adminCompsList"></div>
+            </div>
+
+            <!-- SLUSH FUND SETTINGS -->
+            <div class="admin-card">
+                <div class="admin-section-title">Slush Fund (End of Season Party)</div>
+                <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:1rem">Percentage of total entry fees set aside for the end-of-season event. Prize pool = remaining amount.</p>
+                <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+                    <label style="font-weight:600;color:var(--text-dark)">Slush Fund %:</label>
+                    <input type="range" id="slushSlider" min="0" max="25" step="1" value="10" oninput="updateSlushFromSlider()" style="flex:1;min-width:150px">
+                    <span id="slushPctDisplay" style="font-size:1.3rem;font-weight:700;color:var(--gold);min-width:50px">10%</span>
+                </div>
+                <div style="display:flex;gap:1.5rem;margin-top:1rem">
+                    <div style="text-align:center;flex:1;padding:0.75rem;background:var(--bg);border-radius:8px">
+                        <div style="font-size:0.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px">Prize Pool</div>
+                        <div id="slushPreviewPrize" style="font-size:1.5rem;font-weight:700;color:var(--text-dark)">$0</div>
+                    </div>
+                    <div style="text-align:center;flex:1;padding:0.75rem;background:var(--bg);border-radius:8px">
+                        <div style="font-size:0.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px">Slush Fund</div>
+                        <div id="slushPreviewFund" style="font-size:1.5rem;font-weight:700;color:#17a2b8">$0</div>
+                    </div>
+                    <div style="text-align:center;flex:1;padding:0.75rem;background:var(--bg);border-radius:8px">
+                        <div style="font-size:0.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px">Total Entries</div>
+                        <div id="slushPreviewTotal" style="font-size:1.5rem;font-weight:700;color:var(--text-dark)">$0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEND REMINDERS -->
+            <div class="admin-card">
+                <div class="admin-section-title">Send Payment Reminders</div>
+                <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:1rem">Unpaid and partial payment tippers:</p>
+                <ul class="admin-reminder-list" id="adminReminderList"></ul>
+                <div style="display:flex;gap:0.5rem;margin-top:1rem">
+                    <button class="btn-secondary" onclick="adminCopyAllUnpaid()">Copy All Unpaid List</button>
+                    <button class="btn-secondary" onclick="adminGenerateEmailLinks()">Generate Email Links</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><strong>GWB Family & Friends Footy Tipping 2026</strong></p>
+        <p>Run by Paddy Gallivan &middot; <a href="mailto:pgallivan@outlook.com">pgallivan@outlook.com</a></p>
+    </footer>
+
+    <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#9650;</button>
+    <div class="toast" id="toast"></div>
+
+    <script>
+    // ========== DATA ==========
+    // ESPN Weekly comp — rounds array: [OR, R1, R2, ...] (grows each week, auto-updated by scheduled task)
+    const espnWeeklyRoundLabels = ["OR","R1","R2"];
+    const espnWeeklyData = [
+        {rank:1, name:"Johnno58", rounds:[4,7,6], margin:56, total:17},
+        {rank:2, name:"Margie Buckley", rounds:[3,7,6], margin:60, total:16},
+        {rank:3, name:"John Leddin", rounds:[3,7,5], margin:56, total:15},
+        {rank:4, name:"Leddins of Ess", rounds:[2,7,6], margin:61, total:15},
+        {rank:5, name:"R Hynes", rounds:[5,6,4], margin:64, total:15},
+        {rank:6, name:"Phabulous Phil W", rounds:[4,7,4], margin:65, total:15},
+        {rank:7, name:"Walsh Global", rounds:[3,7,5], margin:66, total:15},
+        {rank:8, name:"Liz Hogan", rounds:[3,7,5], margin:67, total:15},
+        {rank:9, name:"Aeneas Gallivan", rounds:[4,6,5], margin:71, total:15},
+        {rank:10, name:"John Gallivan", rounds:[4,5,5], margin:51, total:14},
+        {rank:11, name:"Bexy05", rounds:[4,6,4], margin:61, total:14},
+        {rank:12, name:"CohagensAir", rounds:[3,7,4], margin:61, total:14},
+        {rank:13, name:"( Dirty ) Harry ~ The Dog", rounds:[3,7,4], margin:66, total:14},
+        {rank:14, name:"Kelly Gallivan", rounds:[5,5,4], margin:76, total:14},
+        {rank:15, name:"Georgia Jones", rounds:[4,6,4], margin:82, total:14},
+        {rank:16, name:"Terrol Gulden", rounds:[4,7,3], margin:86, total:14},
+        {rank:17, name:"Tony Walsh", rounds:[2,7,5], margin:91, total:14},
+        {rank:18, name:"the Human Walsh", rounds:[2,6,5], margin:52, total:13},
+        {rank:19, name:"Richard Worrow", rounds:[3,6,4], margin:56, total:13},
+        {rank:20, name:"Kerane", rounds:[3,4,6], margin:56, total:13},
+        {rank:21, name:"Ken's Kennel", rounds:[3,6,4], margin:60, total:13},
+        {rank:22, name:"CarnTheCats!", rounds:[2,6,5], margin:63, total:13},
+        {rank:23, name:"Pete Buckley", rounds:[3,5,5], margin:66, total:13},
+        {rank:24, name:"Sharkey Walsh", rounds:[2,7,4], margin:66, total:13},
+        {rank:25, name:"Our Own MCG", rounds:[2,6,5], margin:66, total:13},
+        {rank:26, name:"Astrid Caddeo", rounds:[3,6,4], margin:66, total:13},
+        {rank:27, name:"Paddy Gallivan", rounds:[2,6,5], margin:72, total:13},
+        {rank:28, name:"Mark My Words", rounds:[2,6,5], margin:74, total:13},
+        {rank:29, name:"MadeleineC", rounds:[2,6,5], margin:74, total:13},
+        {rank:30, name:"Tossil", rounds:[2,7,4], margin:75, total:13},
+        {rank:31, name:"Miles Walsh", rounds:[2,7,4], margin:76, total:13},
+        {rank:32, name:"Natalie Schilov", rounds:[1,6,6], margin:79, total:13},
+        {rank:33, name:"Big Pat Walsh", rounds:[3,6,4], margin:86, total:13},
+        {rank:34, name:"Michelle", rounds:[3,6,4], margin:86, total:13},
+        {rank:35, name:"MATTWALSH1", rounds:[2,7,4], margin:87, total:13},
+        {rank:36, name:"Dom Buckley", rounds:[3,6,4], margin:99, total:13},
+        {rank:37, name:"Jacky Rooney", rounds:[3,6,3], margin:41, total:12},
+        {rank:38, name:"Lady Latte", rounds:[2,6,4], margin:46, total:12},
+        {rank:39, name:"Mr. Schadenfreude", rounds:[3,5,4], margin:58, total:12},
+        {rank:40, name:"Jan McGrath", rounds:[2,6,4], margin:62, total:12},
+        {rank:41, name:"Profugus Fato JPG driven by fate", rounds:[1,6,5], margin:66, total:12},
+        {rank:42, name:"Marie SWMBO Lady Gallivan", rounds:[1,6,5], margin:66, total:12},
+        {rank:43, name:"Kev Anstey", rounds:[2,5,5], margin:68, total:12},
+        {rank:44, name:"walsh laura", rounds:[3,5,4], margin:76, total:12},
+        {rank:45, name:"Nicholas Walsh", rounds:[3,6,3], margin:106, total:12},
+        {rank:46, name:"Living In Hope", rounds:[1,5,5], margin:66, total:11},
+        {rank:47, name:"Sparkenators", rounds:[2,6,3], margin:76, total:11},
+        {rank:48, name:"goneAWOL", rounds:[3,5,3], margin:76, total:11},
+        {rank:49, name:"jameswalsh", rounds:[2,6,3], margin:86, total:11},
+        {rank:50, name:"Chris Hogan", rounds:[2,6,3], margin:106, total:11}
+    ];
+
+    // ESPN Streak comp — 20 tippers (live from ESPN footytips, after Round 2)
+    const espnStreakData = [
+        {name:"Richard Worrow", avg:4, longest:6, current:6},
+        {name:"John Leddin", avg:5, longest:5, current:5},
+        {name:"MATTWALSH1", avg:3, longest:5, current:5},
+        {name:"Living In Hope", avg:2, longest:4, current:4},
+        {name:"Ken's Kennel", avg:3, longest:4, current:4},
+        {name:"Marie SWMBO Lady Gallivan", avg:3, longest:5, current:4},
+        {name:"Profugus Fato JPG driven by fate", avg:2, longest:3, current:3},
+        {name:"Aeneas Gallivan", avg:2, longest:3, current:3},
+        {name:"John Gallivan", avg:2, longest:3, current:3},
+        {name:"Big Pat Walsh", avg:3, longest:3, current:3},
+        {name:"Miles Walsh", avg:1, longest:3, current:3},
+        {name:"Dom Buckley", avg:3, longest:3, current:3},
+        {name:"goneAWOL", avg:2, longest:3, current:3},
+        {name:"Michelle", avg:3, longest:3, current:3},
+        {name:"Tony Walsh", avg:2, longest:2, current:2},
+        {name:"jameswalsh", avg:2, longest:4, current:2},
+        {name:"CohagensAir", avg:1, longest:3, current:2},
+        {name:"Our Own MCG", avg:2, longest:5, current:1},
+        {name:"Paddy Gallivan", avg:1, longest:2, current:1},
+        {name:"Donza08", avg:2, longest:3, current:0}
+    ];
+
+    // Fallback Long Range data (will be replaced by live Google Sheet fetch)
+    let longRangeData = [
+        { name: "Phil Walsh", score: 18, rank: 1 },
+        { name: "Annie", score: 16, rank: 2 },
+        { name: "Kelly Gallivan", score: 15, rank: 3 },
+        { name: "Ken Anstey", score: 15, rank: 3 },
+        { name: "Michelle", score: 15, rank: 3 },
+        { name: "Monica Gallivan", score: 15, rank: 3 },
+        { name: "Marguerite", score: 15, rank: 3 },
+        { name: "Peter B", score: 15, rank: 3 },
+        { name: "John Gallivan", score: 14, rank: 9 },
+        { name: "Martin Quinn", score: 14, rank: 9 },
+        { name: "Sandra", score: 14, rank: 9 },
+        { name: "Dom Buckley", score: 13, rank: 12 },
+        { name: "Georgia Jones", score: 13, rank: 12 },
+        { name: "Joe Gallivan", score: 13, rank: 12 },
+        { name: "Marie Gallivan", score: 13, rank: 12 },
+        { name: "Mary Gallivan", score: 13, rank: 12 },
+        { name: "Aeneas Gallivan", score: 12, rank: 17 },
+        { name: "Bernard Walsh", score: 12, rank: 17 },
+        { name: "Paddy Gallivan", score: 12, rank: 17 },
+        { name: "Donna Schilov", score: 11, rank: 20 },
+        { name: "Yvonne Quinn", score: 11, rank: 20 },
+        { name: "Astrid Caddeo", score: 9, rank: 22 },
+        { name: "Jacky Rooney", score: 0, rank: 23 }
+    ];
+
+    const supercoachTeams = [
+        { team: "Bomber Rock", coach: "Shannon", points: "-", avg: "-", last: "-" },
+        { team: "Vultures", coach: "Kevin", points: "-", avg: "-", last: "-" },
+        { team: "Moyes Like Jagger", coach: "Stan", points: "-", avg: "-", last: "-" },
+        { team: "Crisps Bakehouse", coach: "Natalie", points: "-", avg: "-", last: "-" },
+        { team: "meow meow", coach: "Frank", points: "-", avg: "-", last: "-" },
+        { team: "Mark My Words", coach: "Mark", points: "-", avg: "-", last: "-" },
+        { team: "Mr Geelong", coach: "Martin", points: "-", avg: "-", last: "-" },
+        { team: "Living in Hope!", coach: "Mary", points: "-", avg: "-", last: "-" },
+        { team: "Profugus Fato", coach: "Joe", points: "-", avg: "-", last: "-" },
+        { team: "Ken's Kennel", coach: "Ken", points: "-", avg: "-", last: "-" },
+        { team: "Terrol Gulden", coach: "Tom", points: "-", avg: "-", last: "-" },
+        { team: "Horse Power", coach: "Julie", points: "-", avg: "-", last: "-" },
+        { team: "CohagensAir", coach: "Joe", points: "-", avg: "-", last: "-" },
+        { team: "Aeneas' Schooners", coach: "Aeneas", points: "-", avg: "-", last: "-" },
+        { team: "Rohan's Henchmen", coach: "Rohan", points: "-", avg: "-", last: "-" },
+        { team: "Paddy's Puppies", coach: "Paddy", points: "-", avg: "-", last: "-" },
+        { team: "Viking Cohort", coach: "Kevin", points: "-", avg: "-", last: "-" },
+        { team: "Holy Divers", coach: "Michael", points: "-", avg: "-", last: "-" }
+    ];
+
+    const round3Fixtures = [
+        { hteam: "Geelong", ateam: "Adelaide", venue: "Kardinia Park", date: "2026-03-26 19:30:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Collingwood", ateam: "GWS", venue: "Docklands", date: "2026-03-27 19:40:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "St Kilda", ateam: "Brisbane Lions", venue: "Docklands", date: "2026-03-28 12:35:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Fremantle", ateam: "Richmond", venue: "Perth Stadium", date: "2026-03-28 13:15:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Essendon", ateam: "North Melbourne", venue: "Docklands", date: "2026-03-28 19:35:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Port Adelaide", ateam: "West Coast", venue: "Adelaide Oval", date: "2026-03-29 12:00:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Carlton", ateam: "Melbourne", venue: "MCG", date: "2026-03-29 15:15:00", hscore: 0, ascore: 0, complete: 0 }
+    ];
+
+    const round2Results = [
+        { hteam: "Hawthorn", ateam: "Sydney", venue: "MCG", hscore: 99, ascore: 82, complete: 100 },
+        { hteam: "Adelaide", ateam: "Western Bulldogs", venue: "Adelaide Oval", hscore: 88, ascore: 94, complete: 100 },
+        { hteam: "Richmond", ateam: "Gold Coast", venue: "MCG", hscore: 60, ascore: 128, complete: 100 },
+        { hteam: "GWS", ateam: "St Kilda", venue: "Showground", hscore: 74, ascore: 78, complete: 100 },
+        { hteam: "Fremantle", ateam: "Melbourne", venue: "Perth Stadium", hscore: 118, ascore: 70, complete: 100 },
+        { hteam: "Port Adelaide", ateam: "Essendon", venue: "Adelaide Oval", hscore: 133, ascore: 70, complete: 100 },
+        { hteam: "West Coast", ateam: "North Melbourne", venue: "Perth Stadium", hscore: 111, ascore: 94, complete: 100 }
+    ];
+
+    // ========== LONG RANGE SHEET ID ==========
+    const LR_SHEET_ID = "1QBjPxH30K6Fs8VxOpWj7I8KCl_JKOZK7i2ZviyFGEXw";
+
+    // ========== NAVIGATION ==========
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            switchSection(this.getAttribute('data-section'));
+            document.getElementById('navLinks').classList.remove('open');
+        });
+    });
+
+    function switchSection(id) {
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        const btn = document.querySelector(`[data-section="${id}"]`);
+        if (btn) btn.classList.add('active');
+
+        // Render admin panel when switching to it
+        if (id === 'admin') {
+            renderAdminPanel();
+        }
+
+        window.scrollTo(0, 0);
+    }
+
+    // ========== SEARCH / FILTER ==========
+    function filterTable(tbodyId, query) {
+        const tbody = document.getElementById(tbodyId);
+        const rows = tbody.querySelectorAll('tr');
+        const q = query.toLowerCase();
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(q) ? '' : 'none';
+        });
+    }
+
+    // ========== COUNTDOWN ==========
+    function updateCountdown() {
+        const now = new Date();
+        // Find next upcoming game
+        let nextGame = null;
+        for (const g of round3Fixtures) {
+            const gameDate = new Date(g.date.replace(' ', 'T') + '+11:00');
+            if (gameDate > now) { nextGame = { ...g, gameDate }; break; }
+        }
+        const el = document.getElementById('countdownText');
+        if (!nextGame) {
+            el.textContent = 'Round 3 underway!';
+            return;
+        }
+        const diff = nextGame.gameDate - now;
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins = Math.floor((diff % 3600000) / 60000);
+        if (days > 0) {
+            el.textContent = `Next: ${nextGame.hteam} v ${nextGame.ateam} in ${days}d ${hours}h`;
+        } else if (hours > 0) {
+            el.textContent = `Next: ${nextGame.hteam} v ${nextGame.ateam} in ${hours}h ${mins}m`;
+        } else {
+            el.textContent = `${nextGame.hteam} v ${nextGame.ateam} starts in ${mins}m!`;
+        }
+    }
+
+    // ========== RENDER FUNCTIONS ==========
+    function renderFixtures(fixtures, containerId, showScores) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = fixtures.map(g => {
+            const gameDate = new Date(g.date.replace(' ', 'T') + '+11:00');
+            const dayStr = gameDate.toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' });
+            const timeStr = gameDate.toLocaleTimeString('en-AU', { hour: 'numeric', minute: '2-digit' });
+
+            let centerContent = '';
+            if (g.complete === 100) {
+                const hw = g.hscore > g.ascore;
+                const aw = g.ascore > g.hscore;
+                centerContent = `
+                    <div class="score-display">${g.hscore} - ${g.ascore}</div>
+                    <span class="result-tag result-final">Full Time</span>`;
+            } else if (g.complete > 0) {
+                centerContent = `
+                    <div class="score-display">${g.hscore} - ${g.ascore}</div>
+                    <span class="result-tag result-live">Live</span>`;
+            } else {
+                centerContent = `
+                    <div class="time">${dayStr}</div>
+                    <div class="vs-text">${timeStr}</div>
+                    <div class="venue">${g.venue}</div>`;
+            }
+
+            const hBold = g.complete === 100 && g.hscore > g.ascore ? 'font-weight:800;color:var(--dark)' : '';
+            const aBold = g.complete === 100 && g.ascore > g.hscore ? 'font-weight:800;color:var(--dark)' : '';
+
+            return `
+                <div class="fixture-item">
+                    <div class="fixture-home" style="${hBold}">${g.hteam}</div>
+                    <div class="fixture-vs">${centerContent}</div>
+                    <div class="fixture-away" style="${aBold}">${g.ateam}</div>
+                </div>`;
+        }).join('');
+    }
+
+    function renderWeekly(data) {
+        const numRounds = espnWeeklyRoundLabels.length;
+        // Dynamic table headers
+        const thead = document.getElementById('weeklyHead');
+        if (thead) {
+            const roundHeaders = espnWeeklyRoundLabels.map(l => `<th style="text-align:center">${l}</th>`).join('');
+            thead.innerHTML = `<tr>
+                <th style="width:50px">Rank</th>
+                <th>Tipper</th>
+                ${roundHeaders}
+                <th style="text-align:center">Margin</th>
+                <th style="text-align:center;width:70px">Total</th>
+                <th style="text-align:center;width:60px">Avg</th>
+            </tr>`;
+        }
+        // Update round badge
+        const badge = document.querySelector('#weekly .round-badge');
+        if (badge) badge.textContent = 'After Round ' + (numRounds - 1);
+        // Render rows
+        const tbody = document.getElementById('weeklyBody');
+        tbody.innerHTML = data.map((e, i) => {
+            const avg = (e.total / numRounds).toFixed(1);
+            let cls = i < 3 ? `medal-${i+1}` : '';
+            if (e.name === 'Paddy Gallivan') cls += ' highlight-row';
+            const medal = i < 3 ? ['&#129351;','&#129352;','&#129353;'][i] : e.rank;
+            const roundCells = (e.rounds || []).map(r => `<td style="text-align:center">${r}</td>`).join('');
+            return `<tr class="${cls}">
+                <td class="rank">${medal}</td>
+                <td>${e.name}</td>
+                ${roundCells}
+                <td style="text-align:center;color:var(--text-light);font-size:0.8rem">${e.margin}</td>
+                <td style="text-align:center;font-weight:700">${e.total}</td>
+                <td style="text-align:center">${avg}</td>
+            </tr>`;
+        }).join('');
+    }
+
+    function renderStreak(data) {
+        // espnStreakData is the actual ESPN streak comp — already the correct 20 tippers
+        const sorted = [...espnStreakData].sort((a, b) => b.current - a.current || b.longest - a.longest || b.avg - a.avg);
+        const tbody = document.getElementById('streakBody');
+        tbody.innerHTML = sorted.map((entry, i) => {
+            let cls = entry.name === 'Paddy Gallivan' ? 'highlight-row' : '';
+            if (i < 3 && entry.current > 0) cls += ' medal-' + (i + 1);
+            const medal = (i < 3 && entry.current > 0) ? ['&#129351;','&#129352;','&#129353;'][i] : (i+1);
+            return `<tr class="${cls}">
+                <td class="rank">${medal}</td>
+                <td>${entry.name}</td>
+                <td style="text-align:center">${entry.avg}</td>
+                <td style="text-align:center;font-weight:600">${entry.longest}</td>
+                <td style="text-align:center;font-weight:700;color:var(--gold)">${entry.current}</td>
+            </tr>`;
+        }).join('');
+        // Update badge count
+        const badge = document.querySelector('#streak .round-badge');
+        if (badge) badge.textContent = sorted.length + ' Tipsters';
+    }
+
+    function renderLongRange(data) {
+        const tbody = document.getElementById('longrangeBody');
+        const validData = data.filter(e => e.score > 0);
+        const zeroData = data.filter(e => e.score === 0);
+        const allData = [...validData, ...zeroData];
+
+        tbody.innerHTML = allData.map((e, i) => {
+            let cls = i < 3 ? `medal-${i+1}` : '';
+            if (e.name === 'Paddy Gallivan') cls += ' highlight-row';
+            const medal = i < 3 ? ['&#129351;','&#129352;','&#129353;'][i] : (i+1);
+            return `<tr class="${cls}">
+                <td class="rank">${medal}</td>
+                <td>${e.name}</td>
+                <td style="text-align:center;font-weight:700">${e.score}</td>
+            </tr>`;
+        }).join('');
+
+        // Update leader card and stats
+        if (validData.length > 0) {
+            document.getElementById('lrLeaderName').textContent = validData[0].name;
+            document.getElementById('lrLeaderScore').textContent = validData[0].score + ' points';
+        }
+        document.getElementById('lrCount').textContent = allData.length;
+
+        // Update prize
+        const count = allData.length;
+        const prize = count * 15;
+        document.getElementById('lrPrize').textContent = '$' + prize;
+        document.getElementById('lrPrizeDetail').textContent = count + ' x $15';
+        updatePrizeTotal();
+    }
+
+    function renderSupercoach(data) {
+        const tbody = document.getElementById('supercoachBody');
+        tbody.innerHTML = data.map((e, i) => {
+            let cls = e.coach === 'Paddy' ? 'highlight-row' : '';
+            return `<tr class="${cls}">
+                <td class="rank">${i+1}</td>
+                <td>${e.team}</td>
+                <td>${e.coach}</td>
+                <td style="text-align:center">${e.points}</td>
+                <td style="text-align:center">${e.avg}</td>
+                <td style="text-align:center">${e.last}</td>
+            </tr>`;
+        }).join('');
+    }
+
+    // Payment data from bank statement (20 Mar 2026) + registration form comps
+    // Comps sourced from Google Form registrations. Identities confirmed by Paddy.
+    const paymentRecords = {
+        // === GALLIVANS ===
+        "Paddy Gallivan": { paid: 405, comps: {W:true, S:true, LR:true, SC:true}, note: "Organiser. $405 = self $80 + Jacky $25 + $300 transfer" },
+        "John Gallivan": { paid: 80, comps: {W:true, S:true, LR:true, SC:true} },
+        "Aeneas Gallivan": { paid: 80, comps: {W:true, S:true, LR:true, SC:true} },
+        "Living In Hope": { paid: 80, comps: {W:true, S:true, LR:true, SC:true}, note: "Joe Gallivan (Dad) - Dad80Mum50Xtra200 $330" },
+        "Profugus Fato JPG driven by fate": { paid: 0, comps: {W:true, S:true, LR:true, SC:true}, note: "Joe Gallivan - Covered by Dad80 $330" },
+        "Lady Latte": { paid: 50, comps: {W:true, S:true, LR:true}, note: "Marie Gallivan (Mum) - Covered by Mum50 in $330" },
+        "Marie SWMBO Lady Gallivan": { paid: 80, comps: {W:true, S:true, LR:true, SC:true}, note: "Mary Gallivan" },
+        "Kelly Gallivan": { paid: 55, comps: {W:true, LR:true}, note: "Michael & Kelly $55. Form: W+LR" },
+        "Our Own MCG": { paid: 50, comps: {W:true, S:true, LR:true}, note: "Monica Gallivan. Form: W+LR+S" },
+        "Monica Gallivan": { paid: 0, comps: {LR:true}, note: "LR name - Covered by Our Own MCG $50" },
+        "Jacky Rooney": { paid: 25, comps: {W:true}, note: "Paddy's partner - paid via Paddy $405" },
+        // === JOHNSONS ===
+        "Joe Johnson": { paid: 65, comps: {W:true, S:true, SC:true}, note: "Joseph Johnson. Also CohagensAir" },
+        "CohagensAir": { paid: 0, comps: {W:true, S:true, SC:true}, note: "Joe Johnson 2nd entry - Covered by Joe Johnson $65" },
+        "Terrol Gulden": { paid: 55, comps: {W:true, SC:true}, note: "Tom Johnson. W free (first paid 2025). $55 = SC $30 + extra" },
+        "MadeleineC": { paid: 50, comps: {W:true}, note: "Madeleine Johnson. Madeleine & Jaye $50" },
+        "Sparkenators": { paid: 0, comps: {W:true}, note: "Jaye Clark - Covered by Madeleine & Jaye $50" },
+        "Johnno58": { paid: 0, comps: {W:true}, note: "Paul Johnson - Covered by Marg B & Paul J $65" },
+        "( Dirty ) Harry ~ The Dog": { paid: 0, comps: {W:true}, note: "Harry Johnson (Phillip's dad) - UNPAID" },
+        "Mr. Schadenfreude": { paid: 0, comps: {W:true, SC:true}, note: "Rohan Johnson. W + SC (Rohan's Henchmen) - UNPAID" },
+        "Dom Buckley": { paid: 50, comps: {W:true, S:true, LR:true}, note: "Via Marghanita Johnson" },
+        // Thomas Johnson = Terrol Gulden (duplicate removed)
+        // === WALSH BROTHERS (Pat, Bernard, Phil, Mark) ===
+        "Big Pat Walsh": { paid: 85, comps: {W:true, S:true}, note: "Patrick Walsh. Pat Chris Sharkey $85 covers Pat+Chris+Mark" },
+        "Chris Hogan": { paid: 0, comps: {W:true}, note: "Covered by Pat Chris Sharkey $85 (married to Pat)" },
+        "Sharkey Walsh": { paid: 0, comps: {W:true}, note: "Mark Walsh - Covered by Pat Chris Sharkey $85 (brother)" },
+        "Walsh Global": { paid: 65, comps: {W:true, LR:true}, note: "Bernard Walsh. Form: W+LR. BCW+LVW covers Lyn too" },
+        "Phabulous Phil W": { paid: 55, comps: {W:true, LR:true}, note: "Phil Walsh. Form: W+LR. Covers Sandra LR too" },
+        // === OTHER WALSHES ===
+        "Tony Walsh": { paid: 35, comps: {W:true, S:true} },
+        "walsh laura": { paid: 25, comps: {W:true}, note: "Laura Walsh" },
+        "Miles Walsh": { paid: 35, comps: {W:true, S:true} },
+        "Nicholas Walsh": { paid: 25, comps: {W:true} },
+        "MATTWALSH1": { paid: 50, comps: {W:true, S:true, LR:true}, note: "Matt Walsh" },
+        "jameswalsh": { paid: 35, comps: {W:true, S:true} },
+        "goneAWOL": { paid: 35, comps: {W:true, S:true}, note: "Alex Walsh" },
+        "the Human Walsh": { paid: 0, comps: {W:true}, note: "Lachie Walsh (Phil & Sandra's son) - UNPAID" },
+        // === BUCKLEYS ===
+        "Margie Buckley": { paid: 65, comps: {W:true}, note: "Marguerite Buckley. Form: W only. Marg B & Paul J $65" },
+        "Pete Buckley": { paid: 40, comps: {W:true, LR:true} },
+        "Mick Buckley": { paid: 25, comps: {W:true} },
+        // === McGRATHS ===
+        "Jan McGrath": { paid: 50, comps: {W:true}, note: "Form: W only. Jan & Tom $50" },
+        "Tossil": { paid: 0, comps: {W:true}, note: "Tom McGrath. Form: W only. Covered by Jan & Tom $50" },
+        // === QUINNS ===
+        "CarnTheCats!": { paid: 70, comps: {W:true, LR:true, SC:true}, note: "Martin Quinn. Form: W+LR+SC" },
+        "Yvonne Quinn": { paid: 40, comps: {W:true, LR:true}, note: "Martin's wife. Paid via Martin" },
+        // === HOGANS ===
+        "Liz Hogan": { paid: 50, comps: {W:true}, note: "Form: W only. Liz & Keran $50" },
+        "Kerane": { paid: 0, comps: {W:true}, note: "Keran Howe. Form: W only. Covered by Liz & Keran $50" },
+        // === ANSTEYS ===
+        "Ken's Kennel": { paid: 80, comps: {W:true, S:true, LR:true, SC:true}, note: "Kenneth Anstey" },
+        "Kev Anstey": { paid: 55, comps: {W:true, SC:true} },
+        // === SCHILOVS ===
+        "Natalie Schilov": { paid: 55, comps: {W:true, SC:true} },
+        "Donna Schilov": { paid: 50, comps: {W:true, S:true, LR:true}, note: "ESPN Streak name: Donza08" },
+        // === LEDDINS ===
+        "John Leddin": { paid: 35, comps: {W:true, S:true} },
+        "Leddins of Ess": { paid: 25, comps: {W:true}, note: "Daniel Leddin" },
+        // === HYNES ===
+        "R Hynes": { paid: 25, comps: {W:true}, note: "Ryan Hynes" },
+        "Bexy05": { paid: 25, comps: {W:true}, note: "Gary Hynes" },
+        // === SAMPIERIS (SC only) ===
+        "Mark My Words": { paid: 30, comps: {SC:true}, note: "Mark Sampieri. Form: SC only" },
+        "Frank Sampieri": { paid: 30, comps: {SC:true}, note: "SC team: meow meow" },
+        // === CHANS ===
+        "Michelle": { paid: 65, comps: {W:true, S:true, LR:true}, note: "Michelle Chan. Michelle & Annie $65" },
+        // === OTHERS ===
+        "Georgia Jones": { paid: 40, comps: {W:true, LR:true} },
+        "Astrid Caddeo": { paid: 40, comps: {W:true, LR:true} },
+        "Richard Worrow": { paid: 35, comps: {W:true, S:true} },
+        // Rohan Johnson covered by Mr. Schadenfreude entry (W+SC)
+        "Phillip Johnson": { paid: 0, comps: {W:true}, note: "Form: W only - UNPAID" },
+        "Felix Johnson": { paid: 0, comps: {W:true}, note: "Form: W only - UNPAID" },
+        "Lyn Walsh": { paid: 0, comps: {W:true}, note: "Form: W only. Covered by Bernard BCW+LVW $65" },
+        "Sandra Walsh": { paid: 0, comps: {LR:true}, note: "Form: LR only. Covered by Phil & Sandra $55" },
+        "Annie Gallivan": { paid: 0, comps: {LR:true}, note: "Form: LR only. Covered by Michelle & Annie $65" },
+        "Michael Gallivan LR": { paid: 0, comps: {LR:true}, note: "Kelly's husband. Form: LR only. Covered by Michael & Kelly $55" }
+    };
+
+    function renderPayments() {
+        const weeklyNames = new Set(espnWeeklyData.map(e => e.name));
+        const streakNames = new Set(espnStreakData.map(e => e.name));
+        const lrNames = new Set(longRangeData.map(e => e.name));
+        const scNames = new Set(supercoachTeams.map(e => e.coach));
+        const allNames = new Set([...weeklyNames, ...streakNames, ...lrNames.values()]);
+        // Add anyone from paymentRecords who isn't already listed (e.g. SC-only)
+        Object.keys(paymentRecords).forEach(n => allNames.add(n));
+        const nameList = [...allNames].sort();
+
+        const filterVal = document.getElementById('paymentFilter') ? document.getElementById('paymentFilter').value : 'all';
+        const tbody = document.getElementById('paymentsBody');
+        let totalOwed = 0, totalPaid = 0, paidCount = 0, partialCount = 0, unpaidCount = 0;
+
+        const rows = nameList.map(name => {
+            const rec = paymentRecords[name];
+            const inW = weeklyNames.has(name) || (rec && rec.comps && rec.comps.W);
+            const inLR = lrNames.has(name) || (rec && rec.comps && rec.comps.LR);
+            const inS = streakNames.has(name) || (rec && rec.comps && rec.comps.S);
+            const scMatch = supercoachTeams.find(t =>
+                name.toLowerCase().includes(t.coach.toLowerCase()) ||
+                t.coach.toLowerCase().includes(name.split(' ')[0].toLowerCase())
+            );
+            const inSC = !!scMatch || (rec && rec.comps && rec.comps.SC);
+
+            let owed = 0;
+            if (inW) owed += 25;
+            if (inLR) owed += 15;
+            if (inS) owed += 10;
+            if (inSC) owed += 30;
+            totalOwed += owed;
+
+            let paid = rec ? rec.paid : 0;
+            let status, badgeClass;
+            const isPaddy = name === 'Paddy Gallivan';
+
+            if (isPaddy) {
+                status = 'Organiser'; badgeClass = 'badge-paid'; paid = owed;
+            } else if (paid >= owed && paid > 0) {
+                status = 'Paid'; badgeClass = 'badge-paid'; paidCount++;
+            } else if (paid > 0) {
+                status = 'Partial'; badgeClass = 'badge-partial'; partialCount++;
+            } else if (rec && rec.note && rec.note.includes('Covered')) {
+                status = 'Covered'; badgeClass = 'badge-paid'; paidCount++; paid = owed;
+            } else {
+                status = 'Unpaid'; badgeClass = 'badge-unpaid'; unpaidCount++;
+            }
+            totalPaid += Math.min(paid, owed);
+
+            if (filterVal !== 'all') {
+                if (filterVal === 'paid' && status !== 'Paid' && status !== 'Covered' && status !== 'Organiser') return '';
+                if (filterVal === 'unpaid' && status !== 'Unpaid') return '';
+                if (filterVal === 'partial' && status !== 'Partial') return '';
+            }
+
+            const cls = isPaddy ? 'highlight-row' : '';
+            const note = rec && rec.note ? ` title="${rec.note}"` : '';
+            const compPaid = rec ? rec.comps : {};
+
+            return `<tr class="${cls}"${note}>
+                <td>${name}</td>
+                <td style="text-align:center;color:${inW ? (compPaid.W ? '#28a745' : '#ffc107') : '#ccc'}">${inW ? (compPaid.W ? '&#10003;' : '&#9675;') : ''}</td>
+                <td style="text-align:center;color:${inLR ? (compPaid.LR ? '#28a745' : '#ffc107') : '#ccc'}">${inLR ? (compPaid.LR ? '&#10003;' : '&#9675;') : ''}</td>
+                <td style="text-align:center;color:${inS ? (compPaid.S ? '#28a745' : '#ffc107') : '#ccc'}">${inS ? (compPaid.S ? '&#10003;' : '&#9675;') : ''}</td>
+                <td style="text-align:center;color:${inSC ? (compPaid.SC ? '#28a745' : '#ffc107') : '#ccc'}">${inSC ? (compPaid.SC ? '&#10003;' : '&#9675;') : ''}</td>
+                <td style="text-align:center;font-weight:600">$${owed}</td>
+                <td style="text-align:center;font-weight:600;color:${paid > 0 ? '#28a745' : '#999'}">${paid > 0 ? '$'+paid : '-'}</td>
+                <td style="text-align:center"><span class="badge ${badgeClass}">${status}</span></td>
+            </tr>`;
+        }).filter(r => r);
+
+        tbody.innerHTML = rows.join('');
+
+        // Update collection stats
+        const collected = 2375; // $1,970 balance + Paddy $405 incoming
+        const expected = totalOwed;
+        const outstanding = expected - collected;
+        const totalPeople = paidCount + partialCount + unpaidCount;
+        const pctPaid = totalPeople > 0 ? Math.round(paidCount / totalPeople * 100) : 0;
+        if (document.getElementById('collectedAmt')) document.getElementById('collectedAmt').textContent = '$' + collected.toLocaleString();
+        if (document.getElementById('outstandingAmt')) document.getElementById('outstandingAmt').textContent = '$' + Math.max(0, outstanding).toLocaleString();
+        if (document.getElementById('expectedAmt')) document.getElementById('expectedAmt').textContent = '$' + expected.toLocaleString();
+        if (document.getElementById('paidPct')) document.getElementById('paidPct').textContent = pctPaid + '%';
+        if (document.getElementById('paidPctDetail')) document.getElementById('paidPctDetail').textContent = paidCount + ' of ' + totalPeople + ' participants';
+    }
+
+    // ========== LIVE LONG RANGE FETCH ==========
+    async function fetchLongRangeLive() {
+        const badge = document.getElementById('lrBadge');
+        badge.textContent = 'Fetching...';
+        try {
+            const url = `https://docs.google.com/spreadsheets/d/${LR_SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Ladder`;
+            const resp = await fetch(url);
+            const csv = await resp.text();
+
+            // Parse CSV — leaderboard is in columns E,F,G (index 4,5,6)
+            const lines = csv.split('\n');
+            const newData = [];
+            for (let i = 1; i < lines.length; i++) {
+                const row = parseCSVLine(lines[i]);
+                if (row.length > 6 && row[4] && row[4].trim() && row[5]) {
+                    const name = row[4].trim().replace(/^"|"$/g, '');
+                    const score = parseInt(row[5].replace(/"/g, ''));
+                    const rank = parseInt(row[6].replace(/"/g, '')) || 0;
+                    if (!isNaN(score) && name) {
+                        newData.push({ name, score, rank });
+                    }
+                }
+            }
+
+            // Also get unsorted tippers from column A who might not be on leaderboard
+            for (let i = 1; i < lines.length; i++) {
+                const row = parseCSVLine(lines[i]);
+                if (row.length > 1 && row[0]) {
+                    const name = row[0].trim().replace(/^"|"$/g, '');
+                    const score = parseInt((row[1]||'0').replace(/"/g, ''));
+                    if (name && name !== 'Tipper 0' && !isNaN(score)) {
+                        if (!newData.find(d => d.name === name)) {
+                            newData.push({ name, score, rank: 99 });
+                        }
+                    }
+                }
+            }
+
+            if (newData.length > 0) {
+                newData.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
+                longRangeData = newData;
+                renderLongRange(longRangeData);
+                badge.textContent = 'Updated live!';
+                setTimeout(() => { badge.textContent = 'Live from Google Sheet'; }, 3000);
+            } else {
+                badge.textContent = 'Using cached data';
+            }
+        } catch (e) {
+            console.error('Failed to fetch Long Range:', e);
+            badge.textContent = 'Using cached data';
+            renderLongRange(longRangeData);
+        }
+    }
+
+    function parseCSVLine(line) {
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+            const ch = line[i];
+            if (ch === '"') { inQuotes = !inQuotes; }
+            else if (ch === ',' && !inQuotes) { result.push(current); current = ''; }
+            else { current += ch; }
+        }
+        result.push(current);
+        return result;
+    }
+
+    // ========== PRIZE POOL ==========
+    function updatePrizeTotal() {
+        const wCount = espnWeeklyData.length;
+        const sCount = espnStreakData.length;
+        const lrCount = longRangeData.length;
+        const scCount = supercoachTeams.length;
+        const weekly = wCount * 25;
+        const streak = sCount * 10;
+        const lr = lrCount * 15;
+        const sc = scCount * 30;
+        const gross = weekly + streak + lr + sc;
+        const slushPct = getSlushPct();
+        const slush = Math.round(gross * slushPct / 100);
+        const total = gross - slush;
+        document.getElementById('prizeTotal').textContent = '$' + total.toLocaleString();
+        // Update slush fund and expected cards
+        const slushAmt = document.getElementById('slushAmt');
+        if (slushAmt) slushAmt.textContent = '$' + slush.toLocaleString();
+        const expectedAmt = document.getElementById('expectedAmt');
+        if (expectedAmt) expectedAmt.textContent = '$' + total.toLocaleString();
+
+        // Update hero stats dynamically
+        const heroStats = document.querySelectorAll('.hero-stat .hs-num');
+        if (heroStats.length >= 4) {
+            heroStats[0].textContent = wCount;
+            heroStats[1].textContent = sCount;
+            heroStats[2].textContent = lrCount;
+            heroStats[3].textContent = scCount;
+        }
+    }
+
+    function updateLeaderCards() {
+        // Weekly leader
+        if (espnWeeklyData.length > 0) {
+            const leader = espnWeeklyData[0];
+            const weeklyCard = document.querySelector('[data-section="weekly"]');
+            if (weeklyCard) {
+                const wCard = weeklyCard.closest('li');
+            }
+            // Update leader card on home
+            const leaderCards = document.querySelectorAll('.leader-card');
+            if (leaderCards[0]) {
+                leaderCards[0].querySelector('.name').textContent = leader.name;
+                leaderCards[0].querySelector('.score').textContent = leader.total + ' pts after R' + (espnWeeklyRoundLabels.length - 1);
+            }
+        }
+        // Supercoach leader
+        if (supercoachTeams.length > 0) {
+            const scLeader = supercoachTeams[0];
+            const leaderCards = document.querySelectorAll('.leader-card');
+            if (leaderCards[3]) {
+                leaderCards[3].querySelector('.name').textContent = scLeader.coach || scLeader.team;
+                leaderCards[3].querySelector('.score').textContent = (scLeader.pts || 0) + ' points';
+            }
+        }
+    }
+
+    // ========== FAMILY RIVALRY ==========
+    function updateFamilyRivalry() {
+        const gallivanNames = ['gallivan', 'rooney', 'caddeo', 'chan', 'jones', 'hogan'];
+        const walshNames = ['walsh', 'buckley', 'johnson', 'mcgrath', 'anstey', 'schilov'];
+
+        let gTotal = 0, gCount = 0, wTotal = 0, wCount = 0, oTotal = 0, oCount = 0;
+
+        espnWeeklyData.forEach(e => {
+            const lower = e.name.toLowerCase();
+            const isG = gallivanNames.some(n => lower.includes(n)) || ['paddy gallivan','aeneas gallivan','john gallivan','kelly gallivan','living in hope','profugus fato jpg driven by fate','lady latte','marie swmbo lady gallivan','our own mcg','georgia jones','liz hogan','kerane','bexy05','jacky rooney','astrid caddeo','madeleineC','mark my words'].some(n => lower === n.toLowerCase());
+            const isW = !isG && (walshNames.some(n => lower.includes(n)) || ['( dirty ) harry ~ the dog','mr. schadenfreude','johnno58','sparkenators','cohagensair','terrol gulden'].some(n => lower === n.toLowerCase()));
+
+            const numRounds = e.rounds ? e.rounds.length : 0;
+            const avg = numRounds > 0 ? (e.total / numRounds) : 0;
+            if (isG) { gTotal += avg; gCount++; }
+            else if (isW) { wTotal += avg; wCount++; }
+            else { oTotal += avg; oCount++; }
+        });
+
+        const gAvg = gCount > 0 ? (gTotal / gCount).toFixed(1) : '0';
+        const wAvg = wCount > 0 ? (wTotal / wCount).toFixed(1) : '0';
+        const oAvg = oCount > 0 ? (oTotal / oCount).toFixed(1) : '0';
+
+        document.getElementById('rivalryGScore').textContent = gAvg;
+        document.getElementById('rivalryGCount').textContent = gCount + ' tippers';
+        document.getElementById('rivalryWScore').textContent = wAvg;
+        document.getElementById('rivalryWCount').textContent = wCount + ' tippers';
+        document.getElementById('rivalryOScore').textContent = oAvg;
+        document.getElementById('rivalryOCount').textContent = oCount + ' tippers';
+
+        const verdict = document.getElementById('rivalryVerdict');
+        const diff = parseFloat(gAvg) - parseFloat(wAvg);
+        if (Math.abs(diff) < 0.2) {
+            verdict.innerHTML = "It's neck and neck! The families are dead even!";
+        } else if (diff > 0) {
+            verdict.innerHTML = "Team Gallivan leads by " + Math.abs(diff).toFixed(1) + " avg pts per round!";
+        } else {
+            verdict.innerHTML = "Team Walsh leads by " + Math.abs(diff).toFixed(1) + " avg pts per round!";
+        }
+    }
+
+    // ========== FUN AWARDS ==========
+    function updateFunAwards() {
+        const grid = document.getElementById('awardsGrid');
+        if (!grid || espnWeeklyData.length === 0) return;
+
+        const numRounds = espnWeeklyData[0].rounds ? espnWeeklyData[0].rounds.length : 0;
+        if (numRounds < 1) return;
+
+        const awards = [];
+        const lastRoundIdx = numRounds - 1;
+
+        // Best Last Round
+        const bestLast = [...espnWeeklyData].sort((a, b) => (b.rounds[lastRoundIdx] || 0) - (a.rounds[lastRoundIdx] || 0));
+        if (bestLast[0]) awards.push({ icon: '\u{1F525}', title: 'Best Last Round', name: bestLast[0].name, detail: bestLast[0].rounds[lastRoundIdx] + '/9 tips correct' });
+
+        // Worst Last Round
+        const worstLast = [...espnWeeklyData].sort((a, b) => (a.rounds[lastRoundIdx] || 0) - (b.rounds[lastRoundIdx] || 0));
+        if (worstLast[0]) awards.push({ icon: '\u{1F976}', title: 'Worst Last Round', name: worstLast[0].name, detail: worstLast[0].rounds[lastRoundIdx] + '/9 — ouch!' });
+
+        // Most Consistent (lowest variance)
+        if (numRounds >= 2) {
+            const consistency = espnWeeklyData.map(e => {
+                const avg = e.rounds.reduce((a,b) => a+b, 0) / numRounds;
+                const variance = e.rounds.reduce((a,r) => a + Math.pow(r - avg, 2), 0) / numRounds;
+                return { name: e.name, variance, avg };
+            }).sort((a, b) => a.variance - b.variance);
+            if (consistency[0]) awards.push({ icon: '\u{1F3AF}', title: 'Mr/Ms Consistent', name: consistency[0].name, detail: 'Avg ' + consistency[0].avg.toFixed(1) + ' per round, barely wavers' });
+        }
+
+        // Wooden Spoon Watch
+        const last = espnWeeklyData[espnWeeklyData.length - 1];
+        if (last) awards.push({ icon: '\u{1F944}', title: 'Wooden Spoon Watch', name: last.name, detail: last.total + ' pts — last place (for now!)' });
+
+        // Biggest Margin (best margin = lowest)
+        const bestMargin = [...espnWeeklyData].sort((a, b) => a.margin - b.margin);
+        if (bestMargin[0]) awards.push({ icon: '\u{1F4AA}', title: 'Margin King', name: bestMargin[0].name, detail: 'Only ' + bestMargin[0].margin + ' pts off — closest to the money' });
+
+        // Opening Round specialist
+        if (numRounds >= 1) {
+            const orBest = [...espnWeeklyData].sort((a, b) => (b.rounds[0] || 0) - (a.rounds[0] || 0));
+            if (orBest[0]) awards.push({ icon: '\u{1F3C3}', title: 'Fast Starter', name: orBest[0].name, detail: orBest[0].rounds[0] + ' tips in the Opening Round' });
+        }
+
+        // Streak King (from streak data)
+        if (espnStreakData.length > 0) {
+            const sorted = [...espnStreakData].sort((a, b) => b.current - a.current || b.longest - a.longest);
+            if (sorted[0]) awards.push({ icon: '\u{26A1}', title: 'Streak King', name: sorted[0].name, detail: sorted[0].current + ' in a row (longest: ' + sorted[0].longest + ')' });
+        }
+
+        // Biggest Improver (last round vs previous)
+        if (numRounds >= 2) {
+            const improvers = espnWeeklyData.map(e => ({
+                name: e.name,
+                diff: (e.rounds[lastRoundIdx] || 0) - (e.rounds[lastRoundIdx - 1] || 0)
+            })).sort((a, b) => b.diff - a.diff);
+            if (improvers[0] && improvers[0].diff > 0) awards.push({ icon: '\u{1F4C8}', title: 'Biggest Improver', name: improvers[0].name, detail: '+' + improvers[0].diff + ' tips improvement from last round' });
+        }
+
+        grid.innerHTML = awards.map(a => `
+            <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:var(--card-bg);border-radius:10px;border:1px solid var(--border)">
+                <div style="font-size:1.8rem;flex-shrink:0">${a.icon}</div>
+                <div>
+                    <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-light);font-weight:600">${a.title}</div>
+                    <div style="font-weight:700;color:var(--text-dark);font-size:0.95rem">${a.name}</div>
+                    <div style="font-size:0.8rem;color:var(--text-light)">${a.detail}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // ========== FORM GUIDE ==========
+    function updateFormGuide() {
+        const hotDiv = document.getElementById('formHot');
+        const coldDiv = document.getElementById('formCold');
+        if (!hotDiv || !coldDiv || espnWeeklyData.length === 0) return;
+
+        const numRounds = espnWeeklyData[0].rounds ? espnWeeklyData[0].rounds.length : 0;
+        if (numRounds < 2) {
+            hotDiv.innerHTML = '<p style="color:var(--text-light);font-size:0.9rem">Need at least 2 rounds for form guide</p>';
+            coldDiv.innerHTML = '';
+            return;
+        }
+
+        // Calculate recent form: last round score vs average
+        const form = espnWeeklyData.map(e => {
+            const lastRound = e.rounds[numRounds - 1] || 0;
+            const prevAvg = e.rounds.slice(0, numRounds - 1).reduce((a,b) => a+b, 0) / (numRounds - 1);
+            return { name: e.name, lastRound, prevAvg, diff: lastRound - prevAvg, total: e.total, rank: e.rank };
+        });
+
+        // Hot: sorted by last round score (top 5)
+        const hot = [...form].sort((a, b) => b.lastRound - a.lastRound || a.rank - b.rank).slice(0, 5);
+        // Cold: sorted by last round score ascending (bottom 5)
+        const cold = [...form].sort((a, b) => a.lastRound - b.lastRound || b.rank - a.rank).slice(0, 5);
+
+        const renderList = (items, isHot) => items.map((e, i) => {
+            const color = isHot ? '#059669' : '#DC2626';
+            const arrow = isHot ? '\u25B2' : '\u25BC';
+            return `<div style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;background:var(--card-bg);border-radius:8px;margin-bottom:0.35rem;border-left:3px solid ${color}">
+                <span style="font-weight:700;color:${color};font-size:0.85rem;min-width:20px">${i+1}.</span>
+                <span style="font-weight:600;color:var(--text-dark);flex:1;font-size:0.9rem">${e.name}</span>
+                <span style="font-size:0.85rem;color:${color};font-weight:600">${e.lastRound}/9 ${arrow}</span>
+            </div>`;
+        }).join('');
+
+        hotDiv.innerHTML = renderList(hot, true);
+        coldDiv.innerHTML = renderList(cold, false);
+    }
+
+    // ========== SCROLL TOP ==========
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('scrollTopBtn');
+        if (window.scrollY > 300) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+    });
+
+    // ========== GUIDE CHECKLIST ==========
+    function toggleChecked(cb) {
+        cb.parentElement.classList.toggle('checked', cb.checked);
+    }
+
+    // ========== DARK MODE ==========
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        document.getElementById('darkModeBtn').textContent = isDark ? '\u2600' : '\u263E';
+        try { localStorage.setItem('darkMode', isDark ? '1' : '0'); } catch(e) {}
+    }
+
+    // ========== FIND ME ==========
+    function findMe() {
+        const activeSection = document.querySelector('section.active');
+        if (!activeSection) return;
+        const tbody = activeSection.querySelector('tbody');
+        if (!tbody) { alert('Navigate to a leaderboard tab first!'); return; }
+        const rows = tbody.querySelectorAll('tr');
+        let found = false;
+        for (const row of rows) {
+            const text = row.textContent.toLowerCase();
+            if (text.includes('paddy') || text.includes("paddy's puppies")) {
+                row.style.display = '';
+                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                row.style.transition = 'box-shadow 0.3s';
+                row.style.boxShadow = 'inset 0 0 0 2px var(--gold)';
+                setTimeout(() => { row.style.boxShadow = ''; }, 3000);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            // Try switching to weekly first
+            if (activeSection.id === 'home') {
+                switchSection('weekly');
+                setTimeout(findMe, 300);
+            } else {
+                alert('Could not find your row in this table.');
+            }
+        }
+    }
+
+    // ========== LIVE SQUIGGLE SCORE REFRESH ==========
+    async function refreshLiveScores() {
+        try {
+            const resp = await fetch('https://api.squiggle.com.au/?q=games;year=2026;round=3', {
+                headers: { 'User-Agent': 'GWB-Footy-Tipping/1.0' }
+            });
+            const data = await resp.json();
+            if (data && data.games) {
+                const games = data.games;
+                // Update round3Fixtures with live data
+                for (let i = 0; i < games.length; i++) {
+                    const g = games[i];
+                    const match = round3Fixtures.find(f =>
+                        f.hteam === g.hteam || f.hteam === (g.hteam === 'Greater Western Sydney' ? 'GWS' : g.hteam)
+                    );
+                    if (match) {
+                        match.hscore = g.hscore || 0;
+                        match.ascore = g.ascore || 0;
+                        match.complete = g.complete || 0;
+                    }
+                }
+                renderFixtures(round3Fixtures, 'fixturesBody', false);
+
+                // Update fixture status badge
+                const anyLive = round3Fixtures.some(f => f.complete > 0 && f.complete < 100);
+                const allDone = round3Fixtures.every(f => f.complete === 100);
+                const badge = document.getElementById('fixtureStatus');
+                if (anyLive) badge.textContent = 'LIVE';
+                else if (allDone) badge.textContent = 'Complete';
+                else badge.textContent = 'This Week';
+            }
+        } catch (e) {
+            console.log('Score refresh failed:', e);
+        }
+    }
+
+    // ========== AFL LADDER ==========
+    async function fetchAFLLadder() {
+        const badge = document.getElementById('ladderBadge');
+        badge.textContent = 'Fetching...';
+        try {
+            const resp = await fetch('https://api.squiggle.com.au/?q=standings;year=2026', {
+                headers: { 'User-Agent': 'GWB-Footy-Tipping/1.0' }
+            });
+            const data = await resp.json();
+            if (data && data.standings) {
+                const standings = data.standings.sort((a, b) => {
+                    if (b.pts !== a.pts) return b.pts - a.pts;
+                    return b.percentage - a.percentage;
+                });
+                renderLadder(standings);
+                badge.textContent = 'Live';
+                setTimeout(() => { badge.textContent = 'After Round ' + (standings[0].played || '?'); }, 2000);
+            }
+        } catch (e) {
+            console.log('Ladder fetch failed:', e);
+            badge.textContent = 'Error — try again';
+            // Fallback: render empty
+        }
+    }
+
+    function renderLadder(standings) {
+        const tbody = document.getElementById('ladderBody');
+        tbody.innerHTML = standings.map((t, i) => {
+            const pct = t.percentage ? t.percentage.toFixed(1) : '0.0';
+            let cls = '';
+            if (i < 8) cls = 'style="border-left:3px solid var(--green)"';
+            else if (i >= 14) cls = 'style="border-left:3px solid var(--red)"';
+            return `<tr ${cls}>
+                <td class="rank" style="font-weight:700">${i + 1}</td>
+                <td style="font-weight:${i < 4 ? '700' : '500'}">${t.name || t.team}</td>
+                <td style="text-align:center">${t.played || 0}</td>
+                <td style="text-align:center;color:var(--green);font-weight:600">${t.wins || 0}</td>
+                <td style="text-align:center;color:var(--red)">${t.losses || 0}</td>
+                <td style="text-align:center">${t.draws || 0}</td>
+                <td style="text-align:center">${t.for || 0}</td>
+                <td style="text-align:center">${t.against || 0}</td>
+                <td style="text-align:center;font-weight:600">${pct}%</td>
+                <td style="text-align:center;font-weight:800;color:var(--gold)">${t.pts || 0}</td>
+            </tr>`;
+        }).join('');
+    }
+
+    // ========== ADMIN SYSTEM ==========
+    const ADMIN_EMAILS = ['pgallivan@outlook.com'];
+
+    function isAdmin() {
+        const user = getCurrentUser();
+        return user && ADMIN_EMAILS.includes(user.toLowerCase());
+    }
+
+    // ========== ACCOUNT SYSTEM ==========
+    const COMP_COSTS = { W: 25, LR: 15, S: 10, SC: 30 };
+    const COMP_NAMES = { W: 'Weekly', LR: 'Long Range', S: 'Streak', SC: 'Supercoach' };
+
+    function getAccounts() {
+        try { return JSON.parse(localStorage.getItem('ftp_accounts') || '{}'); } catch(e) { return {}; }
+    }
+    function saveAccounts(accs) { localStorage.setItem('ftp_accounts', JSON.stringify(accs)); }
+    function getCurrentUser() { return localStorage.getItem('ftp_current_user') || ''; }
+    function setCurrentUser(email) { localStorage.setItem('ftp_current_user', email); }
+
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    function showLogin() {
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('registerForm').style.display = 'none';
+    }
+    function showRegister() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registerForm').style.display = 'block';
+    }
+
+    function toggleComp(label) {
+        const cb = label.querySelector('input[type="checkbox"]');
+        cb.checked = !cb.checked;
+        label.classList.toggle('selected', cb.checked);
+        updateRegFee();
+    }
+
+    function updateRegFee() {
+        const checks = document.querySelectorAll('#registerForm input[name="comp"]:checked');
+        const summary = document.getElementById('regFeeSummary');
+        const lines = document.getElementById('regFeeLines');
+        const total = document.getElementById('regFeeTotal');
+        if (checks.length === 0) { summary.style.display = 'none'; return; }
+        summary.style.display = 'block';
+        let sum = 0;
+        let html = '';
+        checks.forEach(c => {
+            const cost = COMP_COSTS[c.value];
+            sum += cost;
+            html += `<div class="fee-line"><span>${COMP_NAMES[c.value]}</span><span>$${cost}</span></div>`;
+        });
+        lines.innerHTML = html;
+        total.textContent = '$' + sum;
+    }
+
+    function doLogin() {
+        const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+        if (!email) { alert('Please enter your email address.'); return; }
+        const accounts = getAccounts();
+        if (!accounts[email]) {
+            if (confirm('No account found for ' + email + '. Would you like to register?')) {
+                showRegister();
+                document.getElementById('regEmail').value = email;
+            }
+            return;
+        }
+        setCurrentUser(email);
+        renderAccountDashboard();
+    }
+
+    function doRegister() {
+        const first = document.getElementById('regFirst').value.trim();
+        const last = document.getElementById('regLast').value.trim();
+        const email = document.getElementById('regEmail').value.trim().toLowerCase();
+        const espn = document.getElementById('regEspn').value.trim();
+        const checks = document.querySelectorAll('#registerForm input[name="comp"]:checked');
+
+        if (!first || !last) { alert('Please enter your name.'); return; }
+        if (!email) { alert('Please enter your email.'); return; }
+        if (checks.length === 0) { alert('Please select at least one competition.'); return; }
+
+        const comps = {};
+        checks.forEach(c => { comps[c.value] = true; });
+
+        const accounts = getAccounts();
+        accounts[email] = {
+            first, last, email, espn,
+            comps,
+            dependants: [],
+            registeredAt: new Date().toISOString()
+        };
+        saveAccounts(accounts);
+        setCurrentUser(email);
+        renderAccountDashboard();
+        showToast('Welcome, ' + first + '! You\'re registered.');
+    }
+
+    function doLogout() {
+        setCurrentUser('');
+        document.getElementById('authView').style.display = 'block';
+        document.getElementById('dashView').style.display = 'none';
+        showLogin();
+        // Update nav button text
+        document.getElementById('navAccountBtn').textContent = 'My Account';
+        // Hide admin & payments buttons
+        document.getElementById('navAdminBtn').style.display = 'none';
+        document.getElementById('navPaymentsBtn').style.display = 'none';
+    }
+
+    function renderAccountDashboard() {
+        const email = getCurrentUser();
+        const accounts = getAccounts();
+        const user = accounts[email];
+        if (!user) { doLogout(); return; }
+
+        document.getElementById('authView').style.display = 'none';
+        document.getElementById('dashView').style.display = 'block';
+
+        // Show/hide admin nav button + payments (admin only)
+        const adminBtn = document.getElementById('navAdminBtn');
+        const paymentsBtn = document.getElementById('navPaymentsBtn');
+        if (isAdmin()) {
+            adminBtn.style.display = 'block';
+            paymentsBtn.style.display = 'block';
+            // Show admin badge in greeting
+            const greetingEl = document.getElementById('dashGreeting');
+            const adminBadge = document.querySelector('.admin-badge');
+            if (!adminBadge) {
+                greetingEl.innerHTML = 'Hey ' + user.first + '!<span class="admin-badge">Admin</span>';
+            }
+        } else {
+            adminBtn.style.display = 'none';
+            paymentsBtn.style.display = 'none';
+        }
+
+        // Greeting
+        document.getElementById('dashGreeting').textContent = 'Hey ' + user.first + '!';
+        if (isAdmin()) {
+            document.getElementById('dashGreeting').innerHTML = 'Hey ' + user.first + '!<span class="admin-badge">Admin</span>';
+        }
+        document.getElementById('dashEmail').textContent = user.email;
+        document.getElementById('navAccountBtn').textContent = user.first;
+
+        // ESPN settings
+        document.getElementById('settingsEspn').value = user.espn || '';
+
+        // Calculate fees (self + dependants)
+        let totalFee = 0;
+        let feeHtml = '';
+        let selfFee = 0;
+        Object.keys(user.comps).forEach(c => {
+            if (user.comps[c]) {
+                selfFee += COMP_COSTS[c];
+                feeHtml += `<div class="fee-line"><span>${user.first} — ${COMP_NAMES[c]}</span><span>$${COMP_COSTS[c]}</span></div>`;
+            }
+        });
+        totalFee += selfFee;
+
+        (user.dependants || []).forEach(dep => {
+            Object.keys(dep.comps).forEach(c => {
+                if (dep.comps[c]) {
+                    totalFee += COMP_COSTS[c];
+                    feeHtml += `<div class="fee-line"><span>${dep.name} — ${COMP_NAMES[c]}</span><span>$${COMP_COSTS[c]}</span></div>`;
+                }
+            });
+        });
+
+        document.getElementById('dashFeeLines').innerHTML = feeHtml;
+        document.getElementById('dashFeeTotal').textContent = '$' + totalFee;
+
+        // Payment status — check paymentRecords
+        const espnName = user.espn || (user.first + ' ' + user.last);
+        const rec = paymentRecords[espnName];
+        let statusHtml = '';
+        if (rec && rec.paid > 0 && rec.paid >= totalFee) {
+            statusHtml = '<span class="status-badge paid">PAID</span> <span style="color:var(--text-light);font-size:0.85rem;margin-left:0.5rem">$' + rec.paid + ' received</span>';
+            document.getElementById('dashBankDetails').style.display = 'none';
+        } else if (rec && rec.paid > 0) {
+            statusHtml = '<span class="status-badge unpaid">PARTIAL</span> <span style="color:var(--text-light);font-size:0.85rem;margin-left:0.5rem">$' + rec.paid + ' of $' + totalFee + ' received</span>';
+            document.getElementById('dashBankDetails').style.display = 'block';
+        } else {
+            statusHtml = '<span class="status-badge unpaid">UNPAID</span> <span style="color:var(--text-light);font-size:0.85rem;margin-left:0.5rem">$' + totalFee + ' outstanding</span>';
+            document.getElementById('dashBankDetails').style.display = 'block';
+        }
+        document.getElementById('dashPayStatus').innerHTML = statusHtml;
+
+        // Rankings
+        renderMyRankings(espnName, user);
+
+        // Dependants list
+        renderDependants(user, email);
+    }
+
+    function renderMyRankings(espnName, user) {
+        const container = document.getElementById('dashRankings');
+        let html = '';
+
+        // Weekly ranking
+        if (user.comps.W) {
+            const wEntry = espnWeeklyData.find(e => e.name.toLowerCase() === espnName.toLowerCase());
+            if (wEntry) {
+                html += `<div class="rank-card">
+                    <div class="comp-label">Weekly Tips</div>
+                    <div class="rank-pos">#${wEntry.rank}</div>
+                    <div class="rank-detail">${wEntry.total} pts | ${espnWeeklyRoundLabels.map((l,i) => l+': '+(wEntry.rounds[i]||0)).join(', ')}</div>
+                </div>`;
+            } else {
+                html += `<div class="rank-card"><div class="comp-label">Weekly Tips</div><div class="rank-detail" style="margin-top:0.5rem">Not found in ESPN data. Check your ESPN name in settings.</div></div>`;
+            }
+        }
+
+        // Long Range
+        if (user.comps.LR) {
+            const lrEntry = longRangeData.find(e => e.name.toLowerCase() === espnName.toLowerCase());
+            if (lrEntry) {
+                const lrIdx = longRangeData.indexOf(lrEntry) + 1;
+                html += `<div class="rank-card">
+                    <div class="comp-label">Long Range</div>
+                    <div class="rank-pos">#${lrIdx}</div>
+                    <div class="rank-detail">${lrEntry.total || lrEntry.pts || 0} points</div>
+                </div>`;
+            } else {
+                html += `<div class="rank-card"><div class="comp-label">Long Range</div><div class="rank-detail" style="margin-top:0.5rem">Not found yet.</div></div>`;
+            }
+        }
+
+        // Streak
+        if (user.comps.S) {
+            const sEntry = espnStreakData.find(e => e.name.toLowerCase() === espnName.toLowerCase());
+            if (sEntry) {
+                const registered = [...espnStreakData].sort((a, b) => b.current - a.current || b.longest - a.longest || b.avg - a.avg);
+                const sIdx = registered.findIndex(e => e.name.toLowerCase() === espnName.toLowerCase());
+                html += `<div class="rank-card">
+                    <div class="comp-label">Streak</div>
+                    <div class="rank-pos">#${sIdx + 1}</div>
+                    <div class="rank-detail">Current: ${sEntry.current} | Longest: ${sEntry.longest}</div>
+                </div>`;
+            } else {
+                html += `<div class="rank-card"><div class="comp-label">Streak</div><div class="rank-detail" style="margin-top:0.5rem">Not found in streak data.</div></div>`;
+            }
+        }
+
+        // Supercoach
+        if (user.comps.SC) {
+            const scEntry = supercoachTeams.find(t => t.coach.toLowerCase() === espnName.toLowerCase());
+            if (scEntry) {
+                html += `<div class="rank-card">
+                    <div class="comp-label">Supercoach</div>
+                    <div class="rank-pos">#${scEntry.rank || '?'}</div>
+                    <div class="rank-detail">${scEntry.team} — ${scEntry.pts || 0} pts</div>
+                </div>`;
+            } else {
+                html += `<div class="rank-card"><div class="comp-label">Supercoach</div><div class="rank-detail" style="margin-top:0.5rem">Not found. Check ESPN name.</div></div>`;
+            }
+        }
+
+        if (!html) html = '<p style="color:var(--text-light);font-size:0.9rem">No competitions selected.</p>';
+        container.innerHTML = html;
+    }
+
+    function renderDependants(user, email) {
+        const container = document.getElementById('dependantsList');
+        if (!user.dependants || user.dependants.length === 0) {
+            container.innerHTML = '<p style="color:var(--text-light);font-size:0.85rem;font-style:italic">No dependants added yet.</p>';
+            return;
+        }
+        let html = '';
+        user.dependants.forEach((dep, i) => {
+            const depComps = Object.keys(dep.comps).filter(c => dep.comps[c]).map(c => COMP_NAMES[c]).join(', ');
+            const depFee = Object.keys(dep.comps).filter(c => dep.comps[c]).reduce((s, c) => s + COMP_COSTS[c], 0);
+            html += `<div class="dependant-card">
+                <div class="dep-info">
+                    <div class="dep-name">${dep.name}${dep.espn ? ' <span style="color:var(--text-light);font-size:0.8rem">(' + dep.espn + ')</span>' : ''}</div>
+                    <div class="dep-comps">${depComps} — $${depFee}</div>
+                </div>
+                <button class="btn-danger" onclick="removeDep(${i})">Remove</button>
+            </div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    function showAddDep() {
+        document.getElementById('addDepForm').style.display = 'block';
+        document.getElementById('addDepBtn').style.display = 'none';
+        document.getElementById('depName').value = '';
+        document.getElementById('depEspn').value = '';
+        document.querySelectorAll('#addDepForm input[name="depComp"]').forEach(c => { c.checked = false; c.closest('.comp-checkbox').classList.remove('selected'); });
+    }
+    function cancelDep() {
+        document.getElementById('addDepForm').style.display = 'none';
+        document.getElementById('addDepBtn').style.display = 'block';
+    }
+
+    function saveDependant() {
+        const name = document.getElementById('depName').value.trim();
+        const espn = document.getElementById('depEspn').value.trim();
+        const checks = document.querySelectorAll('#addDepForm input[name="depComp"]:checked');
+        if (!name) { alert('Please enter a name.'); return; }
+        if (checks.length === 0) { alert('Please select at least one competition.'); return; }
+
+        const comps = {};
+        checks.forEach(c => { comps[c.value] = true; });
+
+        const email = getCurrentUser();
+        const accounts = getAccounts();
+        if (!accounts[email].dependants) accounts[email].dependants = [];
+        accounts[email].dependants.push({ name, espn, comps });
+        saveAccounts(accounts);
+        cancelDep();
+        renderAccountDashboard();
+        showToast(name + ' added!');
+    }
+
+    function removeDep(index) {
+        if (!confirm('Remove this family member?')) return;
+        const email = getCurrentUser();
+        const accounts = getAccounts();
+        accounts[email].dependants.splice(index, 1);
+        saveAccounts(accounts);
+        renderAccountDashboard();
+    }
+
+    function saveSettings() {
+        const email = getCurrentUser();
+        const accounts = getAccounts();
+        accounts[email].espn = document.getElementById('settingsEspn').value.trim();
+        saveAccounts(accounts);
+        renderAccountDashboard();
+        showToast('ESPN name updated!');
+    }
+
+    // ========== ADMIN PANEL FUNCTIONS ==========
+    function getPaymentOverrides() {
+        try { return JSON.parse(localStorage.getItem('ftp_payment_overrides') || '{}'); } catch(e) { return {}; }
+    }
+
+    function savePaymentOverrides(overrides) {
+        localStorage.setItem('ftp_payment_overrides', JSON.stringify(overrides));
+    }
+
+    function getEffectivePayment(name) {
+        const overrides = getPaymentOverrides();
+        if (overrides[name] !== undefined) {
+            return overrides[name];
+        }
+        return paymentRecords[name] ? paymentRecords[name].paid : 0;
+    }
+
+    function renderAdminPanel() {
+        if (!isAdmin()) {
+            alert('Access denied.');
+            return;
+        }
+
+        // Render all accounts
+        renderAdminAccounts();
+
+        // Render payment management
+        renderAdminPayments();
+
+        // Render comp management
+        renderAdminComps();
+
+        // Render reminders
+        renderAdminReminders();
+
+        // Init slush fund slider
+        initSlushSlider();
+    }
+
+    function renderAdminAccounts() {
+        const accounts = getAccounts();
+        const accountsList = document.getElementById('adminAccountsList');
+        const searchInput = document.getElementById('adminAccountSearch');
+        const countEl = document.getElementById('adminAccountCount');
+
+        const emails = Object.keys(accounts).sort();
+        countEl.textContent = emails.length;
+
+        function renderCards(filtered) {
+            accountsList.innerHTML = filtered.map(email => {
+                const acc = accounts[email];
+                const comps = Object.keys(acc.comps).filter(c => acc.comps[c]).map(c => COMP_NAMES[c]).join(', ');
+                const depCount = (acc.dependants || []).length;
+                const regDate = acc.registeredAt ? new Date(acc.registeredAt).toLocaleDateString() : 'N/A';
+
+                return `<div class="admin-account-card">
+                    <div class="name">${acc.first} ${acc.last}</div>
+                    <div class="email">${email}</div>
+                    <div class="info">ESPN: ${acc.espn || 'Not set'}</div>
+                    <div class="info">Comps: ${comps || 'None'}</div>
+                    <div class="info">Dependants: ${depCount}</div>
+                    <div class="info">Registered: ${regDate}</div>
+                </div>`;
+            }).join('');
+        }
+
+        renderCards(emails);
+
+        searchInput.oninput = () => {
+            const query = searchInput.value.toLowerCase();
+            const filtered = emails.filter(email => {
+                const acc = accounts[email];
+                return email.includes(query) ||
+                       (acc.first + ' ' + acc.last).toLowerCase().includes(query);
+            });
+            renderCards(filtered);
+        };
+    }
+
+    function renderAdminPayments() {
+        const tbody = document.getElementById('adminPaymentTable');
+        const searchInput = document.getElementById('adminPaymentSearch');
+        const tips = Object.keys(paymentRecords).sort();
+
+        function renderRows(filtered) {
+            tbody.innerHTML = filtered.map(name => {
+                const rec = paymentRecords[name];
+                const paid = getEffectivePayment(name);
+                return `<tr>
+                    <td><strong>${name}</strong></td>
+                    <td>$${paid}</td>
+                    <td><input type="number" class="admin-inline-input" id="pay_${name}" value="${paid}" min="0" step="5"></td>
+                    <td><button class="admin-btn-small" onclick="adminUpdatePayment('${name.replace(/'/g, "\\'")}')">Update</button></td>
+                </tr>`;
+            }).join('');
+        }
+
+        renderRows(tips);
+
+        searchInput.oninput = () => {
+            const query = searchInput.value.toLowerCase();
+            const filtered = tips.filter(name => name.toLowerCase().includes(query));
+            renderRows(filtered);
+        };
+
+        // Update totals
+        updateAdminPaymentTotals();
+    }
+
+    function updateAdminPaymentTotals() {
+        const tips = Object.keys(paymentRecords);
+        let totalCollected = 0;
+        let totalOwed = 0;
+
+        tips.forEach(name => {
+            const paid = getEffectivePayment(name);
+            const rec = paymentRecords[name];
+            const comps = rec.comps;
+            let expectedFee = 0;
+            Object.keys(comps).forEach(c => { if (comps[c]) expectedFee += COMP_COSTS[c]; });
+
+            totalCollected += paid;
+            totalOwed += Math.max(0, expectedFee - paid);
+        });
+
+        document.getElementById('adminTotalCollected').textContent = '$' + totalCollected.toLocaleString();
+        document.getElementById('adminTotalOutstanding').textContent = '$' + totalOwed.toLocaleString();
+    }
+
+    function adminUpdatePayment(name) {
+        const input = document.getElementById('pay_' + name.replace(/'/g, "\\'"));
+        const newAmount = parseInt(input.value) || 0;
+        if (newAmount < 0) { alert('Amount cannot be negative.'); return; }
+
+        const overrides = getPaymentOverrides();
+        overrides[name] = newAmount;
+        savePaymentOverrides(overrides);
+
+        showToast(name + ' payment updated to $' + newAmount);
+        updateAdminPaymentTotals();
+    }
+
+    function renderAdminComps() {
+        const container = document.getElementById('adminCompsList');
+        const comps = ['W', 'S', 'LR', 'SC'];
+
+        let html = '';
+        comps.forEach(comp => {
+            const compName = COMP_NAMES[comp];
+            const tippers = Object.keys(paymentRecords).filter(name => {
+                const rec = paymentRecords[name];
+                return rec.comps && rec.comps[comp];
+            }).sort();
+
+            html += `<div class="admin-card">
+                <h4 style="color:var(--gold);margin-bottom:0.75rem">${compName}</h4>
+                <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.75rem">
+                    <strong>${tippers.length}</strong> registered
+                </p>
+                <div style="max-height:300px;overflow-y:auto;border:1px solid var(--border);border-radius:6px;padding:0.75rem;font-size:0.85rem">
+                    ${tippers.map(t => `<div style="padding:0.25rem;border-bottom:1px solid rgba(0,0,0,0.1)">${t}</div>`).join('')}
+                </div>
+            </div>`;
+        });
+
+        container.innerHTML = html;
+    }
+
+    function renderAdminReminders() {
+        const container = document.getElementById('adminReminderList');
+        const tips = Object.keys(paymentRecords);
+        const unpaid = [];
+
+        tips.forEach(name => {
+            const paid = getEffectivePayment(name);
+            const rec = paymentRecords[name];
+            const comps = rec.comps;
+            let expectedFee = 0;
+            Object.keys(comps).forEach(c => { if (comps[c]) expectedFee += COMP_COSTS[c]; });
+
+            if (paid < expectedFee) {
+                unpaid.push({ name, paid, expected: expectedFee });
+            }
+        });
+
+        unpaid.sort((a, b) => a.name.localeCompare(b.name));
+
+        container.innerHTML = unpaid.map(item => {
+            const outstanding = item.expected - item.paid;
+            return `<li class="admin-reminder-item">
+                <div class="person">
+                    <div class="person-name">${item.name}</div>
+                    <div class="person-amount">Outstanding: $${outstanding} (paid $${item.paid} of $${item.expected})</div>
+                </div>
+                <button class="admin-btn-small" onclick="adminCopyReminder('${item.name.replace(/'/g, "\\'")}', ${item.expected})">Copy</button>
+            </li>`;
+        }).join('');
+
+        if (unpaid.length === 0) {
+            container.innerHTML = '<li style="padding:0.75rem;color:var(--text-light)">All tippers have paid!</li>';
+        }
+    }
+
+    function adminCopyReminder(name, total) {
+        const msg = `Hi ${name}, \n\nPlease send your payment of $${total} for the 2026 Footy Tipping to:\nBSB: 193-879\nAccount: 472 563 434\nName: Paddy Gallivan Footy Tipping\n\nReference: ${name}`;
+        navigator.clipboard.writeText(msg).then(() => {
+            showToast('Reminder copied for ' + name);
+        });
+    }
+
+    // ========== SLUSH FUND ADMIN ==========
+    function getSlushPct() {
+        const saved = localStorage.getItem('ftp_slush_pct');
+        return saved !== null ? parseInt(saved) : 10;
+    }
+
+    function updateSlushFromSlider() {
+        const slider = document.getElementById('slushSlider');
+        if (!slider) return;
+        const pct = parseInt(slider.value);
+        localStorage.setItem('ftp_slush_pct', pct);
+        document.getElementById('slushPctDisplay').textContent = pct + '%';
+        // Update prize card label
+        const slushCard = document.querySelector('#slushAmt');
+        if (slushCard) {
+            const label = slushCard.closest('.prize-card');
+            if (label) {
+                const compName = label.querySelector('.comp-name');
+                if (compName) compName.textContent = 'Slush Fund (' + pct + '%)';
+            }
+        }
+        // Update expected amt label
+        const expDetail = document.getElementById('expectedAmt');
+        if (expDetail && expDetail.nextElementSibling) {
+            expDetail.nextElementSibling.textContent = 'prize pool (excl. ' + pct + '% slush fund)';
+        }
+        updatePrizeTotal();
+        updateSlushPreview();
+    }
+
+    function updateSlushPreview() {
+        const pct = getSlushPct();
+        const gross = espnWeeklyData.length * 25 + espnStreakData.length * 10 + longRangeData.length * 15 + supercoachTeams.length * 30;
+        const fund = Math.round(gross * pct / 100);
+        const prize = gross - fund;
+        const el = (id) => document.getElementById(id);
+        if (el('slushPreviewPrize')) el('slushPreviewPrize').textContent = '$' + prize.toLocaleString();
+        if (el('slushPreviewFund')) el('slushPreviewFund').textContent = '$' + fund.toLocaleString();
+        if (el('slushPreviewTotal')) el('slushPreviewTotal').textContent = '$' + gross.toLocaleString();
+    }
+
+    function initSlushSlider() {
+        const pct = getSlushPct();
+        const slider = document.getElementById('slushSlider');
+        if (slider) {
+            slider.value = pct;
+            document.getElementById('slushPctDisplay').textContent = pct + '%';
+            updateSlushPreview();
+        }
+    }
+
+    function adminCopyAllUnpaid() {
+        const tips = Object.keys(paymentRecords);
+        const unpaid = [];
+        let totalOutstanding = 0;
+
+        tips.forEach(name => {
+            const paid = getEffectivePayment(name);
+            const rec = paymentRecords[name];
+            const comps = rec.comps;
+            let expectedFee = 0;
+            Object.keys(comps).forEach(c => { if (comps[c]) expectedFee += COMP_COSTS[c]; });
+
+            if (paid < expectedFee) {
+                const outstanding = expectedFee - paid;
+                unpaid.push({ name, outstanding, paid, expected: expectedFee });
+                totalOutstanding += outstanding;
+            }
+        });
+
+        unpaid.sort((a, b) => a.name.localeCompare(b.name));
+
+        let msg = 'UNPAID TIPPERS - 2026 Footy Tipping\n\n';
+        unpaid.forEach(item => {
+            msg += `${item.name}: $${item.outstanding} outstanding (paid $${item.paid}/$${item.expected})\n`;
+        });
+        msg += `\nTOTAL OUTSTANDING: $${totalOutstanding}`;
+
+        navigator.clipboard.writeText(msg).then(() => {
+            showToast('Unpaid list copied (' + unpaid.length + ' tippers)');
+        });
+    }
+
+    function adminGenerateEmailLinks() {
+        const tips = Object.keys(paymentRecords);
+        const unpaid = [];
+
+        tips.forEach(name => {
+            const paid = getEffectivePayment(name);
+            const rec = paymentRecords[name];
+            const comps = rec.comps;
+            let expectedFee = 0;
+            Object.keys(comps).forEach(c => { if (comps[c]) expectedFee += COMP_COSTS[c]; });
+
+            if (paid < expectedFee) {
+                unpaid.push({ name, expected: expectedFee });
+            }
+        });
+
+        if (unpaid.length === 0) {
+            showToast('All tippers have paid!');
+            return;
+        }
+
+        const subject = '2026 Footy Tipping - Payment Reminder';
+        let emailBody = 'Hi,\n\nPlease send your payment for the 2026 Footy Tipping to:\n\nBSB: 193-879\nAccount: 472 563 434\nName: Paddy Gallivan Footy Tipping\n\nUse your name as the payment reference.\n\nThanks!';
+
+        unpaid.forEach(item => {
+            const mailto = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            // Open one email as example
+            if (unpaid.indexOf(item) === 0) {
+                window.open(mailto);
+                return;
+            }
+        });
+
+        showToast('Email template opened. Send individually for each tipper.');
+    }
+
+    function initAccount() {
+        const email = getCurrentUser();
+        if (email) {
+            const accounts = getAccounts();
+            if (accounts[email]) {
+                renderAccountDashboard();
+                return;
+            }
+        }
+        // Not logged in — show auth form
+        document.getElementById('authView').style.display = 'block';
+        document.getElementById('dashView').style.display = 'none';
+    }
+
+    // ========== INIT ==========
+    window.addEventListener('DOMContentLoaded', () => {
+        // Restore dark mode preference
+        try { if (localStorage.getItem('darkMode') === '1') toggleDarkMode(); } catch(e) {}
+
+        renderWeekly(espnWeeklyData);
+        renderStreak(espnStreakData);
+        renderSupercoach(supercoachTeams);
+        renderFixtures(round3Fixtures, 'fixturesBody', false);
+        renderFixtures(round2Results, 'r2ResultsBody', true);
+        renderPayments();
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Auto-refresh live scores every 2 minutes
+        refreshLiveScores();
+        setInterval(refreshLiveScores, 120000);
+
+        // Fetch AFL Ladder on load
+        fetchAFLLadder();
+        updatePrizeTotal();
+        updateLeaderCards();
+        updateFamilyRivalry();
+        updateFunAwards();
+        updateFormGuide();
+
+        // Fetch live Long Range data
+        fetchLongRangeLive();
+
+        // Init account system
+        initAccount();
+    });
+    </script>
+<footer style="text-align:center;padding:20px;color:#888;font-size:12px;">© 2026 10 16 Pty Ltd. All rights reserved.</footer>
+</body>
+</html>
