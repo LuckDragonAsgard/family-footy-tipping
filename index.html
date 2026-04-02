@@ -1166,6 +1166,19 @@
                 <div id="r2ResultsBody"></div>
             </div>
 
+            <!-- WALL OF SHAME — WHO HASN'T PAID -->
+            <div class="fixtures-section" style="margin-top:1.5rem;">
+                <div class="fixtures-header" style="background: linear-gradient(135deg, #8B0000 0%, #5C0000 100%);">
+                    <h2>Wall of Shame</h2>
+                    <span class="round-badge" id="shameBadge">Pay up!</span>
+                </div>
+                <div id="shameContent" style="padding:1rem;">
+                    <p style="text-align:center;font-size:0.9rem;color:var(--text-light);margin-bottom:1rem">These legends still owe money. You know what to do.</p>
+                    <div id="shameList" style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;"></div>
+                    <div id="shameTotal" style="text-align:center;margin-top:1rem;font-weight:600;color:var(--text-light);font-size:0.85rem"></div>
+                </div>
+            </div>
+
             <!-- FAMILY RIVALRY -->
             <div class="fixtures-section" style="margin-top:1.5rem;">
                 <div class="fixtures-header" style="background: linear-gradient(135deg, #B8860B 0%, #8B6914 100%);">
@@ -1436,7 +1449,7 @@
                     <div class="prize-card" style="border-left:4px solid var(--gold)">
                         <div class="comp-name">Total Expected</div>
                         <div class="prize-amount" id="expectedAmt">$0</div>
-                        <div class="prize-detail">prize pool (excl. 10% slush fund)</div>
+                        <div class="prize-detail">prize pool (excl. 20% slush fund)</div>
                     </div>
                     <div class="prize-card" style="border-left:4px solid #17a2b8">
                         <div class="comp-name">Paid Up</div>
@@ -1860,8 +1873,8 @@
                 <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:1rem">Percentage of total entry fees set aside for the end-of-season event. Prize pool = remaining amount.</p>
                 <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
                     <label style="font-weight:600;color:var(--text-dark)">Slush Fund %:</label>
-                    <input type="range" id="slushSlider" min="0" max="25" step="1" value="10" oninput="updateSlushFromSlider()" style="flex:1;min-width:150px">
-                    <span id="slushPctDisplay" style="font-size:1.3rem;font-weight:700;color:var(--gold);min-width:50px">10%</span>
+                    <input type="range" id="slushSlider" min="0" max="25" step="1" value="20" oninput="updateSlushFromSlider()" style="flex:1;min-width:150px">
+                    <span id="slushPctDisplay" style="font-size:1.3rem;font-weight:700;color:var(--gold);min-width:50px">20%</span>
                 </div>
                 <div style="display:flex;gap:1.5rem;margin-top:1rem">
                     <div style="text-align:center;flex:1;padding:0.75rem;background:var(--bg);border-radius:8px">
@@ -2656,6 +2669,63 @@
         }
     }
 
+    // ========== WALL OF SHAME ==========
+    function updateWallOfShame() {
+        const container = document.getElementById('shameList');
+        const badge = document.getElementById('shameBadge');
+        const totalEl = document.getElementById('shameTotal');
+        if (!container) return;
+
+        const unpaid = [];
+        const weeklyNames = new Set(espnWeeklyData.map(e => e.name));
+        const lrNames = new Set(longRangeData.map(e => e.name));
+
+        Object.keys(paymentRecords).forEach(name => {
+            const rec = paymentRecords[name];
+            if (!rec) return;
+            // Skip entries that are "covered" by someone else
+            if (rec.note && rec.note.includes('Covered')) return;
+            // Skip Paddy (organiser)
+            if (name === 'Paddy Gallivan') return;
+
+            let owed = 0;
+            if (rec.comps.W) owed += 25;
+            if (rec.comps.LR) owed += 15;
+            if (rec.comps.S) owed += 10;
+            if (rec.comps.SC) owed += 30;
+
+            const paid = rec.paid || 0;
+            if (paid < owed) {
+                const outstanding = owed - paid;
+                // Use real name from note if available
+                let displayName = name;
+                if (rec.note) {
+                    const realMatch = rec.note.match(/^([A-Z][a-z]+ [A-Z][a-z]+)/);
+                    if (realMatch && !name.includes(' ')) displayName = realMatch[1];
+                }
+                unpaid.push({ name: displayName, outstanding, paid, owed });
+            }
+        });
+
+        unpaid.sort((a, b) => b.outstanding - a.outstanding);
+        const totalOutstanding = unpaid.reduce((sum, u) => sum + u.outstanding, 0);
+
+        if (unpaid.length === 0) {
+            container.innerHTML = '<div style="padding:1rem;text-align:center;color:var(--green);font-weight:600">Everyone has paid! Legend status achieved.</div>';
+            badge.textContent = 'All clear!';
+        } else {
+            container.innerHTML = unpaid.map(u => {
+                const paidSome = u.paid > 0;
+                return `<div style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.85rem;background:${paidSome ? 'rgba(255,193,7,0.12)' : 'rgba(220,53,69,0.1)'};border:1px solid ${paidSome ? 'rgba(255,193,7,0.3)' : 'rgba(220,53,69,0.25)'};border-radius:20px;font-size:0.85rem">
+                    <span style="font-weight:600">${u.name}</span>
+                    <span style="color:${paidSome ? '#ffc107' : '#dc3545'};font-weight:700;font-size:0.8rem">$${u.outstanding}</span>
+                </div>`;
+            }).join('');
+            badge.textContent = unpaid.length + ' owe money';
+            totalEl.textContent = '$' + totalOutstanding + ' total outstanding from ' + unpaid.length + ' people';
+        }
+    }
+
     // ========== FAMILY RIVALRY ==========
     function updateFamilyRivalry() {
         const gallivanNames = ['gallivan', 'rooney', 'caddeo', 'chan', 'jones', 'hogan'];
@@ -2665,7 +2735,7 @@
 
         espnWeeklyData.forEach(e => {
             const lower = e.name.toLowerCase();
-            const isG = gallivanNames.some(n => lower.includes(n)) || ['paddy gallivan','aeneas gallivan','john gallivan','kelly gallivan','living in hope','profugus fato jpg driven by fate','lady latte','marie swmbo lady gallivan','our own mcg','georgia jones','liz hogan','kerane','bexy05','jacky rooney','astrid caddeo','madeleineC','mark my words'].some(n => lower === n.toLowerCase());
+            const isG = gallivanNames.some(n => lower.includes(n)) || ['paddy gallivan','aeneas gallivan','john gallivan','kelly gallivan','living in hope','profugus fato jpg driven by fate','lady latte','marie swmbo lady gallivan','our own mcg','georgia jones','liz hogan','kerane','bexy05','jacky rooney','astrid caddeo','madeleinec','mark my words','michelle','richard worrow','r hynes'].some(n => lower === n);
             const isW = !isG && (walshNames.some(n => lower.includes(n)) || ['( dirty ) harry ~ the dog','mr. schadenfreude','johnno58','sparkenators','cohagensair','terrol gulden'].some(n => lower === n.toLowerCase()));
 
             const numRounds = e.rounds ? e.rounds.length : 0;
@@ -3489,7 +3559,7 @@
     // ========== SLUSH FUND ADMIN ==========
     function getSlushPct() {
         const saved = localStorage.getItem('ftp_slush_pct');
-        return saved !== null ? parseInt(saved) : 10;
+        return saved !== null ? parseInt(saved) : 20;
     }
 
     function updateSlushFromSlider() {
@@ -3641,6 +3711,7 @@
         fetchAFLLadder();
         updatePrizeTotal();
         updateLeaderCards();
+        updateWallOfShame();
         updateFamilyRivalry();
         updateFunAwards();
         updateFormGuide();
