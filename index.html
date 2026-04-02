@@ -1108,6 +1108,7 @@
                     </div>
                     <div class="hero-title">GWB Family &amp; Friends</div>
                     <div class="hero-subtitle">Footy Tipping 2026 &mdash; 60+ tippers, 4 comps, 1 family</div>
+                    <div id="dataTimestamp" style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:0.25rem;"></div>
                     <div class="hero-stats">
                         <div class="hero-stat"><div class="hs-num">50</div><div class="hs-label">Weekly</div></div>
                         <div class="hero-stat"><div class="hs-num" id="streakCount">50</div><div class="hs-label">Streak</div></div>
@@ -1132,8 +1133,8 @@
                 </a>
                 <a class="leader-card" href="javascript:void(0)" onclick="switchSection('streak')">
                     <h3>Streak</h3>
-                    <div class="name">50 tipsters tracking</div>
-                    <div class="score">Streaks begin Round 3</div>
+                    <div class="name" id="streakLeaderName">17 registered tippers</div>
+                    <div class="score" id="streakLeaderScore">Streaks begin Round 3</div>
                 </a>
                 <a class="leader-card" href="javascript:void(0)" onclick="switchSection('longrange')">
                     <h3>Long Range</h3>
@@ -1956,8 +1957,32 @@
         {rank:50, name:"Chris Hogan", rounds:[2,6,3], margin:106, total:11}
     ];
 
-    // ESPN Streak comp — 20 tippers (live from ESPN footytips, after Round 2)
-    const espnStreakData = [
+    // ESPN Streak comp — registered tippers only (from Google Sheet registration)
+    // Map ESPN display names → real names for registered streak tippers
+    const streakNameMap = {
+        "Richard Worrow": "Richard Worrow",
+        "MATTWALSH1": "Matt Walsh",
+        "Marie SWMBO Lady Gallivan": "Marie Gallivan",
+        "Profugus Fato JPG driven by fate": "Joe Gallivan",
+        "Aeneas Gallivan": "Aeneas Gallivan",
+        "John Gallivan": "John Gallivan",
+        "Big Pat Walsh": "Patrick Walsh",
+        "Miles Walsh": "Miles Walsh",
+        "Dom Buckley": "Dom Buckley",
+        "Michelle": "Michelle Chan",
+        "jameswalsh": "James Walsh",
+        "Paddy Gallivan": "Paddy Gallivan",
+        "Donza08": "Donna Schilov",
+        "Monica Gallivan": "Monica Gallivan",
+        "Alex Walsh": "Alex Walsh",
+        "Joe Johnson": "Joe Johnson",
+        "Mary Gallivan": "Mary Gallivan"
+    };
+    // Only these 17 unique people are registered for streak
+    const STREAK_REGISTERED = new Set(Object.values(streakNameMap));
+
+    // Raw ESPN data (auto-updated by scheduled task)
+    const espnStreakRaw = [
         {name:"Richard Worrow", avg:4, longest:6, current:6},
         {name:"John Leddin", avg:5, longest:5, current:5},
         {name:"MATTWALSH1", avg:3, longest:5, current:5},
@@ -1979,6 +2004,21 @@
         {name:"Paddy Gallivan", avg:1, longest:2, current:1},
         {name:"Donza08", avg:2, longest:3, current:0}
     ];
+
+    // Filter to only registered tippers, map to real names, add missing registrants
+    function getFilteredStreakData() {
+        const filtered = espnStreakRaw
+            .filter(e => streakNameMap[e.name])
+            .map(e => ({...e, name: streakNameMap[e.name]}));
+        // Add registered tippers not yet on ESPN (show as 0s)
+        for (const realName of STREAK_REGISTERED) {
+            if (!filtered.find(f => f.name === realName)) {
+                filtered.push({name: realName, avg: 0, longest: 0, current: 0});
+            }
+        }
+        return filtered;
+    }
+    const espnStreakData = getFilteredStreakData();
 
     // Fallback Long Range data (will be replaced by live Google Sheet fetch)
     let longRangeData = [
@@ -2192,8 +2232,8 @@
     }
 
     function renderStreak(data) {
-        // espnStreakData is the actual ESPN streak comp — already the correct 20 tippers
-        const sorted = [...espnStreakData].sort((a, b) => b.current - a.current || b.longest - a.longest || b.avg - a.avg);
+        // Filter to registered streak tippers only, mapped to real names
+        const sorted = [...data].sort((a, b) => b.current - a.current || b.longest - a.longest || b.avg - a.avg);
         const tbody = document.getElementById('streakBody');
         tbody.innerHTML = sorted.map((entry, i) => {
             let cls = entry.name === 'Paddy Gallivan' ? 'highlight-row' : '';
@@ -2497,10 +2537,72 @@
         return result;
     }
 
+    // ========== LIVE DATA FETCH (auto-refresh from data.json) ==========
+    let lastDataUpdate = null;
+
+    async function fetchLiveData() {
+        try {
+            // Fetch data.json from same directory (GitHub Pages or local)
+            const cacheBust = '?t=' + Date.now();
+            const resp = await fetch('data.json' + cacheBust);
+            if (!resp.ok) throw new Error('data.json not found');
+            const data = await resp.json();
+
+            // Update weekly data if present
+            if (data.weekly && data.weekly.length > 0) {
+                espnWeeklyData.length = 0;
+                data.weekly.forEach(d => espnWeeklyData.push(d));
+                if (data.weeklyRoundLabels) {
+                    espnWeeklyRoundLabels.length = 0;
+                    data.weeklyRoundLabels.forEach(l => espnWeeklyRoundLabels.push(l));
+                }
+                renderWeekly(espnWeeklyData);
+            }
+
+            // Update streak data if present
+            if (data.streak && data.streak.length > 0) {
+                espnStreakRaw.length = 0;
+                data.streak.forEach(d => espnStreakRaw.push(d));
+                // Re-filter to registered tippers
+                const freshStreak = getFilteredStreakData();
+                espnStreakData.length = 0;
+                freshStreak.forEach(d => espnStreakData.push(d));
+                renderStreak(espnStreakData);
+            }
+
+            // Update timestamp
+            if (data.lastUpdated) {
+                lastDataUpdate = new Date(data.lastUpdated);
+                updateDataTimestamp();
+            }
+
+            updatePrizeTotal();
+            updateLeaderCards();
+            console.log('Live data refreshed:', new Date().toLocaleTimeString());
+        } catch (e) {
+            console.log('data.json fetch skipped (using embedded data):', e.message);
+        }
+    }
+
+    function updateDataTimestamp() {
+        const el = document.getElementById('dataTimestamp');
+        if (el && lastDataUpdate) {
+            const now = new Date();
+            const diff = Math.floor((now - lastDataUpdate) / 60000);
+            let ago;
+            if (diff < 1) ago = 'just now';
+            else if (diff < 60) ago = diff + ' min ago';
+            else if (diff < 1440) ago = Math.floor(diff / 60) + 'h ago';
+            else ago = Math.floor(diff / 1440) + 'd ago';
+            el.textContent = 'Data updated ' + ago;
+            el.title = 'Last updated: ' + lastDataUpdate.toLocaleString();
+        }
+    }
+
     // ========== PRIZE POOL ==========
     function updatePrizeTotal() {
         const wCount = espnWeeklyData.length;
-        const sCount = espnStreakData.length;
+        const sCount = STREAK_REGISTERED.size;
         const lrCount = longRangeData.length;
         const scCount = supercoachTeams.length;
         const weekly = wCount * 25;
@@ -3545,6 +3647,17 @@
 
         // Fetch live Long Range data
         fetchLongRangeLive();
+
+        // Fetch live data from data.json (auto-updates weekly & streak)
+        fetchLiveData();
+        // Auto-refresh all live data every 5 minutes
+        setInterval(() => {
+            fetchLiveData();
+            fetchLongRangeLive();
+            updateDataTimestamp();
+        }, 300000);
+        // Update relative timestamp every minute
+        setInterval(updateDataTimestamp, 60000);
 
         // Init account system
         initAccount();
