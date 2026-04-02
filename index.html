@@ -1403,8 +1403,8 @@
                     </div>
                     <div class="prize-card">
                         <div class="comp-name">Streak</div>
-                        <div class="prize-amount">$200</div>
-                        <div class="prize-detail">20 x $10</div>
+                        <div class="prize-amount">$170</div>
+                        <div class="prize-detail">17 x $10</div>
                     </div>
                     <div class="prize-card">
                         <div class="comp-name">Supercoach</div>
@@ -1412,7 +1412,7 @@
                         <div class="prize-detail">18 x $30</div>
                     </div>
                     <div class="prize-card" style="border-left:4px solid #17a2b8">
-                        <div class="comp-name">Slush Fund (10%)</div>
+                        <div class="comp-name">Slush Fund (20%)</div>
                         <div class="prize-amount" style="color:#17a2b8" id="slushAmt">$0</div>
                         <div class="prize-detail">End of season party</div>
                     </div>
@@ -2092,13 +2092,13 @@
     ];
 
     const round2Results = [
-        { hteam: "Hawthorn", ateam: "Sydney", venue: "MCG", hscore: 99, ascore: 82, complete: 100 },
-        { hteam: "Adelaide", ateam: "Western Bulldogs", venue: "Adelaide Oval", hscore: 88, ascore: 94, complete: 100 },
-        { hteam: "Richmond", ateam: "Gold Coast", venue: "MCG", hscore: 60, ascore: 128, complete: 100 },
-        { hteam: "GWS", ateam: "St Kilda", venue: "Showground", hscore: 74, ascore: 78, complete: 100 },
-        { hteam: "Fremantle", ateam: "Melbourne", venue: "Perth Stadium", hscore: 118, ascore: 70, complete: 100 },
-        { hteam: "Port Adelaide", ateam: "Essendon", venue: "Adelaide Oval", hscore: 133, ascore: 70, complete: 100 },
-        { hteam: "West Coast", ateam: "North Melbourne", venue: "Perth Stadium", hscore: 111, ascore: 94, complete: 100 }
+        { hteam: "Hawthorn", ateam: "Sydney", venue: "MCG", date: "2026-03-19 19:30:00", hscore: 99, ascore: 82, complete: 100 },
+        { hteam: "Adelaide", ateam: "Western Bulldogs", venue: "Adelaide Oval", date: "2026-03-20 19:10:00", hscore: 88, ascore: 94, complete: 100 },
+        { hteam: "Richmond", ateam: "Gold Coast", venue: "MCG", date: "2026-03-21 13:45:00", hscore: 60, ascore: 128, complete: 100 },
+        { hteam: "GWS", ateam: "St Kilda", venue: "Showground", date: "2026-03-21 16:05:00", hscore: 74, ascore: 78, complete: 100 },
+        { hteam: "Fremantle", ateam: "Melbourne", venue: "Perth Stadium", date: "2026-03-21 18:10:00", hscore: 118, ascore: 70, complete: 100 },
+        { hteam: "Port Adelaide", ateam: "Essendon", venue: "Adelaide Oval", date: "2026-03-22 13:10:00", hscore: 133, ascore: 70, complete: 100 },
+        { hteam: "West Coast", ateam: "North Melbourne", venue: "Perth Stadium", date: "2026-03-22 16:10:00", hscore: 111, ascore: 94, complete: 100 }
     ];
 
     // ========== LONG RANGE SHEET ID ==========
@@ -3694,33 +3694,36 @@
         // Restore dark mode preference
         try { if (localStorage.getItem('darkMode') === '1') toggleDarkMode(); } catch(e) {}
 
-        renderWeekly(espnWeeklyData);
-        renderStreak(espnStreakData);
-        renderSupercoach(supercoachTeams);
-        renderFixtures(round3Fixtures, 'fixturesBody', false);
-        renderFixtures(round2Results, 'r2ResultsBody', true);
-        renderPayments();
-        updateCountdown();
+        // Wrap each init call in try-catch so one failure doesn't block everything
+        const safeCall = (fn, ...args) => { try { fn(...args); } catch(e) { console.error('Init error in ' + fn.name + ':', e); } };
+
+        safeCall(renderWeekly, espnWeeklyData);
+        safeCall(renderStreak, espnStreakData);
+        safeCall(renderSupercoach, supercoachTeams);
+        safeCall(renderFixtures, round3Fixtures, 'fixturesBody', false);
+        safeCall(renderFixtures, round2Results, 'r2ResultsBody', true);
+        safeCall(renderPayments);
+        safeCall(updateCountdown);
         setInterval(updateCountdown, 60000);
 
         // Auto-refresh live scores every 2 minutes
-        refreshLiveScores();
+        safeCall(refreshLiveScores);
         setInterval(refreshLiveScores, 120000);
 
         // Fetch AFL Ladder on load
-        fetchAFLLadder();
-        updatePrizeTotal();
-        updateLeaderCards();
-        updateWallOfShame();
-        updateFamilyRivalry();
-        updateFunAwards();
-        updateFormGuide();
+        safeCall(fetchAFLLadder);
+        safeCall(updatePrizeTotal);
+        safeCall(updateLeaderCards);
+        safeCall(updateWallOfShame);
+        safeCall(updateFamilyRivalry);
+        safeCall(updateFunAwards);
+        safeCall(updateFormGuide);
 
         // Fetch live Long Range data
-        fetchLongRangeLive();
+        safeCall(fetchLongRangeLive);
 
         // Fetch live data from data.json (auto-updates weekly & streak)
-        fetchLiveData();
+        safeCall(fetchLiveData);
         // Auto-refresh all live data every 5 minutes
         setInterval(() => {
             fetchLiveData();
@@ -3731,7 +3734,7 @@
         setInterval(updateDataTimestamp, 60000);
 
         // Init account system
-        initAccount();
+        safeCall(initAccount);
     });
     </script>
 <footer style="text-align:center;padding:20px;color:#888;font-size:12px;">© 2026 10 16 Pty Ltd. All rights reserved.</footer>
