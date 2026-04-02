@@ -2173,9 +2173,9 @@
     function renderFixtures(fixtures, containerId, showScores) {
         const container = document.getElementById(containerId);
         container.innerHTML = fixtures.map(g => {
-            const gameDate = new Date(g.date.replace(' ', 'T') + '+11:00');
-            const dayStr = gameDate.toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' });
-            const timeStr = gameDate.toLocaleTimeString('en-AU', { hour: 'numeric', minute: '2-digit' });
+            const gameDate = g.date ? new Date(g.date.replace(' ', 'T') + '+11:00') : null;
+            const dayStr = gameDate ? gameDate.toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' }) : '';
+            const timeStr = gameDate ? gameDate.toLocaleTimeString('en-AU', { hour: 'numeric', minute: '2-digit' }) : '';
 
             let centerContent = '';
             if (g.complete === 100) {
