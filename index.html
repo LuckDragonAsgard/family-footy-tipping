@@ -1352,12 +1352,12 @@
                 <div class="prize-grid">
                     <div class="prize-card" style="border-left:4px solid #28a745">
                         <div class="comp-name">Collected</div>
-                        <div class="prize-amount" style="color:#28a745" id="collectedAmt">$1,970</div>
+                        <div class="prize-amount" style="color:#28a745" id="collectedAmt">$2,075</div>
                         <div class="prize-detail" id="collectedDetail">from bank statement</div>
                     </div>
                     <div class="prize-card" style="border-left:4px solid #dc3545">
                         <div class="comp-name">Outstanding</div>
-                        <div class="prize-amount" style="color:#dc3545" id="outstandingAmt">$665</div>
+                        <div class="prize-amount" style="color:#dc3545" id="outstandingAmt">$50</div>
                         <div class="prize-detail" id="outstandingDetail">still to collect</div>
                     </div>
                     <div class="prize-card" style="border-left:4px solid var(--gold)">
@@ -1406,7 +1406,7 @@
                 </table>
                 </div>
                 <div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-light);padding:0 0.5rem">
-                    Last updated: 26 Mar 2026. Balance: $2,375 ($1,970 + Paddy $405). Outstanding: $155 (5 unpaid)
+                    Last updated: 7 Apr 2026. Balance: $2,480 ($2,075 + Paddy $405). Outstanding: $50 (2 unpaid)
                 </div>
             </div>
         </section>
@@ -2066,8 +2066,8 @@
         "MadeleineC": { paid: 50, comps: {W:true}, note: "Madeleine Johnson. Madeleine & Jaye $50" },
         "Sparkenators": { paid: 0, comps: {W:true}, note: "Jaye Clark - Covered by Madeleine & Jaye $50" },
         "Johnno58": { paid: 0, comps: {W:true}, note: "Paul Johnson - Covered by Marg B & Paul J $65" },
-        "( Dirty ) Harry ~ The Dog": { paid: 0, comps: {W:true}, note: "Harry Johnson (Phillip's dad) - UNPAID" },
-        "Mr. Schadenfreude": { paid: 0, comps: {W:true, SC:true}, note: "Rohan Johnson. W + SC (Rohan's Henchmen) - UNPAID" },
+        "( Dirty ) Harry ~ The Dog": { paid: 25, comps: {W:true}, note: "Harry Johnson (Phillip's dad). Harry And Doras $50 covers Harry + Phillip" },
+        "Mr. Schadenfreude": { paid: 55, comps: {W:true, SC:true}, note: "Rohan Johnson. W + SC (Rohan's Henchmen). Paid 27/03" },
         "Dom Buckley": { paid: 50, comps: {W:true, S:true, LR:true}, note: "Via Marghanita Johnson" },
         // Thomas Johnson = Terrol Gulden (duplicate removed)
         // === WALSH BROTHERS (Pat, Bernard, Phil, Mark) ===
@@ -2120,7 +2120,7 @@
         "Astrid Caddeo": { paid: 40, comps: {W:true, LR:true} },
         "Richard Worrow": { paid: 35, comps: {W:true, S:true} },
         // Rohan Johnson covered by Mr. Schadenfreude entry (W+SC)
-        "Phillip Johnson": { paid: 0, comps: {W:true}, note: "Form: W only - UNPAID" },
+        "Phillip Johnson": { paid: 25, comps: {W:true}, note: "Form: W only. Covered by Harry And Doras $50" },
         "Felix Johnson": { paid: 0, comps: {W:true}, note: "Form: W only - UNPAID" },
         "Lyn Walsh": { paid: 0, comps: {W:true}, note: "Form: W only. Covered by Bernard BCW+LVW $65" },
         "Sandra Walsh": { paid: 0, comps: {LR:true}, note: "Form: LR only. Covered by Phil & Sandra $55" },
@@ -2202,7 +2202,7 @@
         tbody.innerHTML = rows.join('');
 
         // Update collection stats
-        const collected = 2375; // $1,970 balance + Paddy $405 incoming
+        const collected = 2480; // $2,075 balance + Paddy $405
         const expected = totalOwed;
         const outstanding = expected - collected;
         const totalPeople = paidCount + partialCount + unpaidCount;
