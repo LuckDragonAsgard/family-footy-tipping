@@ -3261,13 +3261,13 @@
     const SUPABASE_URL = 'https://oaucfjiairycnzyqvuty.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hdWNmamlhaXJ5Y256eXF2dXR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NjYyMjYsImV4cCI6MjA5MDA0MjIyNn0.-24bC0QmYtTZXYwIW7SrqceEOuVnoLHSsgT8AIWmOYU';
     // COMP_COSTS already declared above
-    let supabase;
+    let sbClient;
 
     function initSupabase() {
-        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Listen for auth state changes
-        supabase.auth.onAuthStateChange((event, session) => {
+        sbClient.auth.onAuthStateChange((event, session) => {
             if (session) {
                 loadAccountDashboard();
             }
@@ -3306,7 +3306,7 @@
         }
 
         try {
-            const { data, error } = await supabase.auth.signInWithPassword({
+            const { data, error } = await sbClient.auth.signInWithPassword({
                 email,
                 password
             });
@@ -3345,7 +3345,7 @@
 
         try {
             // Sign up
-            const { data: authData, error: authError } = await supabase.auth.signUp({
+            const { data: authData, error: authError } = await sbClient.auth.signUp({
                 email,
                 password
             });
@@ -3358,7 +3358,7 @@
             const userId = authData.user.id;
 
             // Upsert tippers record
-            const { error: dbError } = await supabase
+            const { error: dbError } = await sbClient
                 .from('tippers')
                 .upsert({
                     user_id: userId,
@@ -3387,7 +3387,7 @@
 
     async function doLogout() {
         try {
-            await supabase.auth.signOut();
+            await sbClient.auth.signOut();
             showToast('Logged out');
             await initAuth();
         } catch (e) {
@@ -3398,7 +3398,7 @@
 
     async function loadAccountDashboard() {
         try {
-            const { data: { user } } = await supabase.auth.getUser();
+            const { data: { user } } = await sbClient.auth.getUser();
 
             if (!user) {
                 document.getElementById('authFormsContainer').style.display = 'block';
@@ -3407,7 +3407,7 @@
             }
 
             // Fetch tipper record
-            const { data: tipper, error } = await supabase
+            const { data: tipper, error } = await sbClient
                 .from('tippers')
                 .select('*')
                 .eq('user_id', user.id)
@@ -3429,7 +3429,7 @@
             if (tipper.comps.SC) expectedFee += 30;
 
             // Fetch payments
-            const { data: payments } = await supabase
+            const { data: payments } = await sbClient
                 .from('payments')
                 .select('*')
                 .eq('tipper_id', tipper.id);
@@ -3503,7 +3503,7 @@
 
     async function loadDependants(tipperId) {
         try {
-            const { data: dependants } = await supabase
+            const { data: dependants } = await sbClient
                 .from('dependants')
                 .select('*')
                 .eq('parent_tipper_id', tipperId);
@@ -3548,8 +3548,8 @@
         }
 
         try {
-            const { data: { user } } = await supabase.auth.getUser();
-            const { data: tipper } = await supabase
+            const { data: { user } } = await sbClient.auth.getUser();
+            const { data: tipper } = await sbClient
                 .from('tippers')
                 .select('id')
                 .eq('user_id', user.id)
@@ -3562,7 +3562,7 @@
                 SC: document.getElementById('newDepSC').checked
             };
 
-            const { error } = await supabase
+            const { error } = await sbClient
                 .from('dependants')
                 .insert({
                     parent_tipper_id: tipper.id,
@@ -3590,7 +3590,7 @@
         if (!confirm('Remove this family member?')) return;
 
         try {
-            const { error } = await supabase
+            const { error } = await sbClient
                 .from('dependants')
                 .delete()
                 .eq('id', depId);
@@ -3601,8 +3601,8 @@
             }
 
             showToast('Family member removed');
-            const { data: { user } } = await supabase.auth.getUser();
-            const { data: tipper } = await supabase
+            const { data: { user } } = await sbClient.auth.getUser();
+            const { data: tipper } = await sbClient
                 .from('tippers')
                 .select('id')
                 .eq('user_id', user.id)
@@ -3616,7 +3616,7 @@
 
     async function initAuth() {
         try {
-            const { data: { session } } = await supabase.auth.getSession();
+            const { data: { session } } = await sbClient.auth.getSession();
 
             if (session) {
                 switchSection('account');
