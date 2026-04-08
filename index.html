@@ -8,6 +8,13 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>Family & Friends Footy Tipping 2026</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e3a5f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Footy Tips">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
     <script>
     // Auto-refresh: check for new version every 5 minutes
     (function(){
@@ -1072,6 +1079,15 @@
                         <a class="hero-btn hero-btn-secondary" href="https://footytips.espn.com.au/" target="_blank">Enter Tips on ESPN</a>
                         <button class="hero-btn hero-btn-secondary" onclick="switchSection('account')" style="cursor:pointer;border:none;background:rgba(218,165,32,0.15);color:var(--gold)">My Account</button>
                     </div>
+                </div>
+            </div>
+
+            <!-- ADD TO HOME SCREEN BANNER -->
+            <div id="installBanner" style="display:none;margin:1rem 0;padding:0.75rem 1rem;background:linear-gradient(135deg,rgba(218,165,32,0.15),rgba(218,165,32,0.05));border:1px solid rgba(218,165,32,0.3);border-radius:12px;text-align:center;position:relative">
+                <button onclick="this.parentElement.style.display='none';localStorage.setItem('ftp_install_dismissed','1')" style="position:absolute;top:0.5rem;right:0.75rem;background:none;border:none;color:var(--text-light);cursor:pointer;font-size:1.2rem">&times;</button>
+                <div style="font-weight:600;color:var(--gold);margin-bottom:0.25rem">Save to Home Screen</div>
+                <div style="font-size:0.85rem;color:var(--text-light)">
+                    <span id="installInstructions">Tap <strong>Share</strong> then <strong>Add to Home Screen</strong> to use this like an app</span>
                 </div>
             </div>
 
@@ -3724,6 +3740,44 @@
         }, 300000);
         // Update relative timestamp every minute
         setInterval(updateDataTimestamp, 60000);
+
+        // PWA Install prompt
+        safeCall(function initInstallBanner() {
+            const banner = document.getElementById('installBanner');
+            if (!banner) return;
+            // Don't show if dismissed or already installed as PWA
+            if (localStorage.getItem('ftp_install_dismissed') === '1') return;
+            if (window.matchMedia('(display-mode: standalone)').matches) return;
+            if (window.navigator.standalone === true) return;
+
+            const ua = navigator.userAgent.toLowerCase();
+            const isIOS = /iphone|ipad|ipod/.test(ua);
+            const isAndroid = /android/.test(ua);
+            const isMobile = isIOS || isAndroid;
+
+            if (!isMobile) return; // Only show on mobile
+
+            if (isIOS) {
+                document.getElementById('installInstructions').innerHTML =
+                    'Tap <strong>Share</strong> <span style="font-size:1.1em">&#x2934;</span> then <strong>"Add to Home Screen"</strong>';
+            } else {
+                document.getElementById('installInstructions').innerHTML =
+                    'Tap the <strong>menu &#x22EE;</strong> then <strong>"Add to Home Screen"</strong>';
+            }
+            banner.style.display = 'block';
+
+            // Chrome/Android beforeinstallprompt
+            window.addEventListener('beforeinstallprompt', function(e) {
+                e.preventDefault();
+                banner.innerHTML = '<div style="font-weight:600;color:var(--gold);margin-bottom:0.5rem">Install Footy Tips</div>' +
+                    '<button id="installBtn" style="padding:0.5rem 1.5rem;background:var(--gold);color:var(--dark);border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem">Add to Home Screen</button>';
+                banner.style.display = 'block';
+                document.getElementById('installBtn').addEventListener('click', function() {
+                    e.prompt();
+                    e.userChoice.then(function() { banner.style.display = 'none'; });
+                });
+            });
+        });
     });
     </script>
 <footer style="text-align:center;padding:20px;color:#888;font-size:12px;">© 2026 10 16 Pty Ltd. All rights reserved.</footer>
