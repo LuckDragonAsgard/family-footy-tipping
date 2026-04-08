@@ -1100,22 +1100,31 @@
                 </a>
             </div>
 
-            <!-- ROUND 3 FIXTURES -->
+            <!-- ROUND 5 FIXTURES (GATHER ROUND) -->
             <div class="fixtures-section">
                 <div class="fixtures-header">
-                    <h2>Round 3 Fixtures</h2>
+                    <h2>Round 5 Fixtures — Gather Round</h2>
                     <span class="round-badge" id="fixtureStatus">This Week</span>
                 </div>
                 <div id="fixturesBody"></div>
             </div>
 
-            <!-- ROUND 2 RESULTS -->
+            <!-- ROUND 4 RESULTS -->
             <div class="fixtures-section" style="margin-top:1rem;">
                 <div class="fixtures-header" style="background: linear-gradient(135deg, #2d5016 0%, #1a3a0a 100%);">
-                    <h2>Round 2 Results</h2>
+                    <h2>Round 4 Results</h2>
                     <span class="round-badge">Complete</span>
                 </div>
-                <div id="r2ResultsBody"></div>
+                <div id="r4ResultsBody"></div>
+            </div>
+
+            <!-- ROUND 3 RESULTS -->
+            <div class="fixtures-section" style="margin-top:1rem;">
+                <div class="fixtures-header" style="background: linear-gradient(135deg, #2d5016 0%, #1a3a0a 100%);">
+                    <h2>Round 3 Results</h2>
+                    <span class="round-badge">Complete</span>
+                </div>
+                <div id="r3ResultsBody"></div>
             </div>
 
             <!-- WALL OF SHAME — WHO HASN'T PAID -->
@@ -1166,7 +1175,7 @@
             <div class="fixtures-section" style="margin-top:1.5rem;">
                 <div class="fixtures-header" style="background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);">
                     <h2>Fun Awards</h2>
-                    <span class="round-badge">After Round 2</span>
+                    <span class="round-badge">After Round 4</span>
                 </div>
                 <div id="funAwards" style="padding:1rem;">
                     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.75rem" id="awardsGrid"></div>
@@ -1231,7 +1240,7 @@
                 <div class="table-header">
                     <h2>Weekly Leaderboard</h2>
                     <input type="text" class="search-box" placeholder="Search tipper..." oninput="filterTable('weeklyBody', this.value)">
-                    <span class="round-badge">After Round 2</span>
+                    <span class="round-badge">After Round 4</span>
                 </div>
                 <div class="table-scroll">
                 <table>
@@ -1522,7 +1531,7 @@
                 <div class="table-header">
                     <h2>AFL Ladder 2026</h2>
                     <button onclick="fetchAFLLadder()" style="background:var(--gold);color:var(--dark);border:none;padding:0.4rem 1rem;border-radius:6px;font-family:'Poppins',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;">Refresh Live</button>
-                    <span class="round-badge" id="ladderBadge">After Round 2</span>
+                    <span class="round-badge" id="ladderBadge">After Round 4</span>
                 </div>
                 <div class="table-scroll">
                 <table>
@@ -1989,24 +1998,37 @@
         { team: "Holy Divers", coach: "Michael", points: "-", avg: "-", last: "-" }
     ];
 
-    const round3Fixtures = [
-        { hteam: "Geelong", ateam: "Adelaide", venue: "Kardinia Park", date: "2026-03-26 19:30:00", hscore: 0, ascore: 0, complete: 0 },
-        { hteam: "Collingwood", ateam: "GWS", venue: "Docklands", date: "2026-03-27 19:40:00", hscore: 0, ascore: 0, complete: 0 },
-        { hteam: "St Kilda", ateam: "Brisbane Lions", venue: "Docklands", date: "2026-03-28 12:35:00", hscore: 0, ascore: 0, complete: 0 },
-        { hteam: "Fremantle", ateam: "Richmond", venue: "Perth Stadium", date: "2026-03-28 13:15:00", hscore: 0, ascore: 0, complete: 0 },
-        { hteam: "Essendon", ateam: "North Melbourne", venue: "Docklands", date: "2026-03-28 19:35:00", hscore: 0, ascore: 0, complete: 0 },
-        { hteam: "Port Adelaide", ateam: "West Coast", venue: "Adelaide Oval", date: "2026-03-29 12:00:00", hscore: 0, ascore: 0, complete: 0 },
-        { hteam: "Carlton", ateam: "Melbourne", venue: "MCG", date: "2026-03-29 15:15:00", hscore: 0, ascore: 0, complete: 0 }
+    const round5Fixtures = [
+        { hteam: "Adelaide", ateam: "Carlton", venue: "Adelaide Oval", date: "2026-04-09 19:10:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Collingwood", ateam: "Fremantle", venue: "Adelaide Oval", date: "2026-04-10 19:10:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "North Melbourne", ateam: "Brisbane Lions", venue: "Barossa Park", date: "2026-04-11 12:05:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Essendon", ateam: "Melbourne", venue: "Adelaide Oval", date: "2026-04-11 12:45:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Sydney", ateam: "Gold Coast", venue: "Norwood Oval", date: "2026-04-11 15:45:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Hawthorn", ateam: "Western Bulldogs", venue: "Adelaide Oval", date: "2026-04-11 19:05:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Geelong", ateam: "West Coast", venue: "Norwood Oval", date: "2026-04-12 12:00:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "GWS", ateam: "Richmond", venue: "Barossa Park", date: "2026-04-12 14:45:00", hscore: 0, ascore: 0, complete: 0 },
+        { hteam: "Port Adelaide", ateam: "St Kilda", venue: "Adelaide Oval", date: "2026-04-12 18:45:00", hscore: 0, ascore: 0, complete: 0 }
     ];
 
-    const round2Results = [
-        { hteam: "Hawthorn", ateam: "Sydney", venue: "MCG", date: "2026-03-19 19:30:00", hscore: 99, ascore: 82, complete: 100 },
-        { hteam: "Adelaide", ateam: "Western Bulldogs", venue: "Adelaide Oval", date: "2026-03-20 19:10:00", hscore: 88, ascore: 94, complete: 100 },
-        { hteam: "Richmond", ateam: "Gold Coast", venue: "MCG", date: "2026-03-21 13:45:00", hscore: 60, ascore: 128, complete: 100 },
-        { hteam: "GWS", ateam: "St Kilda", venue: "Showground", date: "2026-03-21 16:05:00", hscore: 74, ascore: 78, complete: 100 },
-        { hteam: "Fremantle", ateam: "Melbourne", venue: "Perth Stadium", date: "2026-03-21 18:10:00", hscore: 118, ascore: 70, complete: 100 },
-        { hteam: "Port Adelaide", ateam: "Essendon", venue: "Adelaide Oval", date: "2026-03-22 13:10:00", hscore: 133, ascore: 70, complete: 100 },
-        { hteam: "West Coast", ateam: "North Melbourne", venue: "Perth Stadium", date: "2026-03-22 16:10:00", hscore: 111, ascore: 94, complete: 100 }
+    const round4Results = [
+        { hteam: "Brisbane Lions", ateam: "Collingwood", venue: "Gabba", date: "2026-04-02 18:30:00", hscore: 119, ascore: 65, complete: 100 },
+        { hteam: "North Melbourne", ateam: "Carlton", venue: "Docklands", date: "2026-04-03 15:15:00", hscore: 96, ascore: 86, complete: 100 },
+        { hteam: "Adelaide", ateam: "Fremantle", venue: "Adelaide Oval", date: "2026-04-03 18:45:00", hscore: 76, ascore: 78, complete: 100 },
+        { hteam: "Richmond", ateam: "Port Adelaide", venue: "MCG", date: "2026-04-04 16:15:00", hscore: 48, ascore: 90, complete: 100 },
+        { hteam: "West Coast", ateam: "Sydney", venue: "Perth Stadium", date: "2026-04-04 16:35:00", hscore: 35, ascore: 163, complete: 100 },
+        { hteam: "Melbourne", ateam: "Gold Coast", venue: "MCG", date: "2026-04-05 15:15:00", hscore: 109, ascore: 89, complete: 100 },
+        { hteam: "Western Bulldogs", ateam: "Essendon", venue: "Docklands", date: "2026-04-05 19:20:00", hscore: 99, ascore: 65, complete: 100 },
+        { hteam: "Hawthorn", ateam: "Geelong", venue: "MCG", date: "2026-04-06 15:15:00", hscore: 92, ascore: 91, complete: 100 }
+    ];
+
+    const round3Results = [
+        { hteam: "Geelong", ateam: "Adelaide", venue: "Kardinia Park", date: "2026-03-26 19:30:00", hscore: 68, ascore: 60, complete: 100 },
+        { hteam: "Collingwood", ateam: "GWS", venue: "Docklands", date: "2026-03-27 19:40:00", hscore: 87, ascore: 54, complete: 100 },
+        { hteam: "St Kilda", ateam: "Brisbane Lions", venue: "Docklands", date: "2026-03-28 12:35:00", hscore: 80, ascore: 113, complete: 100 },
+        { hteam: "Fremantle", ateam: "Richmond", venue: "Perth Stadium", date: "2026-03-28 13:15:00", hscore: 103, ascore: 43, complete: 100 },
+        { hteam: "Essendon", ateam: "North Melbourne", venue: "Docklands", date: "2026-03-28 19:35:00", hscore: 69, ascore: 81, complete: 100 },
+        { hteam: "Port Adelaide", ateam: "West Coast", venue: "Adelaide Oval", date: "2026-03-29 12:00:00", hscore: 90, ascore: 92, complete: 100 },
+        { hteam: "Carlton", ateam: "Melbourne", venue: "MCG", date: "2026-03-29 15:15:00", hscore: 77, ascore: 100, complete: 100 }
     ];
 
     // ========== LONG RANGE SHEET ID ==========
@@ -2055,7 +2077,7 @@
         const now = new Date();
         // Find next upcoming game
         let nextGame = null;
-        for (const g of round3Fixtures) {
+        for (const g of round5Fixtures) {
             const gameDate = new Date(g.date.replace(' ', 'T') + '+11:00');
             if (gameDate > now) { nextGame = { ...g, gameDate }; break; }
         }
@@ -2844,10 +2866,10 @@
             const data = await resp.json();
             if (data && data.games) {
                 const games = data.games;
-                // Update round3Fixtures with live data
+                // Update round5Fixtures with live data
                 for (let i = 0; i < games.length; i++) {
                     const g = games[i];
-                    const match = round3Fixtures.find(f =>
+                    const match = round5Fixtures.find(f =>
                         f.hteam === g.hteam || f.hteam === (g.hteam === 'Greater Western Sydney' ? 'GWS' : g.hteam)
                     );
                     if (match) {
@@ -2856,11 +2878,11 @@
                         match.complete = g.complete || 0;
                     }
                 }
-                renderFixtures(round3Fixtures, 'fixturesBody', false);
+                renderFixtures(round5Fixtures, 'fixturesBody', false);
 
                 // Update fixture status badge
-                const anyLive = round3Fixtures.some(f => f.complete > 0 && f.complete < 100);
-                const allDone = round3Fixtures.every(f => f.complete === 100);
+                const anyLive = round5Fixtures.some(f => f.complete > 0 && f.complete < 100);
+                const allDone = round5Fixtures.every(f => f.complete === 100);
                 const badge = document.getElementById('fixtureStatus');
                 if (anyLive) badge.textContent = 'LIVE';
                 else if (allDone) badge.textContent = 'Complete';
@@ -3662,8 +3684,9 @@
         safeCall(renderWeekly, espnWeeklyData);
         safeCall(renderStreak, espnStreakData);
         safeCall(renderSupercoach, supercoachTeams);
-        safeCall(renderFixtures, round3Fixtures, 'fixturesBody', false);
-        safeCall(renderFixtures, round2Results, 'r2ResultsBody', true);
+        safeCall(renderFixtures, round5Fixtures, 'fixturesBody', false);
+        safeCall(renderFixtures, round4Results, 'r4ResultsBody', true);
+        safeCall(renderFixtures, round3Results, 'r3ResultsBody', true);
         safeCall(renderPayments);
         safeCall(updateCountdown);
         setInterval(updateCountdown, 60000);
