@@ -74,5 +74,25 @@
     {"name":"Richard Worrow", "avg":2, "longest":7, "current":1},
     {"name":"MATTWALSH1", "avg":2, "longest":6, "current":1},
     {"name":"Michelle", "avg":2, "longest":4, "current":1}
+  ],
+  "supercoach": [
+    {"team": "Bomber Rock", "coach": "Shannon", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Vultures", "coach": "Kevin", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Moyes Like Jagger", "coach": "Stan", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Crisps Bakehouse", "coach": "Natalie", "points": "-", "avg": "-", "last": "-"},
+    {"team": "meow meow", "coach": "Frank", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Mark My Words", "coach": "Mark", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Mr Geelong", "coach": "Martin", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Living in Hope!", "coach": "Mary", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Profugus Fato", "coach": "Joe", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Ken's Kennel", "coach": "Ken", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Terrol Gulden", "coach": "Tom", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Horse Power", "coach": "Julie", "points": "-", "avg": "-", "last": "-"},
+    {"team": "CohagensAir", "coach": "Joe", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Aeneas' Schooners", "coach": "Aeneas", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Rohan's Henchmen", "coach": "Rohan", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Paddy's Puppies", "coach": "Paddy", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Viking Cohort", "coach": "Kevin", "points": "-", "avg": "-", "last": "-"},
+    {"team": "Holy Divers", "coach": "Michael", "points": "-", "avg": "-", "last": "-"}
   ]
 }

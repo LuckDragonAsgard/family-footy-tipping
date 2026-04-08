@@ -2513,6 +2513,13 @@
                 renderStreak(espnStreakData);
             }
 
+            // Update supercoach data if present
+            if (data.supercoach && data.supercoach.length > 0) {
+                supercoachTeams.length = 0;
+                data.supercoach.forEach(d => supercoachTeams.push(d));
+                renderSupercoach(supercoachTeams);
+            }
+
             // Update timestamp
             if (data.lastUpdated) {
                 lastDataUpdate = new Date(data.lastUpdated);
