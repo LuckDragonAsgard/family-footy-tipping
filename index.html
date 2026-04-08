@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>GWB Family Footy Tipping 2026</title>
+    <title>Family & Friends Footy Tipping 2026</title>
     <script>
     // Auto-refresh: check for new version every 5 minutes
     (function(){
@@ -1026,7 +1026,7 @@
 <body>
     <nav>
         <div class="nav-inner">
-            <div class="nav-brand">GWB Family Footy Tipping<span>2026</span></div>
+            <div class="nav-brand">Family & Friends Footy Tipping<span>2026</span></div>
             <div style="display:flex;align-items:center;gap:0.5rem;">
                 <button onclick="findMe()" style="background:var(--gold);color:var(--dark);border:none;padding:0.4rem 0.8rem;border-radius:6px;font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;" title="Find your position in the current table">Find Me</button>
                 <button onclick="toggleDarkMode()" style="background:none;border:1px solid rgba(218,165,32,0.4);color:var(--gold);padding:0.35rem 0.6rem;border-radius:6px;cursor:pointer;font-size:1rem;" title="Toggle dark mode" id="darkModeBtn">&#9790;</button>
@@ -1058,7 +1058,7 @@
                         <span class="dot"></span>
                         <span>Round 3 &mdash; <span id="countdownText" class="countdown"></span></span>
                     </div>
-                    <div class="hero-title">GWB Family &amp; Friends</div>
+                    <div class="hero-title">Family &amp; Friends</div>
                     <div class="hero-subtitle">Footy Tipping 2026 &mdash; 60+ tippers, 4 comps, 1 family</div>
                     <div id="dataTimestamp" style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:0.25rem;"></div>
                     <div class="hero-stats">
@@ -1814,7 +1814,7 @@
     </div>
 
     <footer>
-        <p><strong>GWB Family & Friends Footy Tipping 2026</strong></p>
+        <p><strong>Family & Friends Footy Tipping 2026</strong></p>
         <p>Run by Paddy Gallivan &middot; <a href="mailto:pgallivan@outlook.com">pgallivan@outlook.com</a></p>
     </footer>
 
@@ -2839,7 +2839,7 @@
     async function refreshLiveScores() {
         try {
             const resp = await fetch('https://api.squiggle.com.au/?q=games;year=2026;round=3', {
-                headers: { 'User-Agent': 'GWB-Footy-Tipping/1.0' }
+                headers: { 'User-Agent': 'Family-Footy-Tipping/1.0' }
             });
             const data = await resp.json();
             if (data && data.games) {
@@ -2877,7 +2877,7 @@
         badge.textContent = 'Fetching...';
         try {
             const resp = await fetch('https://api.squiggle.com.au/?q=standings;year=2026', {
-                headers: { 'User-Agent': 'GWB-Footy-Tipping/1.0' }
+                headers: { 'User-Agent': 'Family-Footy-Tipping/1.0' }
             });
             const data = await resp.json();
             if (data && data.standings) {
