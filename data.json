@@ -1,98 +1,963 @@
 {
-  "lastUpdated": "2026-04-10T00:00:00+10:00",
-  "weeklyRoundLabels": ["OR","R1","R2","R3","R4","R5"],
+  "lastUpdated": "2026-04-10T12:31:25+10:00",
+  "weeklyRoundLabels": [
+    "OR",
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5"
+  ],
   "weekly": [
-    {"rank":1, "name":"Johnno58", "rounds":[4,7,6,6,5,1], "margin":104, "total":29},
-    {"rank":2, "name":"Margie Buckley", "rounds":[3,7,6,6,5,1], "margin":116, "total":28},
-    {"rank":3, "name":"John Gallivan", "rounds":[4,5,5,5,7,1], "margin":105, "total":27},
-    {"rank":4, "name":"John Leddin", "rounds":[3,7,5,5,6,1], "margin":111, "total":27},
-    {"rank":5, "name":"Miles Walsh", "rounds":[2,7,4,6,6,1], "margin":104, "total":26},
-    {"rank":6, "name":"Walsh Global", "rounds":[3,7,5,5,5,1], "margin":130, "total":26},
-    {"rank":7, "name":"R Hynes", "rounds":[5,6,4,5,5,1], "margin":132, "total":26},
-    {"rank":8, "name":"Liz Hogan", "rounds":[3,7,5,5,5,1], "margin":150, "total":26},
-    {"rank":9, "name":"Leddins of Ess", "rounds":[2,7,6,4,5,1], "margin":114, "total":25},
-    {"rank":10, "name":"Mark My Words", "rounds":[2,6,5,6,5,1], "margin":115, "total":25},
-    {"rank":11, "name":"Phabulous Phil W", "rounds":[4,7,4,6,3,1], "margin":119, "total":25},
-    {"rank":12, "name":"Tossil", "rounds":[2,7,4,5,6,1], "margin":123, "total":25},
-    {"rank":13, "name":"Michelle", "rounds":[3,6,4,5,6,1], "margin":130, "total":25},
-    {"rank":14, "name":"Georgia Jones", "rounds":[4,6,4,4,6,1], "margin":140, "total":25},
-    {"rank":15, "name":"Jan McGrath", "rounds":[2,6,4,6,6,1], "margin":141, "total":25},
-    {"rank":16, "name":"Dom Buckley", "rounds":[3,6,4,5,6,1], "margin":150, "total":25},
-    {"rank":17, "name":"Astrid Caddeo", "rounds":[3,6,4,6,5,1], "margin":150, "total":25},
-    {"rank":18, "name":"Tony Walsh", "rounds":[2,7,5,5,5,1], "margin":155, "total":25},
-    {"rank":19, "name":"Lady Latte", "rounds":[2,6,4,5,6,1], "margin":99, "total":24},
-    {"rank":20, "name":"Jacky Rooney", "rounds":[3,6,3,6,5,1], "margin":105, "total":24},
-    {"rank":21, "name":"( Dirty ) Harry ~ The Dog", "rounds":[3,7,4,4,5,1], "margin":114, "total":24},
-    {"rank":22, "name":"Ken's Kennel", "rounds":[3,6,4,5,5,1], "margin":114, "total":24},
-    {"rank":23, "name":"Bexy05", "rounds":[4,6,4,5,4,1], "margin":130, "total":24},
-    {"rank":24, "name":"Sharkey Walsh", "rounds":[2,7,4,4,6,1], "margin":130, "total":24},
-    {"rank":25, "name":"Our Own MCG", "rounds":[2,6,5,5,5,1], "margin":130, "total":24},
-    {"rank":26, "name":"CohagensAir", "rounds":[3,7,4,3,6,1], "margin":134, "total":24},
-    {"rank":27, "name":"goneAWOL", "rounds":[3,5,3,5,7,1], "margin":136, "total":24},
-    {"rank":28, "name":"Pete Buckley", "rounds":[3,5,5,5,5,1], "margin":144, "total":24},
-    {"rank":29, "name":"Paddy Gallivan", "rounds":[2,6,5,5,5,1], "margin":148, "total":24},
-    {"rank":30, "name":"Big Pat Walsh", "rounds":[3,6,4,5,5,1], "margin":149, "total":24},
-    {"rank":31, "name":"Terrol Gulden", "rounds":[4,7,3,4,5,1], "margin":150, "total":24},
-    {"rank":32, "name":"Kelly Gallivan", "rounds":[5,5,4,4,6,0], "margin":156, "total":24},
-    {"rank":33, "name":"MadeleineC", "rounds":[2,6,5,5,5,1], "margin":158, "total":24},
-    {"rank":34, "name":"MATTWALSH1", "rounds":[2,7,4,5,5,1], "margin":166, "total":24},
-    {"rank":35, "name":"Aeneas Gallivan", "rounds":[4,6,5,6,3,0], "margin":175, "total":24},
-    {"rank":36, "name":"Nicholas Walsh", "rounds":[3,6,3,6,6,0], "margin":197, "total":24},
-    {"rank":37, "name":"CarnTheCats!", "rounds":[2,6,5,5,4,1], "margin":120, "total":23},
-    {"rank":38, "name":"Profugus Fato JPG driven by fate", "rounds":[1,6,5,5,5,1], "margin":130, "total":23},
-    {"rank":39, "name":"Marie SWMBO Lady Gallivan", "rounds":[1,6,5,5,5,1], "margin":130, "total":23},
-    {"rank":40, "name":"Kev Anstey", "rounds":[2,5,5,5,5,1], "margin":131, "total":23},
-    {"rank":41, "name":"walsh laura", "rounds":[3,5,4,5,5,1], "margin":141, "total":23},
-    {"rank":42, "name":"the Human Walsh", "rounds":[2,6,5,5,5,0], "margin":151, "total":23},
-    {"rank":43, "name":"Natalie Schilov", "rounds":[1,6,6,5,4,1], "margin":163, "total":23},
-    {"rank":44, "name":"Richard Worrow", "rounds":[3,6,4,3,5,1], "margin":114, "total":22},
-    {"rank":45, "name":"Mr. Schadenfreude", "rounds":[3,5,4,5,4,1], "margin":121, "total":22},
-    {"rank":46, "name":"jameswalsh", "rounds":[2,6,3,5,5,1], "margin":130, "total":22},
-    {"rank":47, "name":"Living In Hope", "rounds":[1,5,5,5,5,1], "margin":130, "total":22},
-    {"rank":48, "name":"Dorothea", "rounds":[2,4,4,6,5,1], "margin":153, "total":22},
-    {"rank":49, "name":"Mickey CB", "rounds":[2,6,3,5,5,1], "margin":158, "total":22},
-    {"rank":50, "name":"Felix Lennich", "rounds":[2,4,4,5,5,1], "margin":123, "total":21}
+    {
+      "rank": 1,
+      "name": "Johnno58",
+      "rounds": [
+        4,
+        7,
+        6,
+        6,
+        5,
+        1
+      ],
+      "margin": 104,
+      "total": 29
+    },
+    {
+      "rank": 2,
+      "name": "Margie Buckley",
+      "rounds": [
+        3,
+        7,
+        6,
+        6,
+        5,
+        1
+      ],
+      "margin": 116,
+      "total": 28
+    },
+    {
+      "rank": 3,
+      "name": "John Gallivan",
+      "rounds": [
+        4,
+        5,
+        5,
+        5,
+        7,
+        1
+      ],
+      "margin": 105,
+      "total": 27
+    },
+    {
+      "rank": 4,
+      "name": "John Leddin",
+      "rounds": [
+        3,
+        7,
+        5,
+        5,
+        6,
+        1
+      ],
+      "margin": 111,
+      "total": 27
+    },
+    {
+      "rank": 5,
+      "name": "Miles Walsh",
+      "rounds": [
+        2,
+        7,
+        4,
+        6,
+        6,
+        1
+      ],
+      "margin": 104,
+      "total": 26
+    },
+    {
+      "rank": 6,
+      "name": "Walsh Global",
+      "rounds": [
+        3,
+        7,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 130,
+      "total": 26
+    },
+    {
+      "rank": 7,
+      "name": "R Hynes",
+      "rounds": [
+        5,
+        6,
+        4,
+        5,
+        5,
+        1
+      ],
+      "margin": 132,
+      "total": 26
+    },
+    {
+      "rank": 8,
+      "name": "Liz Hogan",
+      "rounds": [
+        3,
+        7,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 150,
+      "total": 26
+    },
+    {
+      "rank": 9,
+      "name": "Leddins of Ess",
+      "rounds": [
+        2,
+        7,
+        6,
+        4,
+        5,
+        1
+      ],
+      "margin": 114,
+      "total": 25
+    },
+    {
+      "rank": 10,
+      "name": "Mark My Words",
+      "rounds": [
+        2,
+        6,
+        5,
+        6,
+        5,
+        1
+      ],
+      "margin": 115,
+      "total": 25
+    },
+    {
+      "rank": 11,
+      "name": "Phabulous Phil W",
+      "rounds": [
+        4,
+        7,
+        4,
+        6,
+        3,
+        1
+      ],
+      "margin": 119,
+      "total": 25
+    },
+    {
+      "rank": 12,
+      "name": "Tossil",
+      "rounds": [
+        2,
+        7,
+        4,
+        5,
+        6,
+        1
+      ],
+      "margin": 123,
+      "total": 25
+    },
+    {
+      "rank": 13,
+      "name": "Michelle",
+      "rounds": [
+        3,
+        6,
+        4,
+        5,
+        6,
+        1
+      ],
+      "margin": 130,
+      "total": 25
+    },
+    {
+      "rank": 14,
+      "name": "Georgia Jones",
+      "rounds": [
+        4,
+        6,
+        4,
+        4,
+        6,
+        1
+      ],
+      "margin": 140,
+      "total": 25
+    },
+    {
+      "rank": 15,
+      "name": "Jan McGrath",
+      "rounds": [
+        2,
+        6,
+        4,
+        6,
+        6,
+        1
+      ],
+      "margin": 141,
+      "total": 25
+    },
+    {
+      "rank": 16,
+      "name": "Dom Buckley",
+      "rounds": [
+        3,
+        6,
+        4,
+        5,
+        6,
+        1
+      ],
+      "margin": 150,
+      "total": 25
+    },
+    {
+      "rank": 17,
+      "name": "Astrid Caddeo",
+      "rounds": [
+        3,
+        6,
+        4,
+        6,
+        5,
+        1
+      ],
+      "margin": 150,
+      "total": 25
+    },
+    {
+      "rank": 18,
+      "name": "Tony Walsh",
+      "rounds": [
+        2,
+        7,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 155,
+      "total": 25
+    },
+    {
+      "rank": 19,
+      "name": "Lady Latte",
+      "rounds": [
+        2,
+        6,
+        4,
+        5,
+        6,
+        1
+      ],
+      "margin": 99,
+      "total": 24
+    },
+    {
+      "rank": 20,
+      "name": "Jacky Rooney",
+      "rounds": [
+        3,
+        6,
+        3,
+        6,
+        5,
+        1
+      ],
+      "margin": 105,
+      "total": 24
+    },
+    {
+      "rank": 21,
+      "name": "( Dirty ) Harry ~ The Dog",
+      "rounds": [
+        3,
+        7,
+        4,
+        4,
+        5,
+        1
+      ],
+      "margin": 114,
+      "total": 24
+    },
+    {
+      "rank": 22,
+      "name": "Ken's Kennel",
+      "rounds": [
+        3,
+        6,
+        4,
+        5,
+        5,
+        1
+      ],
+      "margin": 114,
+      "total": 24
+    },
+    {
+      "rank": 23,
+      "name": "Bexy05",
+      "rounds": [
+        4,
+        6,
+        4,
+        5,
+        4,
+        1
+      ],
+      "margin": 130,
+      "total": 24
+    },
+    {
+      "rank": 24,
+      "name": "Sharkey Walsh",
+      "rounds": [
+        2,
+        7,
+        4,
+        4,
+        6,
+        1
+      ],
+      "margin": 130,
+      "total": 24
+    },
+    {
+      "rank": 25,
+      "name": "Our Own MCG",
+      "rounds": [
+        2,
+        6,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 130,
+      "total": 24
+    },
+    {
+      "rank": 26,
+      "name": "CohagensAir",
+      "rounds": [
+        3,
+        7,
+        4,
+        3,
+        6,
+        1
+      ],
+      "margin": 134,
+      "total": 24
+    },
+    {
+      "rank": 27,
+      "name": "goneAWOL",
+      "rounds": [
+        3,
+        5,
+        3,
+        5,
+        7,
+        1
+      ],
+      "margin": 136,
+      "total": 24
+    },
+    {
+      "rank": 28,
+      "name": "Pete Buckley",
+      "rounds": [
+        3,
+        5,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 144,
+      "total": 24
+    },
+    {
+      "rank": 29,
+      "name": "Paddy Gallivan",
+      "rounds": [
+        2,
+        6,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 148,
+      "total": 24
+    },
+    {
+      "rank": 30,
+      "name": "Big Pat Walsh",
+      "rounds": [
+        3,
+        6,
+        4,
+        5,
+        5,
+        1
+      ],
+      "margin": 149,
+      "total": 24
+    },
+    {
+      "rank": 31,
+      "name": "Terrol Gulden",
+      "rounds": [
+        4,
+        7,
+        3,
+        4,
+        5,
+        1
+      ],
+      "margin": 150,
+      "total": 24
+    },
+    {
+      "rank": 32,
+      "name": "Kelly Gallivan",
+      "rounds": [
+        5,
+        5,
+        4,
+        4,
+        6,
+        0
+      ],
+      "margin": 156,
+      "total": 24
+    },
+    {
+      "rank": 33,
+      "name": "MadeleineC",
+      "rounds": [
+        2,
+        6,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 158,
+      "total": 24
+    },
+    {
+      "rank": 34,
+      "name": "MATTWALSH1",
+      "rounds": [
+        2,
+        7,
+        4,
+        5,
+        5,
+        1
+      ],
+      "margin": 166,
+      "total": 24
+    },
+    {
+      "rank": 35,
+      "name": "Aeneas Gallivan",
+      "rounds": [
+        4,
+        6,
+        5,
+        6,
+        3,
+        0
+      ],
+      "margin": 175,
+      "total": 24
+    },
+    {
+      "rank": 36,
+      "name": "Nicholas Walsh",
+      "rounds": [
+        3,
+        6,
+        3,
+        6,
+        6,
+        0
+      ],
+      "margin": 197,
+      "total": 24
+    },
+    {
+      "rank": 37,
+      "name": "CarnTheCats!",
+      "rounds": [
+        2,
+        6,
+        5,
+        5,
+        4,
+        1
+      ],
+      "margin": 120,
+      "total": 23
+    },
+    {
+      "rank": 38,
+      "name": "Profugus Fato JPG driven by fate",
+      "rounds": [
+        1,
+        6,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 130,
+      "total": 23
+    },
+    {
+      "rank": 39,
+      "name": "Marie SWMBO Lady Gallivan",
+      "rounds": [
+        1,
+        6,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 130,
+      "total": 23
+    },
+    {
+      "rank": 40,
+      "name": "Kev Anstey",
+      "rounds": [
+        2,
+        5,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 131,
+      "total": 23
+    },
+    {
+      "rank": 41,
+      "name": "walsh laura",
+      "rounds": [
+        3,
+        5,
+        4,
+        5,
+        5,
+        1
+      ],
+      "margin": 141,
+      "total": 23
+    },
+    {
+      "rank": 42,
+      "name": "the Human Walsh",
+      "rounds": [
+        2,
+        6,
+        5,
+        5,
+        5,
+        0
+      ],
+      "margin": 151,
+      "total": 23
+    },
+    {
+      "rank": 43,
+      "name": "Natalie Schilov",
+      "rounds": [
+        1,
+        6,
+        6,
+        5,
+        4,
+        1
+      ],
+      "margin": 163,
+      "total": 23
+    },
+    {
+      "rank": 44,
+      "name": "Richard Worrow",
+      "rounds": [
+        3,
+        6,
+        4,
+        3,
+        5,
+        1
+      ],
+      "margin": 114,
+      "total": 22
+    },
+    {
+      "rank": 45,
+      "name": "Mr. Schadenfreude",
+      "rounds": [
+        3,
+        5,
+        4,
+        5,
+        4,
+        1
+      ],
+      "margin": 121,
+      "total": 22
+    },
+    {
+      "rank": 46,
+      "name": "jameswalsh",
+      "rounds": [
+        2,
+        6,
+        3,
+        5,
+        5,
+        1
+      ],
+      "margin": 130,
+      "total": 22
+    },
+    {
+      "rank": 47,
+      "name": "Living In Hope",
+      "rounds": [
+        1,
+        5,
+        5,
+        5,
+        5,
+        1
+      ],
+      "margin": 130,
+      "total": 22
+    },
+    {
+      "rank": 48,
+      "name": "Dorothea",
+      "rounds": [
+        2,
+        4,
+        4,
+        6,
+        5,
+        1
+      ],
+      "margin": 153,
+      "total": 22
+    },
+    {
+      "rank": 49,
+      "name": "Mickey CB",
+      "rounds": [
+        2,
+        6,
+        3,
+        5,
+        5,
+        1
+      ],
+      "margin": 158,
+      "total": 22
+    },
+    {
+      "rank": 50,
+      "name": "Felix Lennich",
+      "rounds": [
+        2,
+        4,
+        4,
+        5,
+        5,
+        1
+      ],
+      "margin": 123,
+      "total": 21
+    }
   ],
   "streak": [
-    {"name":"Living In Hope", "avg":2, "longest":5, "current":5},
-    {"name":"Dom Buckley", "avg":5, "longest":5, "current":5},
-    {"name":"Marie SWMBO Lady Gallivan", "avg":3, "longest":5, "current":5},
-    {"name":"Profugus Fato JPG driven by fate", "avg":2, "longest":4, "current":4},
-    {"name":"Paddy Gallivan", "avg":3, "longest":4, "current":4},
-    {"name":"Aeneas Gallivan", "avg":2, "longest":3, "current":2},
-    {"name":"John Leddin", "avg":4, "longest":7, "current":2},
-    {"name":"Tony Walsh", "avg":1, "longest":2, "current":2},
-    {"name":"jameswalsh", "avg":2, "longest":4, "current":2},
-    {"name":"goneAWOL", "avg":2, "longest":4, "current":2},
-    {"name":"CohagensAir", "avg":1, "longest":3, "current":2},
-    {"name":"Donza08", "avg":2, "longest":3, "current":2},
-    {"name":"John Gallivan", "avg":2, "longest":5, "current":1},
-    {"name":"Big Pat Walsh", "avg":2, "longest":4, "current":1},
-    {"name":"Our Own MCG", "avg":2, "longest":5, "current":1},
-    {"name":"Ken's Kennel", "avg":2, "longest":5, "current":1},
-    {"name":"Miles Walsh", "avg":2, "longest":5, "current":1},
-    {"name":"Richard Worrow", "avg":2, "longest":7, "current":1},
-    {"name":"MATTWALSH1", "avg":2, "longest":6, "current":1},
-    {"name":"Michelle", "avg":2, "longest":4, "current":1}
+    {
+      "name": "Living In Hope",
+      "avg": 2,
+      "longest": 6,
+      "current": 6
+    },
+    {
+      "name": "Marie SWMBO Lady Gallivan",
+      "avg": 4,
+      "longest": 6,
+      "current": 6
+    },
+    {
+      "name": "Profugus Fato JPG driven by fate",
+      "avg": 2,
+      "longest": 5,
+      "current": 5
+    },
+    {
+      "name": "Dom Buckley",
+      "avg": 5,
+      "longest": 5,
+      "current": 5
+    },
+    {
+      "name": "John Leddin",
+      "avg": 5,
+      "longest": 7,
+      "current": 3
+    },
+    {
+      "name": "Tony Walsh",
+      "avg": 2,
+      "longest": 3,
+      "current": 3
+    },
+    {
+      "name": "jameswalsh",
+      "avg": 2,
+      "longest": 4,
+      "current": 3
+    },
+    {
+      "name": "goneAWOL",
+      "avg": 2,
+      "longest": 4,
+      "current": 3
+    },
+    {
+      "name": "Donza08",
+      "avg": 2,
+      "longest": 3,
+      "current": 3
+    },
+    {
+      "name": "Aeneas Gallivan",
+      "avg": 2,
+      "longest": 3,
+      "current": 2
+    },
+    {
+      "name": "John Gallivan",
+      "avg": 2,
+      "longest": 5,
+      "current": 2
+    },
+    {
+      "name": "Our Own MCG",
+      "avg": 2,
+      "longest": 5,
+      "current": 2
+    },
+    {
+      "name": "Ken's Kennel",
+      "avg": 3,
+      "longest": 5,
+      "current": 2
+    },
+    {
+      "name": "Miles Walsh",
+      "avg": 2,
+      "longest": 5,
+      "current": 2
+    },
+    {
+      "name": "CohagensAir",
+      "avg": 1,
+      "longest": 3,
+      "current": 2
+    },
+    {
+      "name": "MATTWALSH1",
+      "avg": 3,
+      "longest": 6,
+      "current": 2
+    },
+    {
+      "name": "Michelle",
+      "avg": 3,
+      "longest": 4,
+      "current": 2
+    },
+    {
+      "name": "Big Pat Walsh",
+      "avg": 2,
+      "longest": 4,
+      "current": 1
+    },
+    {
+      "name": "Richard Worrow",
+      "avg": 2,
+      "longest": 7,
+      "current": 1
+    },
+    {
+      "name": "Paddy Gallivan",
+      "avg": 2,
+      "longest": 4,
+      "current": 1
+    }
   ],
   "supercoach": [
-    {"team": "Bomber Rock", "coach": "Shannon", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Vultures", "coach": "Kevin", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Moyes Like Jagger", "coach": "Stan", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Crisps Bakehouse", "coach": "Natalie", "points": "-", "avg": "-", "last": "-"},
-    {"team": "meow meow", "coach": "Frank", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Mark My Words", "coach": "Mark", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Mr Geelong", "coach": "Martin", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Living in Hope!", "coach": "Mary", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Profugus Fato", "coach": "Joe", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Ken's Kennel", "coach": "Ken", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Terrol Gulden", "coach": "Tom", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Horse Power", "coach": "Julie", "points": "-", "avg": "-", "last": "-"},
-    {"team": "CohagensAir", "coach": "Joe", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Aeneas' Schooners", "coach": "Aeneas", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Rohan's Henchmen", "coach": "Rohan", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Paddy's Puppies", "coach": "Paddy", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Viking Cohort", "coach": "Kevin", "points": "-", "avg": "-", "last": "-"},
-    {"team": "Holy Divers", "coach": "Michael", "points": "-", "avg": "-", "last": "-"}
+    {
+      "team": "Bomber Rock",
+      "coach": "Shannon",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Vultures",
+      "coach": "Kevin",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Moyes Like Jagger",
+      "coach": "Stan",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Crisps Bakehouse",
+      "coach": "Natalie",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "meow meow",
+      "coach": "Frank",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Mark My Words",
+      "coach": "Mark",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Mr Geelong",
+      "coach": "Martin",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Living in Hope!",
+      "coach": "Mary",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Profugus Fato",
+      "coach": "Joe",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Ken's Kennel",
+      "coach": "Ken",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Terrol Gulden",
+      "coach": "Tom",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Horse Power",
+      "coach": "Julie",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "CohagensAir",
+      "coach": "Joe",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Aeneas' Schooners",
+      "coach": "Aeneas",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Rohan's Henchmen",
+      "coach": "Rohan",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Paddy's Puppies",
+      "coach": "Paddy",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Viking Cohort",
+      "coach": "Kevin",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    },
+    {
+      "team": "Holy Divers",
+      "coach": "Michael",
+      "points": "-",
+      "avg": "-",
+      "last": "-"
+    }
   ]
-}
+        }
